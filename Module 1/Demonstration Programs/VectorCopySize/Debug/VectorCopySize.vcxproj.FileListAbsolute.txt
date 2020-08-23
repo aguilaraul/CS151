@@ -1,2 +1,0 @@
-C:\Users\raula\GitHub\CS151\Classwork\Module 1\VectorCopySize\Debug\VectorCopySize.exe
-C:\Users\raula\GitHub\CS151\Classwork\Module 1\VectorCopySize\Debug\VectorCopySize.pdb

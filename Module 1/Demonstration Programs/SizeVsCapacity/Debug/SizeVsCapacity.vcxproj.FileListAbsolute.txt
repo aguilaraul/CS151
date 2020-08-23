@@ -1,2 +1,0 @@
-C:\Users\raula\GitHub\CS151\Classwork\Module 1\SizeVsCapacity\Debug\SizeVsCapacity.exe
-C:\Users\raula\GitHub\CS151\Classwork\Module 1\SizeVsCapacity\Debug\SizeVsCapacity.pdb
