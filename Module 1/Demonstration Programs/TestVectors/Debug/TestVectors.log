@@ -1,0 +1,8 @@
+﻿  TestVectors.cpp
+C:\Users\raula\GitHub\CS151\Classwork\Module 1\TestVectors\TestVectors.cpp(20,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\raula\GitHub\CS151\Classwork\Module 1\TestVectors\TestVectors.cpp(36,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\raula\GitHub\CS151\Classwork\Module 1\TestVectors\TestVectors.cpp(47,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\raula\GitHub\CS151\Classwork\Module 1\TestVectors\TestVectors.cpp(58,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\raula\GitHub\CS151\Classwork\Module 1\TestVectors\TestVectors.cpp(69,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\raula\GitHub\CS151\Classwork\Module 1\TestVectors\TestVectors.cpp(83,20): warning C4018: '<': signed/unsigned mismatch
+  TestVectors.vcxproj -> C:\Users\raula\GitHub\CS151\Classwork\Module 1\TestVectors\Debug\TestVectors.exe
