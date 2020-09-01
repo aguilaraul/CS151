@@ -1,0 +1,14 @@
+"Argentina" 45258 1073234  
+"Bolivia" 11696 424,052  
+"Brazil" 212845 3,287,086  
+"Chile" 19206  	291,855  
+"Columbia" 51115  	440,715  
+"Ecuador"	17705  	106,851  
+"Falkland Islands" 3 4700  
+"French Guiana" 290 32253  
+"Guyana" 787 82978  
+"Paraguay" 7145 157056  
+"Peru" 33108 496093  
+"Suriname" 586 63252  
+"Uruguay" 3475 68037  
+"Venezuela" 28102 353748
