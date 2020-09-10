@@ -1,10 +1,20 @@
 /*
  * author   Raul Aguilar
  * date     September 15, 2020
+ * 
+ * CS 151 3228 Homework 3 Project 1
  * Write a program that dynamically allocates an array large enough to
  * hold a user-defined number of test scores.
  * 
- * 
+ * Algorithm:
+ * 1. Ask user for number of test scores to input
+ * 2. Dynamically allocate the correct array
+ * 3. Input test scores through the terminal rejecting negative
+ * integers
+ * 4. Sort the array of test scores in acsending order
+ * 5. Calculate the average test score
+ * 6. Display the sorted test scores and average with the appropriate
+ * headers
  */
 #include <iostream>
 #include <iomanip>
