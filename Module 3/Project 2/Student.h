@@ -17,6 +17,7 @@ private:
 	string name;
 	int score;
 public:
+	Student();
 	Student(string, int);
 	~Student();
 	string getName();

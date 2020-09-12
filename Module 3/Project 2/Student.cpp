@@ -11,11 +11,19 @@
 
 using namespace std;
 
+Student::Student()
+{
+	name = "no name";
+	score = -1;
+}
+
 Student::Student(string n, int s)
 {
 	name = n;
 	score = s;
 }
+
+Student::~Student() {}
 
 string Student::getName()
 {
