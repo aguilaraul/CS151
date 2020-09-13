@@ -1,10 +1,16 @@
-/*
+/* Project1.cpp
+ * 
  * author   Raul Aguilar
- * date     September 15, 2020
+ * date     September 13, 2020
  * Write a program that dynamically allocates an array large enough to
  * hold a user-defined number of test scores.
  * 
- * 
+ * Algorithm:
+ * 1. Ask user how many scores they would like to enter
+ * 2. Input test scores from user. Validate that scores are positive
+ * integers.
+ * 3. Sort scores into ascending order
+ * 4. Display the scores and the average test score
  */
 #include <iostream>
 #include <iomanip>
@@ -31,10 +37,9 @@ int main()
 
     // Display scores and average
     printScores(scores, size);
-    cout << endl << "Average:" << endl;
-    cout << right << setw(6) << calculateAverage(scores, size) << endl;
 
     delete [] scores;
+    scores = nullptr;
     return 0;
 }
 
@@ -68,9 +73,9 @@ void bubbleSort(int array[], int size)
         madeASwap = false;
         for(int i = 0; i < maxElement; i++)
         {
-            if(array[i] > array[i+1])
+            if(*(array+i) > *(array+(i+1)))
             {
-                swap(array[i], array[i+1]);
+                swap(*(array + i), *(array + (i + 1)));
                 madeASwap = true;
             }
         }
@@ -86,11 +91,15 @@ void swap(int &a, int &b)
 
 void printScores(int array[], int size)
 {
-    cout << endl << "Scores:" << endl;
+    cout << endl << "Scores" << endl;
+    cout << "--------" << endl;
     for(int i = 0; i < size; i++)
     {
-        cout << right << setw(6) << *(array + i) << endl;
+        cout << right << setw(8) << *(array + i) << endl;
     }
+    cout << endl << "Average" << endl;
+    cout << "--------" << endl;
+    cout << right << setw(8) << fixed << setprecision(2) << calculateAverage(array, size) << endl;
 }
 
 float calculateAverage(int array[], int size)

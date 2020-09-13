@@ -1,4 +1,6 @@
-/*
+/* 
+ * Project2.cpp
+ * 
  * author   Raul Aguilar
  * date     September 13, 2020
  * 
@@ -44,6 +46,10 @@ int main()
     bubbleSort(scores, size);
     // Print scores and average
     printScores(scores, size);
+
+    delete[] scores;
+    scores = nullptr;
+    return 0;
 }
 
 void inputScores(Student array[], int size)
@@ -85,7 +91,7 @@ void bubbleSort(Student array[], int size)
         {
             if (array[i].getScore() > array[i + 1].getScore())
             {
-                swap(array[i], array[i + 1]);
+                swap(*(array+i), *(array+(i+1)));
                 madeASwap = true;
             }
         }
