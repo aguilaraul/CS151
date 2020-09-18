@@ -1,6 +1,5 @@
 #include <iostream>
 #include <iomanip>
-#include <string>
 #include <ctime>
 
 using namespace std;
@@ -56,5 +55,9 @@ int main()
 
     // Seconds in one week
     int seconds_per_week = 24*7*60*60;
+
+    // Week before birthday
+    time_t week_before_birthday = time_of_birthday - seconds_per_week;
+    cout << endl << ctime(&week_before_birthday);
     return 0;
 }
