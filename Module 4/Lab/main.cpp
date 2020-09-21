@@ -1,15 +1,13 @@
 /*
- * Lab.cpp
+ * main.cpp
  *
  * author   Raul Aguilar
  * date     September 17, 2020
  *
- * Module 4 Lab
+ * CS 151 3228 Module 4 Lab
  * In this lab you will manipulate a time variable and corresponding
  * structure, print today's date and time in various formats, and
  * determine how to adjust the internal form of other dates.
- *
- * Algorithm:
  *
  */
 
