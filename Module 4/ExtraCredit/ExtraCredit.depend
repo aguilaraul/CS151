@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1600737593 source:c:\users\raula\github\cs151\module 4\extracredit\extracredit.cpp
+	<iostream>
+	<iomanip>
+	<memory>
+	<ctime>
+
