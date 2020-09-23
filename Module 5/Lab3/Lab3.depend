@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1600834122 source:c:\users\raula\github\cs151\module 5\lab3\hw5_lab.cpp
+	<iostream>
+	<vector>
+
