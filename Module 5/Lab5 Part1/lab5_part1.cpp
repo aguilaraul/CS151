@@ -3,7 +3,7 @@
  * author   Raul Aguilar
  * date     September 29, 2020
  *
- * CS 151 3228 Module 5 Lab 5
+ * CS 151 3228 Module 5 Lab 5 Part 1
  * Create a class that tracks memberships in a gym.
  *
  * Algorithm:

@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1602130267 source:c:\users\raula\github\cs151\module 5\lab5 part1\lab5_part1.cpp
+	<iostream>
+	<iomanip>
+	<vector>
+	<time.h>
+
