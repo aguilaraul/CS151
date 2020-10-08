@@ -1,7 +1,8 @@
-/* lab5_part1.cpp
+/*
+ * lab5_part1.cpp
  *
  * author   Raul Aguilar
- * date     September 29, 2020
+ * date     October 7, 2020
  *
  * CS 151 3228 Module 5 Lab 5 Part 1
  * Create a class that tracks memberships in a gym.

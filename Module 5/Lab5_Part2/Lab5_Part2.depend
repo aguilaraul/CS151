@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1602133231 source:c:\users\raula\github\cs151\module 5\lab5_part2\lab5_part2.cpp
+	<iostream>
+	<cstring>
+
