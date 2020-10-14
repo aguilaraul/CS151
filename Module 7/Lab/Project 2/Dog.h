@@ -1,25 +1,27 @@
 /*
- * Bird.h
+ * Dog.h
  *
  * Author	Raul Aguilar
  * Date		October 14, 2020
  *
  * CS 151 3228 Module 7 Lab Project 2
- * Bird header
+ * Dog header
  */
-#ifndef BIRD_H
-#define BIRD_H
+#ifndef DOG_H
+#define DOG_H
 #include "Animal.h"
-
 using namespace std;
 
-class Bird : public Animal
+class Dog : public Animal
 {
+private:
+	string breed;
 public:
-	Bird(string);
+	Dog(string, string);
+	void setBreed(string);
+	string getBreed();
 	void makeNoise();
 	void showInfo();
 };
 
-#endif // !BIRD_H
-
+#endif // !DOG_H

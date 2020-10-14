@@ -18,4 +18,12 @@ Bird::Bird(string name)
 	cout << "A Bird " << getName() << " has been created." << endl;
 }
 
-//@TODO: Continue working on Bird class
+void Bird::makeNoise()
+{
+	cout << "The Bird " << getName() << " is chirping." << endl;
+}
+
+void Bird::showInfo()
+{
+	cout << "The Bird " << getName() << endl;
+}
