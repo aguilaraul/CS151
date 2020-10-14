@@ -1,5 +1,5 @@
 /* Student.h - header file for Students at MiraCosta (child of PersonAtMCC)
- * Author:     <your name>
+ * Author:     Raul Aguilar
  * Module:     7
  * Project:    Lab, Part 1
  * Description:

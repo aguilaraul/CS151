@@ -1,5 +1,5 @@
 /* PersonAtMCC.cpp - Function definitions for parent class
- * Author:     <your name>
+ * Author:     Raul Aguilar
  * Module:     7
  * Project:    Lab, Part 1
  * Description:  Function definitions for parent class
@@ -67,8 +67,8 @@ void PersonAtMCC::setPhone(string new_phone) {
 
 // Output
 void PersonAtMCC::showInfo() {
-    cout << "ID: " << id << endl;
-    cout << "Name: " << name << endl;
-    cout << "Address: " << address << endl;
-    cout << "Phone: " << phone << endl;
+    cout << "ID: " << id;
+    cout << "\tName: " << name;
+    cout << "\tAddress: " << address << endl;
+    cout << "\tPhone: " << phone << endl;
 }

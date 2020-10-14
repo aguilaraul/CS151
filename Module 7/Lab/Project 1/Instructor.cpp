@@ -8,13 +8,13 @@
 #include <iostream>
 using namespace std ;
 
-/**** WRITE THE MISSING CONSTRUCTOR, USE MEMBER INITIALIZATION ****/
-Instructor::Instructor(long id, string name, string address, string phone,
-						bool permanent, double rate, double hours)
-			: PersonAtMCC(id, name, address, phone)
+Instructor::Instructor(long id, string name, string address, string phone, string dept, bool perma, double rate, double hours)
+    : PersonAtMCC(id, name, address, phone)
 {
-	setIsPermanent(permanent);
-	setPayRate(rate);
+    setDepartment(dept);
+    setIsPermanent(perma);
+    setPayRate(rate);
+    setHours(hours);
 }
 
 // Getters for this class only
@@ -30,6 +30,10 @@ double Instructor::getPayRate() {
     return pay_rate ;
 }
 
+double Instructor::getHours() {
+    return hours;
+}
+
 // Setters for this class only
 void Instructor::setDepartment(string new_department) {
     department = new_department ;
@@ -43,8 +47,19 @@ void Instructor::setPayRate(double new_pay_rate) {
     pay_rate = new_pay_rate ;
 }
 
-void Instructor::showInfo() {
-    cout << "ID: " << getId() << endl ;
+void Instructor::setHours(double new_hours) {
+    hours = new_hours;
+}
 
-    /**** COMPLETE THE OUTPUT ****/
+void Instructor::showInfo() {
+    PersonAtMCC::showInfo();
+    cout << "\tDepartment: " << getDepartment();
+    cout << "\tPermanent?: ";
+    if (getIsPermanent()) {
+        cout << "Yes";
+    } else {
+        cout << "No";
+    }
+    cout << "\tPay Rate: " << getPayRate();
+    cout << "\tHours: " << getHours() << endl;
 }

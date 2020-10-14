@@ -41,7 +41,7 @@ class Instructor : public PersonAtMCC {
         double getPayRate() ;
         void setPayRate(double) ;
         double getHours() ;
-        void setHours() ;
+        void setHours(double) ;
         void showInfo() ;                              // show all info for this Instructor
 } ;
 

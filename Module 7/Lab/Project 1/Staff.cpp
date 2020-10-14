@@ -8,8 +8,13 @@
 #include <iostream>
 using namespace std ;
 
-/**** WRITE THE MISSING CONSTRUCTOR, USE MEMBER INITIALIZATION ****/
-
+Staff::Staff(long id, string name, string address, string phone, string ext, string hireDate, double rate)
+    : PersonAtMCC(id, name, address, phone)
+{
+    setExtension(ext);
+    setHireDate(hireDate);
+    setPayRate(rate);
+}
 
 // Getters for this class only
 string Staff::getExtension() {
@@ -38,8 +43,9 @@ void Staff::setPayRate(double new_pay_rate) {
 }
 
 void Staff::showInfo() {
-    cout << "ID: " << getId() << endl ;
-
-    /**** COMPLETE THE OUTPUT ****/
+    PersonAtMCC::showInfo();
+    cout << "\tExtension: " << getExtension();
+    cout << "\tHire Date: " << getHireDate();
+    cout << "\tPay Rate: " << getPayRate() << endl;
 }
 

@@ -1,5 +1,5 @@
 /* Student.cpp - Function definitions for Student class, child of PersonAtMCC
- * Author:     <your name>
+ * Author:     Raul Aguilar
  * Module:     7
  * Project:    Lab, Part 1
  */
@@ -8,7 +8,14 @@
 #include <iostream>
 using namespace std ;
 
-/**** WRITE THE MISSING CONSTRUCTOR, USE MEMBER INITIALIZATION ****/
+Student::Student(long id, string name, string address, string phone, string major, int credits, bool applied, bool vet)
+    : PersonAtMCC(id, name, address, phone)
+{
+    setMajor(major);
+    setCreditsReceived(credits);
+    setAppliedTo4Year(applied);
+    setIsVeteran(vet);
+}
 
 // Getters for this class only
 string Student::getMajor() {
@@ -45,10 +52,22 @@ void Student::setIsVeteran(bool new_is_veteran) {
 }
 
 void Student::showInfo() {
-
-    cout << "ID: " << getId() << endl ;
-
-    /**** COMPLETE THE OUTPUT ****/
+    PersonAtMCC::showInfo();
+    cout << "\tMajor: " << getMajor();
+    cout << "\tCredits: " << getCreditsReceived();
+    cout << "\t4-year? ";
+    if (getAppliedTo4Year()) {
+        cout << "Yes";
+    } else {
+        cout << "No";
+    }
+    cout << "\tVeteran? ";
+    if (getIsVeteran()) {
+        cout << "Yes";
+    } else {
+        cout << "No";
+    }
+    cout << endl;
 }
 
 
