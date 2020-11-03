@@ -1,7 +1,7 @@
 /*
  * Project1.cpp
  * Author:  Raul Aguilar
- * Date:    October 28, 2020
+ * Date:    November 2, 2020
  *
  * CS 151 3228 Module 5 Homework 5 Project 1
  * Design a class Numbers that can be used to translate whole dollar
@@ -56,41 +56,42 @@ int Number::getNumber()
     return number;
 }
 
+/**
+ * Count the number of digits in the numeral provided
+ */
 int Number::parseDigits(int num)
 {
-    int digits = 0;
-    while (num != 0)
-    {
-        num /= 10;
-        digits++;
-    }
-    return digits;
+    return floor(log10(num) + 1);
 }
+
 
 void Number::print()
 {
     int digits = parseDigits(number);
     int msd = 0;
-
+    
+    // Using the number of digits to deterime where to start dividing
+    // by the highest place value
     switch (digits)
     {
-        case 4:
-            msd = number / 1000;
+		case 4:
+            msd = number / 1000; // Determine value of most significant digit
             cout << LESSTHAN20[msd];
             cout << " " << THOUSAND << " ";
         case 3:
-            number = number % 1000;
-            msd = number / 100;
+            number = number % 1000;	// as the code falls through,
+									// need to chop off the previous most significant digit
+            msd = number / 100;		// Determine value of most significant digit
             cout << LESSTHAN20[msd];
             cout << " " << HUNDRED << " ";
         default:
-            number = number % 100;
+            number = number % 100;	// chop off previous msd
             if (number < 20)
             {
                 cout << LESSTHAN20[number] << endl;
             } else
             {
-                msd = number / 10;
+                msd = number / 10;	// Determine value of most significant digit
                 cout << TENS[msd - 2];
                 cout << " " << LESSTHAN20[number % 10] << endl;
             }
@@ -102,8 +103,7 @@ int inputNumber();
 
 int main()
 {
-    int num = inputNumber();
-    Number n(num);
+    Number n(inputNumber());
 
     n.print();
 
@@ -114,7 +114,7 @@ int inputNumber()
 {
     int num;
     bool validInput = false;
-    cout << "Enter a number between 0 and 9999.\n";
+    cout << "Enter a number between 0 and 9999:\n";
     cin >> num;
 
     while (!validInput) {
