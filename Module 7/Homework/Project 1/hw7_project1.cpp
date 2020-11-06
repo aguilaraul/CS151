@@ -32,6 +32,12 @@ public:
 
 PString::PString(string in) {
     input = in;
+
+    if(isPalindrome(input)) {
+        cout << input << " is a palindrome." << endl;
+    } else {
+        cout << input << " is not a palindrome." << endl;
+    }
 }
 
 bool PString::isPalindrome(string str) {
@@ -68,13 +74,8 @@ int main() {
     string testStr;
     cout << "Check if a phrase is a palindrome:" << endl;
     getline(cin, testStr);
-    PString string1(testStr);
 
-    if(string1.isPalindrome(testStr)) {
-        cout << testStr << " is a palindrome." << endl;
-    } else {
-        cout << testStr << " is not a palindrome." << endl;
-    }
+    PString string1(testStr);
 
     return 0;
 }
