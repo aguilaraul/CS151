@@ -54,6 +54,5 @@ int main() {
     }
 
     cout << "Program exiting..." << endl;
-    exit(0);
     return 0;
 }

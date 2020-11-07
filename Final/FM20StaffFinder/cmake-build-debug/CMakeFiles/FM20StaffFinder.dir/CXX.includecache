@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/raula/GitHub/CS151/Final/FM20StaffFinder/Person.cpp
+Person.h
+C:/Users/raula/GitHub/CS151/Final/FM20StaffFinder/Person.h
+iostream
+-
+
+C:/Users/raula/GitHub/CS151/Final/FM20StaffFinder/Person.h
+iostream
+-
+
+C:/Users/raula/GitHub/CS151/Final/FM20StaffFinder/main.cpp
+iostream
+-
+Person.h
+C:/Users/raula/GitHub/CS151/Final/FM20StaffFinder/Person.h
+
