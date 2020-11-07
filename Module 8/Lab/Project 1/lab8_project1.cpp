@@ -38,17 +38,22 @@ int main() {
     for_each(test.begin(), test.end(),
              [](char &c) { c = tolower(c); } );
 
-    if(test != "quit") {
+    while(test != "quit") {
         cout << input << endl;
-    } else {
-        cout << "Program exiting..." << endl;
-        exit(0);
+        for_each(input.begin(), input.end(),
+                 [](char &c) { encrypt(c); } );
+
+        cout << input << endl;
+
+        cout << "\nEnter a string to encrypt:" << endl;
+        getline(cin, input);
+
+        test = input;
+        for_each(test.begin(), test.end(),
+                 [](char &c) { c = tolower(c); } );
     }
 
-    for_each(input.begin(), input.end(),
-            [](char &c) { encrypt(c); } );
-
-    cout << input << endl;
-
+    cout << "Program exiting..." << endl;
+    exit(0);
     return 0;
 }
