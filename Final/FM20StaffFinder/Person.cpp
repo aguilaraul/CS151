@@ -18,6 +18,8 @@ Person::Person(const string& nation, const string& name, int age) {
     setAge(age);
 }
 
+Person::~Person() = default;
+
 void Person::setNation(const string& n) {
     this->nation = n;
 }
@@ -46,5 +48,3 @@ string Person::to_string() {
     return name + " is " + std::to_string(age) + " years old" +
         " and is from " + nation + '.';
 }
-
-Person::~Person() = default;
