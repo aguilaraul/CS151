@@ -9,7 +9,7 @@ using namespace std;
 
 class Staff : public Person {
 private:
-    struct Attributes {
+    struct StaffAttributes {
         // Coaching
         short int attacking, defending, fitness, mental, tactical,
             technical, workingWithYoungsters;
@@ -26,9 +26,21 @@ private:
         short judgingAbility, judgingPotential, judgingStaffAbility,
             negotiating, tacticalKnowledge;
     } Attributes;
+
 protected:
     string role;
     string club;
+    // Attributes
+    void setCoaching(short int, short int, short int,
+                     short int, short int, short int, short int);
+    void setMedical(short int, short int);
+    void setGoalKeeping(short int, short int, short int);
+    void setMental(short int, short int, short int, short int,
+                   short int);
+    void setScouting(short int, short int, short int);
+    void setKnowledge(short int, short int, short int,
+                      short int, short int);
+    void setRandomAttributes();
 public:
     Staff();
     Staff(const string&, const string&, int,
@@ -38,17 +50,8 @@ public:
     void setClub(const string&);
     string getRole();
     string getClub();
+    void printAttributes() const;
     string to_string() override;
-    // Attributes
-    void setCoaching(short int, short int, short int,
-        short int, short int, short int, short int);
-    void setMedical(short int, short int);
-    void setGoalKeeping(short int, short int, short int);
-    void setMental(short int, short int, short int, short int,
-                   short int);
-    void setScouting(short int, short int, short int);
-    void setKnowledge(short int, short int, short int,
-        short int, short int);
 };
 
 

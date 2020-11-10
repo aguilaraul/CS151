@@ -169,6 +169,33 @@ Person.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\FM20StaffFinder.dir\build.make CMakeFiles/FM20StaffFinder.dir/Person.cpp.s
 .PHONY : Person.cpp.s
 
+Player.obj: Player.cpp.obj
+
+.PHONY : Player.obj
+
+# target to build an object file
+Player.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\FM20StaffFinder.dir\build.make CMakeFiles/FM20StaffFinder.dir/Player.cpp.obj
+.PHONY : Player.cpp.obj
+
+Player.i: Player.cpp.i
+
+.PHONY : Player.i
+
+# target to preprocess a source file
+Player.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\FM20StaffFinder.dir\build.make CMakeFiles/FM20StaffFinder.dir/Player.cpp.i
+.PHONY : Player.cpp.i
+
+Player.s: Player.cpp.s
+
+.PHONY : Player.s
+
+# target to generate assembly for a file
+Player.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\FM20StaffFinder.dir\build.make CMakeFiles/FM20StaffFinder.dir/Player.cpp.s
+.PHONY : Player.cpp.s
+
 Staff.obj: Staff.cpp.obj
 
 .PHONY : Staff.obj
@@ -235,6 +262,9 @@ help:
 	@echo ... Person.obj
 	@echo ... Person.i
 	@echo ... Person.s
+	@echo ... Player.obj
+	@echo ... Player.i
+	@echo ... Player.s
 	@echo ... Staff.obj
 	@echo ... Staff.i
 	@echo ... Staff.s

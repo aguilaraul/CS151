@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/FM20StaffFinder.dir/Person.cpp.obj"
+  "CMakeFiles/FM20StaffFinder.dir/Player.cpp.obj"
   "CMakeFiles/FM20StaffFinder.dir/Staff.cpp.obj"
   "CMakeFiles/FM20StaffFinder.dir/main.cpp.obj"
   "FM20StaffFinder.exe"

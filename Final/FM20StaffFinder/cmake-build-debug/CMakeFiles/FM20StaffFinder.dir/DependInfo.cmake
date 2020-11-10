@@ -5,6 +5,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
   "C:/Users/raula/GitHub/CS151/Final/FM20StaffFinder/Person.cpp" "C:/Users/raula/GitHub/CS151/Final/FM20StaffFinder/cmake-build-debug/CMakeFiles/FM20StaffFinder.dir/Person.cpp.obj"
+  "C:/Users/raula/GitHub/CS151/Final/FM20StaffFinder/Player.cpp" "C:/Users/raula/GitHub/CS151/Final/FM20StaffFinder/cmake-build-debug/CMakeFiles/FM20StaffFinder.dir/Player.cpp.obj"
   "C:/Users/raula/GitHub/CS151/Final/FM20StaffFinder/Staff.cpp" "C:/Users/raula/GitHub/CS151/Final/FM20StaffFinder/cmake-build-debug/CMakeFiles/FM20StaffFinder.dir/Staff.cpp.obj"
   "C:/Users/raula/GitHub/CS151/Final/FM20StaffFinder/main.cpp" "C:/Users/raula/GitHub/CS151/Final/FM20StaffFinder/cmake-build-debug/CMakeFiles/FM20StaffFinder.dir/main.cpp.obj"
   )

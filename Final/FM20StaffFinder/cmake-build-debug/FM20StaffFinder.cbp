@@ -86,6 +86,12 @@
 		<Unit filename="C:/Users/raula/GitHub/CS151/Final/FM20StaffFinder/Person.h">
 			<Option target="FM20StaffFinder"/>
 		</Unit>
+		<Unit filename="C:/Users/raula/GitHub/CS151/Final/FM20StaffFinder/Player.cpp">
+			<Option target="FM20StaffFinder"/>
+		</Unit>
+		<Unit filename="C:/Users/raula/GitHub/CS151/Final/FM20StaffFinder/Player.h">
+			<Option target="FM20StaffFinder"/>
+		</Unit>
 		<Unit filename="C:/Users/raula/GitHub/CS151/Final/FM20StaffFinder/Staff.cpp">
 			<Option target="FM20StaffFinder"/>
 		</Unit>

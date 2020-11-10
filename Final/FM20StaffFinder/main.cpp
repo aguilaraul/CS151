@@ -11,6 +11,7 @@
 using namespace std;
 #include "Person.h"
 #include "Staff.h"
+#include "Player.h"
 
 int main() {
     string country = "Spain";
@@ -21,11 +22,10 @@ int main() {
 
     cout << Pep.to_string() << endl;
     cout << Klopp.to_string() << endl;
-
     Klopp.setClub("Real Madrid");
-    Klopp.setCoaching(16, 14, 16, 17, 15, 14, 16);
-
     cout << Klopp.to_string() << endl;
+
+    Klopp.printAttributes();
 
     return 0;
 }

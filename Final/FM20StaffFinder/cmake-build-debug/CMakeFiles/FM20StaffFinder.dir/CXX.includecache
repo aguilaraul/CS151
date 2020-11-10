@@ -10,9 +10,9 @@ C:/Users/raula/GitHub/CS151/Final/FM20StaffFinder/Person.h
 iostream
 -
 
-C:/Users/raula/GitHub/CS151/Final/FM20StaffFinder/Staff.cpp
-Staff.h
-C:/Users/raula/GitHub/CS151/Final/FM20StaffFinder/Staff.h
+C:/Users/raula/GitHub/CS151/Final/FM20StaffFinder/Player.h
+Person.h
+C:/Users/raula/GitHub/CS151/Final/FM20StaffFinder/Person.h
 
 C:/Users/raula/GitHub/CS151/Final/FM20StaffFinder/Staff.h
 Person.h
@@ -25,4 +25,6 @@ Person.h
 C:/Users/raula/GitHub/CS151/Final/FM20StaffFinder/Person.h
 Staff.h
 C:/Users/raula/GitHub/CS151/Final/FM20StaffFinder/Staff.h
+Player.h
+C:/Users/raula/GitHub/CS151/Final/FM20StaffFinder/Player.h
 
