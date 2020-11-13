@@ -76,27 +76,27 @@ include CMakeFiles/Project_2.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/Project_2.dir/flags.make
 
-CMakeFiles/Project_2.dir/main.cpp.obj: CMakeFiles/Project_2.dir/flags.make
-CMakeFiles/Project_2.dir/main.cpp.obj: ../main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\raula\CLionProjects\CS151\Module 7\Homework 7\Project 2\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Project_2.dir/main.cpp.obj"
-	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Project_2.dir\main.cpp.obj -c "C:\Users\raula\CLionProjects\CS151\Module 7\Homework 7\Project 2\main.cpp"
+CMakeFiles/Project_2.dir/hw7_project2.cpp.obj: CMakeFiles/Project_2.dir/flags.make
+CMakeFiles/Project_2.dir/hw7_project2.cpp.obj: ../hw7_project2.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\raula\CLionProjects\CS151\Module 7\Homework 7\Project 2\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Project_2.dir/hw7_project2.cpp.obj"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Project_2.dir\hw7_project2.cpp.obj -c "C:\Users\raula\CLionProjects\CS151\Module 7\Homework 7\Project 2\hw7_project2.cpp"
 
-CMakeFiles/Project_2.dir/main.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Project_2.dir/main.cpp.i"
-	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\raula\CLionProjects\CS151\Module 7\Homework 7\Project 2\main.cpp" > CMakeFiles\Project_2.dir\main.cpp.i
+CMakeFiles/Project_2.dir/hw7_project2.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Project_2.dir/hw7_project2.cpp.i"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\raula\CLionProjects\CS151\Module 7\Homework 7\Project 2\hw7_project2.cpp" > CMakeFiles\Project_2.dir\hw7_project2.cpp.i
 
-CMakeFiles/Project_2.dir/main.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Project_2.dir/main.cpp.s"
-	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\raula\CLionProjects\CS151\Module 7\Homework 7\Project 2\main.cpp" -o CMakeFiles\Project_2.dir\main.cpp.s
+CMakeFiles/Project_2.dir/hw7_project2.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Project_2.dir/hw7_project2.cpp.s"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\raula\CLionProjects\CS151\Module 7\Homework 7\Project 2\hw7_project2.cpp" -o CMakeFiles\Project_2.dir\hw7_project2.cpp.s
 
 # Object files for target Project_2
 Project_2_OBJECTS = \
-"CMakeFiles/Project_2.dir/main.cpp.obj"
+"CMakeFiles/Project_2.dir/hw7_project2.cpp.obj"
 
 # External object files for target Project_2
 Project_2_EXTERNAL_OBJECTS =
 
-Project_2.exe: CMakeFiles/Project_2.dir/main.cpp.obj
+Project_2.exe: CMakeFiles/Project_2.dir/hw7_project2.cpp.obj
 Project_2.exe: CMakeFiles/Project_2.dir/build.make
 Project_2.exe: CMakeFiles/Project_2.dir/linklibs.rsp
 Project_2.exe: CMakeFiles/Project_2.dir/objects1.rsp

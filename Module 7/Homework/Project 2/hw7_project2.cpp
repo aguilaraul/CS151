@@ -21,39 +21,39 @@
  * 4. Print out encrypted string
  */
 #include <iostream>
+#include <algorithm>
+
 using namespace std;
 
 class EncryptableString : public string {
-private:
-    string encrypted;
 public:
-    EncryptableString(string);
+    EncryptableString(const string&);
     void encrypt();
 };
 
-EncryptableString::EncryptableString(string raw) {
-    encrypted = raw;
+EncryptableString::EncryptableString(const string& original)
+    : string(original)
+{
     encrypt();
 }
 
+
 void EncryptableString::encrypt() {
-    for(int i = 0; i < encrypted.length(); i++) {
-        if(isalnum(encrypted[i])) {
-            if(encrypted[i] == 'z') {
-                encrypted[i] = 'a';
-            } else if(encrypted[i] == 'Z') {
-                encrypted[i] = 'A';
-            } else if(encrypted[i] == '9') {
-                encrypted[i] = '0';
+    for(int i = 0; i < (*this).length(); i++) {
+        if(isalnum((*this)[i])) {
+            if((*this)[i] == 'z') {
+                (*this)[i] = 'a';
+            } else if((*this)[i] == 'Z') {
+                (*this)[i] = 'A';
+            } else if((*this)[i] == '9') {
+                (*this)[i] = '0';
             } else {
-                encrypted[i]++;
+                (*this)[i]++;
             }
         }
     }
-    cout << encrypted << endl;
+    cout << (*this) << endl;
 }
-
-
 
 int main() {
     string input;

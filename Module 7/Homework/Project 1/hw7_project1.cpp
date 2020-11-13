@@ -2,7 +2,7 @@
  * hw7_project1.cpp
  *
  * Author:  Raul Aguilar
- * Date:    November 6, 2020
+ * Date:    November 9, 2020
  *
  * CS 151 3228 Module 7 Homework 7 Project 1
  * Write a class PString that is derived from the STL string class. The
@@ -23,20 +23,18 @@
 using namespace std;
 
 class PString : public string {
-private:
-    string input;
 public:
-    PString(string);
+    PString(const string&);
     bool isPalindrome(string);
 };
 
-PString::PString(string in) {
-    input = in;
-
-    if(isPalindrome(input)) {
-        cout << input << " is a palindrome." << endl;
+PString::PString(const string &in)
+    : string(in)
+{
+    if(isPalindrome(in)) {
+        cout << in << " is a palindrome." << endl;
     } else {
-        cout << input << " is not a palindrome." << endl;
+        cout << in << " is not a palindrome." << endl;
     }
 }
 
