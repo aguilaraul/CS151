@@ -7,7 +7,10 @@
  * number of comparisons performed by a sorting algorithm.
  * 
  * Algorithm:
- * 
+ * 1. Populate array with random numbers
+ * 2. Bubble sort array from smallest integer to largest
+ * 3. Print out sorted array
+ * 4. Print the total number of comparisons
  */
 #include <iostream>
 #include <time.h>
@@ -17,11 +20,11 @@ class AbstractSort {
     protected:
     unsigned long int comparisons;
     void compare(int &n1, int &n2, bool &madeSwap) {
+        ++comparisons; // Increment comparisons each function call
         if(n1 > n2) {
             swap(n1, n2);
             madeSwap = true;
         }
-        ++comparisons;
     }
     void swap(int &n1, int &n2) {
         int temp = n1;

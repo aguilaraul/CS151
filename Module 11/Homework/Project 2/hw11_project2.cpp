@@ -59,7 +59,7 @@ bool isMember(int arr[], int size, int find) {
 
     // If value was found in current element, return true
     // Otherwise, run again with size-1
-    if(arr[size] == find) {
+    if(arr[size-1] == find) {
         return true;
     } else {
         return isMember(arr, size-1, find);
