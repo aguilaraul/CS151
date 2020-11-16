@@ -7,7 +7,10 @@
  * the factorial function.
  *
  * Algorithm:
- *
+ * 1. Get a number from user to find the factorial
+ * 2. If number == 0 return 1
+ * Otherwise, fact = num * factorial(num-1)
+ * 3. Print out the factorial of the number input
  */
 #include <iostream>
 using namespace std;
