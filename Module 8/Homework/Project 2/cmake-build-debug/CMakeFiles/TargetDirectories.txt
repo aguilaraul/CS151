@@ -1,3 +1,0 @@
-C:/Users/raula/GitHub/CS151/Module 8/Homework/Project 2/cmake-build-debug/CMakeFiles/Project_2.dir
-C:/Users/raula/GitHub/CS151/Module 8/Homework/Project 2/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/raula/GitHub/CS151/Module 8/Homework/Project 2/cmake-build-debug/CMakeFiles/rebuild_cache.dir
