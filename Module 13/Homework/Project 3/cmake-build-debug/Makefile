@@ -142,32 +142,32 @@ Project_3/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project_3.dir\build.make CMakeFiles/Project_3.dir/build
 .PHONY : Project_3/fast
 
-main.obj: main.cpp.obj
+hw13_project3.obj: hw13_project3.cpp.obj
 
-.PHONY : main.obj
+.PHONY : hw13_project3.obj
 
 # target to build an object file
-main.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project_3.dir\build.make CMakeFiles/Project_3.dir/main.cpp.obj
-.PHONY : main.cpp.obj
+hw13_project3.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project_3.dir\build.make CMakeFiles/Project_3.dir/hw13_project3.cpp.obj
+.PHONY : hw13_project3.cpp.obj
 
-main.i: main.cpp.i
+hw13_project3.i: hw13_project3.cpp.i
 
-.PHONY : main.i
+.PHONY : hw13_project3.i
 
 # target to preprocess a source file
-main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project_3.dir\build.make CMakeFiles/Project_3.dir/main.cpp.i
-.PHONY : main.cpp.i
+hw13_project3.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project_3.dir\build.make CMakeFiles/Project_3.dir/hw13_project3.cpp.i
+.PHONY : hw13_project3.cpp.i
 
-main.s: main.cpp.s
+hw13_project3.s: hw13_project3.cpp.s
 
-.PHONY : main.s
+.PHONY : hw13_project3.s
 
 # target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project_3.dir\build.make CMakeFiles/Project_3.dir/main.cpp.s
-.PHONY : main.cpp.s
+hw13_project3.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project_3.dir\build.make CMakeFiles/Project_3.dir/hw13_project3.cpp.s
+.PHONY : hw13_project3.cpp.s
 
 # Help Target
 help:
@@ -178,9 +178,9 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... Project_3
-	@echo ... main.obj
-	@echo ... main.i
-	@echo ... main.s
+	@echo ... hw13_project3.obj
+	@echo ... hw13_project3.i
+	@echo ... hw13_project3.s
 .PHONY : help
 
 

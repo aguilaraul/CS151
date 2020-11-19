@@ -16,7 +16,7 @@ private:
 
 public:
     SimpleVector()                        // Default constructor
-        { aptr = 0 ; arraySize = 0; arrayCapacity = 1; }
+    { aptr = 0 ; arraySize = 0; arrayCapacity = 1; }
     explicit SimpleVector(int) ;                   // Constructor
     SimpleVector(const SimpleVector &) ;  // Copy constructor
     ~SimpleVector() ;                     // Destructor

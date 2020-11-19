@@ -80,7 +80,13 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="C:/Users/raula/GitHub/CS151/Module 13/Homework/Project 3/main.cpp">
+		<Unit filename="C:/Users/raula/GitHub/CS151/Module 13/Homework/Project 3/SimpleVector.h">
+			<Option target="Project_3"/>
+		</Unit>
+		<Unit filename="C:/Users/raula/GitHub/CS151/Module 13/Homework/Project 3/SortableVector.h">
+			<Option target="Project_3"/>
+		</Unit>
+		<Unit filename="C:/Users/raula/GitHub/CS151/Module 13/Homework/Project 3/hw13_project3.cpp">
 			<Option target="Project_3"/>
 		</Unit>
 		<Unit filename="C:/Users/raula/GitHub/CS151/Module 13/Homework/Project 3/CMakeLists.txt">
