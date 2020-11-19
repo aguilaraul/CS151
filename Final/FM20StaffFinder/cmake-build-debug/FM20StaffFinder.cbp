@@ -80,6 +80,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="C:/Users/raula/GitHub/CS151/Final/FM20StaffFinder/App.cpp">
+			<Option target="FM20StaffFinder"/>
+		</Unit>
+		<Unit filename="C:/Users/raula/GitHub/CS151/Final/FM20StaffFinder/App.h">
+			<Option target="FM20StaffFinder"/>
+		</Unit>
 		<Unit filename="C:/Users/raula/GitHub/CS151/Final/FM20StaffFinder/Person.cpp">
 			<Option target="FM20StaffFinder"/>
 		</Unit>

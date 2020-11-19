@@ -2,8 +2,8 @@
 // Created by raula on 11/7/2020.
 //
 
-#ifndef FM20STAFFFINDER_PERSON_H
-#define FM20STAFFFINDER_PERSON_H
+#ifndef FM20SCOUT_PERSON_H
+#define FM20SCOUT_PERSON_H
 #include <iostream>
 using namespace std;
 
@@ -25,4 +25,4 @@ public:
     virtual string to_string();
 };
 
-#endif //FM20STAFFFINDER_PERSON_H
+#endif //FM20SCOUT_PERSON_H

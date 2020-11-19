@@ -142,6 +142,33 @@ FM20StaffFinder/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\FM20StaffFinder.dir\build.make CMakeFiles/FM20StaffFinder.dir/build
 .PHONY : FM20StaffFinder/fast
 
+App.obj: App.cpp.obj
+
+.PHONY : App.obj
+
+# target to build an object file
+App.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\FM20StaffFinder.dir\build.make CMakeFiles/FM20StaffFinder.dir/App.cpp.obj
+.PHONY : App.cpp.obj
+
+App.i: App.cpp.i
+
+.PHONY : App.i
+
+# target to preprocess a source file
+App.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\FM20StaffFinder.dir\build.make CMakeFiles/FM20StaffFinder.dir/App.cpp.i
+.PHONY : App.cpp.i
+
+App.s: App.cpp.s
+
+.PHONY : App.s
+
+# target to generate assembly for a file
+App.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\FM20StaffFinder.dir\build.make CMakeFiles/FM20StaffFinder.dir/App.cpp.s
+.PHONY : App.cpp.s
+
 Person.obj: Person.cpp.obj
 
 .PHONY : Person.obj
@@ -259,6 +286,9 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... FM20StaffFinder
+	@echo ... App.obj
+	@echo ... App.i
+	@echo ... App.s
 	@echo ... Person.obj
 	@echo ... Person.i
 	@echo ... Person.s

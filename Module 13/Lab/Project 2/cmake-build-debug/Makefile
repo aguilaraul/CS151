@@ -142,32 +142,32 @@ Project_2/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project_2.dir\build.make CMakeFiles/Project_2.dir/build
 .PHONY : Project_2/fast
 
-main.obj: main.cpp.obj
+lab13_project2.obj: lab13_project2.cpp.obj
 
-.PHONY : main.obj
+.PHONY : lab13_project2.obj
 
 # target to build an object file
-main.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project_2.dir\build.make CMakeFiles/Project_2.dir/main.cpp.obj
-.PHONY : main.cpp.obj
+lab13_project2.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project_2.dir\build.make CMakeFiles/Project_2.dir/lab13_project2.cpp.obj
+.PHONY : lab13_project2.cpp.obj
 
-main.i: main.cpp.i
+lab13_project2.i: lab13_project2.cpp.i
 
-.PHONY : main.i
+.PHONY : lab13_project2.i
 
 # target to preprocess a source file
-main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project_2.dir\build.make CMakeFiles/Project_2.dir/main.cpp.i
-.PHONY : main.cpp.i
+lab13_project2.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project_2.dir\build.make CMakeFiles/Project_2.dir/lab13_project2.cpp.i
+.PHONY : lab13_project2.cpp.i
 
-main.s: main.cpp.s
+lab13_project2.s: lab13_project2.cpp.s
 
-.PHONY : main.s
+.PHONY : lab13_project2.s
 
 # target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project_2.dir\build.make CMakeFiles/Project_2.dir/main.cpp.s
-.PHONY : main.cpp.s
+lab13_project2.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project_2.dir\build.make CMakeFiles/Project_2.dir/lab13_project2.cpp.s
+.PHONY : lab13_project2.cpp.s
 
 # Help Target
 help:
@@ -178,9 +178,9 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... Project_2
-	@echo ... main.obj
-	@echo ... main.i
-	@echo ... main.s
+	@echo ... lab13_project2.obj
+	@echo ... lab13_project2.i
+	@echo ... lab13_project2.s
 .PHONY : help
 
 
