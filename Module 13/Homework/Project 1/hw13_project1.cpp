@@ -6,6 +6,11 @@
  * Write a class BCheckString that is derived from the STL string class
  * that accepts a string into its constructor, and overrides []operator
  * to throw BoundsException if [int k] is out of range of string.
+ *
+ * Algorithm:
+ * If k < 0 or k > string length, then throw BoundsException explaining
+ * that index chosen is out of bounds. Otherwise return the character
+ * at the index provided.
  */
 #include <iostream>
 using namespace std;
