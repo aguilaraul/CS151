@@ -37,6 +37,26 @@ int main() {
     cout << "Double Vector After Sorting:\n";
     printVector(numbers);
 
+    // String vector
+    SortableVector<string> names(10);
+    names.push_back("Raul");
+    names.push_back("Jennifer");
+    names.push_back("Maria");
+    names.push_back("Gustavo");
+    names.push_back("David");
+    names.push_back("Victor");
+    names.push_back("Stephanie");
+    names.push_back("Jessica");
+    names.push_back("Joseph");
+    names.push_back("Victoria");
+
+    // Print vector
+    cout << "String Vector:\n";
+    printVector(names);
+    names.sort(names);
+    cout << "String Vector After Sorting:\n";
+    printVector(names);
+
 
     return 0;
 }

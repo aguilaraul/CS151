@@ -48,9 +48,21 @@ int main() {
         cout << "Vector: ";
         printVector(numbers);
         numbers.pop_back();
-    } catch (SimpleVector<int>::ArrayEmptyException) {
+    } catch (SimpleVector<int>::ArrayEmptyException&) {
         cout << "Cannot remove the last element because vector is empty." << endl;
     }
+
+    SimpleVector<string> lines(5);
+    lines.push_back("Take");
+    lines.push_back("it");
+    lines.push_back("to");
+    lines.push_back("the");
+    lines.push_back("hoop");
+    cout << "String Vector: ";
+    printVector(lines);
+    lines.pop_back();
+    cout << "String Vector: ";
+    printVector(lines);
 
 
     return 0;

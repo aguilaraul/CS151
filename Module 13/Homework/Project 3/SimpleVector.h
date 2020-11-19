@@ -47,7 +47,7 @@ SimpleVector<T>::SimpleVector(int s) {
     aptr = new T[s];
 
     for(int count = 0; count < arraySize; count++) {
-        *(aptr + count) = 0;
+        *(aptr + count) = {};
     }
 }
 
