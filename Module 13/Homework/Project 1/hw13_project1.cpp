@@ -17,14 +17,14 @@ using namespace std;
 
 class BCheckString : public string {
 public:
-    BCheckString(string str): string(move(str)) {}
+    explicit BCheckString(string str): string(move(str)) {}
     char operator[](int k) {
         if(k < 0 || k > this->length()) {
             throw BoundsException();
         }
         return this->at(k); // Throws its own exception if out of range
     }
-    class BoundsException { // Exception class
+    class BoundsException : public exception { // Exception class
     public:
         BoundsException() = default;
     };
@@ -36,7 +36,7 @@ int main() {
     try {
         cout << string1[4] << endl;
         cout << string1[100] << endl;
-    }catch(BCheckString::BoundsException) {
+    } catch(BCheckString::BoundsException&) {
         cout << "BoundsException: Out of Bounds.\n";
     }
 
