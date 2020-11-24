@@ -8,7 +8,7 @@ template<class T>
 class SortableVector : public SimpleVector<T> {
 public:
     explicit SortableVector(int);
-    void sort(SortableVector<T>&);
+    void sort();
     void swap(T &a, T &b);
 };
 
@@ -17,17 +17,19 @@ SortableVector<T>::SortableVector(int size)
     : SimpleVector<T>(size) {};
 
 template<class T>
-void SortableVector<T>::sort(SortableVector<T> &v) {
-    bool madeSwap = true;
-    for(int maxElement = v.size() - 1; maxElement > 0 && madeSwap; maxElement--) {
-        madeSwap = false;
-        for(int i = 0; i < maxElement; i++) {
-            if(v[i] > v[i+1]) {
-                swap(v[i], v[i+1]);
-                madeSwap = true;
-            }
-        }
-    }
+void SortableVector<T>::sort() {
+//    bool madeSwap = true;
+//    for(int maxElement = this->size() - 1; maxElement > 0 && madeSwap; maxElement--) {
+//        madeSwap = false;
+//        for(int i = 0; i < maxElement; i++) {
+//            if((this+i) > (this+i+1)) {
+//                swap(*(this[i]), *(this[i+1]));
+//                madeSwap = true;
+//            }
+//        }
+//    }
+    cout << this->size() << endl;
+    cout << &this << endl;
 }
 
 template<class T>

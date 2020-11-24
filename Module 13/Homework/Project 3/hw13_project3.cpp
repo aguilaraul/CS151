@@ -31,7 +31,8 @@ int main() {
     }
     cout << endl;
 
-    numbers.sort(numbers);
+    cout << "Size: ";
+    numbers.sort();
 
     // Print sorted vector
     cout << "Double Vector After Sorting:\n";
@@ -53,7 +54,7 @@ int main() {
     // Print vector
     cout << "String Vector:\n";
     printVector(names);
-    names.sort(names);
+    names.sort();
     cout << "String Vector After Sorting:\n";
     printVector(names);
 
