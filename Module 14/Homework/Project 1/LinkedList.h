@@ -21,6 +21,7 @@ protected:
         }
     };
     ListNode* head;
+    unsigned int size = 0;
 public:
     ~LinkedList();
     void remove(double);

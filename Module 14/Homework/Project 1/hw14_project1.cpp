@@ -35,14 +35,33 @@ int main() {
 
     // Testing reverse()
     list.reverse();
-    cout << "\nList Reversed: ";
+    cout << "\n\nList Reversed: ";
     list.print();
 
     // Test search()
-    cout << "\nPosition of 7.0: " << list.search(7.0);
+    cout << "\n\nPosition of 7.0: " << list.search(7.0);
     cout << "\nPosition of 5.0: " << list.search(5.0);
 
+    // Testing insert()
+    cout << "\n\nInsert 6.0 in pos 0:";
+    list.insert(6.0, 0);
+    cout << "\n";
+    list.print();
 
+    cout << "\n\nInsert 7.5 in pos 2:";
+    list.insert(7.5, 2);
+    cout << "\n";
+    list.print();
+
+    cout << "\n\nInsert 10.0 in pos 5:";
+    list.insert(10.0, 5);
+    cout << "\n";
+    list.print();
+
+    cout << "\n\nInsert 12.0 in pos 7:";
+    list.insert(12.0, 7);
+    cout << "\n";
+    list.print();
 
     return 0;
 }

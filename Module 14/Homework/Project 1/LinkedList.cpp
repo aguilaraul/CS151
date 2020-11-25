@@ -23,6 +23,41 @@ LinkedList::~LinkedList()
     }
 }
 
+void LinkedList::remove(double value)
+{
+    ListNode *nodePtr, *previous;
+    // If the list is empty, do nothing
+    if(!head) return;
+
+    // Determine if the first node is the one to delete
+    if(head->value == value)
+    {
+        nodePtr = head;
+        head = head->next;
+        delete nodePtr;
+    } else
+    {
+        // Initialize nodePtr to the head of the list
+        nodePtr = head;
+
+        // Skip nodes whose value member is not value
+        while(nodePtr != nullptr && nodePtr->value != value)
+        {
+            previous = nodePtr;
+            nodePtr = nodePtr->next;
+        }
+
+        // Link the previous node to the node after
+        // nodePtr, then delete nodePtr
+        if(nodePtr)
+        {
+            previous->next = nodePtr->next;
+            delete nodePtr;
+        }
+    }
+
+}
+
 /**
  * Outputs a sequence of all values
  */
@@ -113,18 +148,42 @@ int LinkedList::search(double value)
     return -1;
 }
 
+
+/**
+ * If the position is zero, the start of the list, then use add() to
+ * add the element to the front of the list.
+ * Otherwise set up a current and previous pointers to ListNode.
+ * Starting at the head, index zero, loop through each node in the list
+ * until the current node's next pointer points to null, which is the
+ * last node in the list. While traversing the list, check if the index
+ * matches the position requested. If so, set the previous node's next
+ * pointer to point to the new node, with the value and pointing to the
+ * current node. If the index does not match the position, then store
+ * the current node's address, move to the next node, and increment the
+ * index. Then check again if the index matches the position. If the
+ * last node is reached without matching the position, then insert the
+ * new node at the end of the list.
+ * @param value New double value to insert in the list
+ * @param pos The position in the list to insert the new node
+ */
 void LinkedList::insert(double value, int pos)
 {
     if(pos == 0)
     {
         add(value);
+    } else {
+        ListNode *nodePtr = head, *previous = nullptr;
+        int index = 0;
+        while(nodePtr->next != nullptr)
+        {
+            if(pos == index) {
+                previous->next = new ListNode(value, nodePtr);
+                return;
+            }
+            previous = nodePtr;
+            nodePtr = nodePtr->next;
+            index++;
+        }
+        nodePtr->next = new ListNode(value);
     }
-    ListNode *nodePtr = head;
-    int index = 0;
-    while (nodePtr && pos != index)
-    {
-        nodePtr = nodePtr->next;
-        index++;
-    }
-
 }
