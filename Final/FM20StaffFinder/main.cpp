@@ -9,7 +9,6 @@
 #include <iostream>
 #include "App.h"
 #include "Person.h"
-#include "Staff.h"
 #include "Player.h"
 using namespace std;
 
@@ -20,8 +19,10 @@ int main() {
     switch((app.getMenuOption())) {
         case 1:
             app.compareStaff();
+            break;
         case 2:
             app.comparePlayers();
+            break;
     }
 
     return 0;

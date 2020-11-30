@@ -3,7 +3,6 @@
 //
 
 #include "Staff.h"
-#include <memory>
 
 Staff::Staff()
     : Person()
@@ -86,8 +85,7 @@ void Staff::setGoalKeeping(short dist, short hand, short ss) {
     Attributes.gkShotStop = ss;
 }
 
-void Staff::setMental(short adapt, short det, short disc, short mm,
-                      short mot) {
+void Staff::setMental(short adapt, short det, short disc, short mm, short mot) {
     Attributes.adaptability = adapt;
     Attributes.determination = det;
     Attributes.discipline = disc;
@@ -101,8 +99,7 @@ void Staff::setScouting(short jPD, short jTD, short pD) {
     Attributes.presentingData = pD;
 }
 
-void Staff::setKnowledge(short jA, short jP, short jSA, short n,
-                         short tK) {
+void Staff::setKnowledge(short jA, short jP, short jSA, short n, short tK) {
     Attributes.judgingAbility = jA;
     Attributes.judgingPotential = jP;
     Attributes.judgingStaffAbility = jSA;

@@ -5,6 +5,7 @@
 #ifndef FM20SCOUT_STAFF_H
 #define FM20SCOUT_STAFF_H
 #include "Person.h"
+#include <memory>
 using namespace std;
 
 class Staff : public Person {
