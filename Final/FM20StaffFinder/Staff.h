@@ -31,16 +31,6 @@ private:
 protected:
     string role;
     string club;
-    // Attributes
-    void setCoaching(short int, short int, short int,
-                     short int, short int, short int, short int);
-    void setMedical(short int, short int);
-    void setGoalKeeping(short int, short int, short int);
-    void setMental(short int, short int, short int, short int,
-                   short int);
-    void setScouting(short int, short int, short int);
-    void setKnowledge(short int, short int, short int,
-                      short int, short int);
     void setRandomAttributes();
 public:
     Staff();
@@ -52,6 +42,16 @@ public:
     string getRole();
     string getClub();
     void printAttributes() const;
+    // Attributes
+    void setCoaching(short int, short int, short int,
+                     short int, short int, short int, short int);
+    void setMedical(short int, short int);
+    void setGoalKeeping(short int, short int, short int);
+    void setMental(short int, short int, short int, short int,
+                   short int);
+    void setScouting(short int, short int, short int);
+    void setKnowledge(short int, short int, short int,
+                      short int, short int);
     string to_string() override;
 };
 

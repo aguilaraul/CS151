@@ -16,14 +16,17 @@ using namespace std;
 int main() {
     App app{};
     cout << "Welcome to FM20 Scouter! Compare two staff members or two players.\n";
-    switch((app.getMenuOption())) {
-        case 1:
-            app.compareStaff();
-            break;
-        case 2:
-            app.comparePlayers();
-            break;
-    }
+//    switch((app.getMenuOption())) {
+//        case 1:
+//            app.compareStaff();
+//            break;
+//        case 2:
+//            app.comparePlayers();
+//            break;
+//    }
+
+    Staff member("Spain", "Pep Guardiola", 48, "Manager", "Manchester City");
+    app.saveToFile(member);
 
     return 0;
 }

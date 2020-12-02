@@ -39,6 +39,9 @@ string Staff::getClub() {
     return club;
 }
 
+//
+// @Incomplete: Fix attributes display
+//
 void Staff::printAttributes() const {
     cout << "Coaching";
     cout << '\n' << "Attacking:\t" << Attributes.attacking;

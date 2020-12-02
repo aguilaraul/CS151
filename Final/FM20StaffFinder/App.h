@@ -7,6 +7,7 @@
 #include "Staff.h"
 #include <iostream>
 #include <iomanip>
+#include <fstream>
 
 class App {
 public:
@@ -16,6 +17,17 @@ public:
 
     Staff addStaffManual();
     Staff addStaffFile();
+
+    void saveToFile(Staff);
+
+    bool validateAnswer();
+
+    void inputCoaching(Staff);
+    void inputMedical(Staff);
+    void inputGKCoaching(Staff);
+    void inputMental(Staff);
+    void inputScouting(Staff);
+    void inputKnowledge(Staff);
 };
 
 

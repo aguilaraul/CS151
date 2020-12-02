@@ -17,6 +17,8 @@ iostream
 -
 iomanip
 -
+fstream
+-
 
 C:/Users/raula/GitHub/CS151/Final/FM20StaffFinder/Person.h
 iostream
