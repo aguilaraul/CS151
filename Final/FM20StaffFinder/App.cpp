@@ -143,10 +143,7 @@ Staff App::addStaffFile() {
     Staff staff(nation, name, age, role, club);
 
     // Coaching
-    //long long position = dataFile.tellg();
-    //readCoachingAttributes(staff, dataFile, position);
     short int attacking, defending, fitness, mental, tactical, technical, workingWithYoungsters;
-    //dataFile.seekp(position);
     dataFile.read(reinterpret_cast<char*>(&attacking), sizeof(short int));
     dataFile.read(reinterpret_cast<char*>(&defending), sizeof(short int));
     dataFile.read(reinterpret_cast<char*>(&fitness), sizeof(short int));
@@ -156,9 +153,45 @@ Staff App::addStaffFile() {
     dataFile.read(reinterpret_cast<char*>(&workingWithYoungsters), sizeof(short int));
     staff.setCoaching(attacking, defending, fitness, mental, tactical, technical, workingWithYoungsters);
 
-    staff.printAttributes();
+    // Medical
+    short int physiotherapy, sportsScience;
+    dataFile.read(reinterpret_cast<char*>(&physiotherapy), sizeof(short int));
+    dataFile.read(reinterpret_cast<char*>(&sportsScience), sizeof(short int));
+    staff.setMedical(physiotherapy, sportsScience);
+
+    // GK Coaching
+    short int gkDistribution, gkHandling, gkShotStop;
+    dataFile.read(reinterpret_cast<char*>(&gkDistribution), sizeof(short int));
+    dataFile.read(reinterpret_cast<char*>(&gkHandling), sizeof(short int));
+    dataFile.read(reinterpret_cast<char*>(&gkShotStop), sizeof(short int));
+    staff.setGoalKeeping(gkDistribution, gkHandling, gkShotStop);
+
+    // Mental
+    short int adaptability, determination, discipline, manManagement, motivating;
+    dataFile.read(reinterpret_cast<char*>(&adaptability), sizeof(short int));
+    dataFile.read(reinterpret_cast<char*>(&determination), sizeof(short int));
+    dataFile.read(reinterpret_cast<char*>(&discipline), sizeof(short int));
+    dataFile.read(reinterpret_cast<char*>(&manManagement), sizeof(short int));
+    dataFile.read(reinterpret_cast<char*>(&motivating), sizeof(short int));
+    staff.setMental(adaptability, determination, discipline, manManagement, motivating);
+
+    // Scouting
+    short int judgingPlayerData, judgingTeamData, presentingData;
+    dataFile.read(reinterpret_cast<char*>(&judgingPlayerData), sizeof(short int));
+    dataFile.read(reinterpret_cast<char*>(&judgingTeamData), sizeof(short int));
+    dataFile.read(reinterpret_cast<char*>(&presentingData), sizeof(short int));
+    staff.setScouting(judgingPlayerData, judgingTeamData, presentingData);
+
+    // Knowledge
+    short int judgingAbility, judgingPotential, judgingStaffAbility, negotiating, tacticalKnowledge;
+    dataFile.read(reinterpret_cast<char*>(&judgingAbility), sizeof(short int));
+    dataFile.read(reinterpret_cast<char*>(&judgingPotential), sizeof(short int));
+    dataFile.read(reinterpret_cast<char*>(&judgingStaffAbility), sizeof(short int));
+    dataFile.read(reinterpret_cast<char*>(&negotiating), sizeof(short int));
+    dataFile.read(reinterpret_cast<char*>(&tacticalKnowledge), sizeof(short int));
+
     dataFile.close();
-    return {};
+    return staff;
 }
 
 
@@ -257,18 +290,4 @@ void App::inputKnowledge(Staff staff) {
     cout << "Tactical Knowledge:" << endl;
     cin >> tacticalKnowledge;
     staff.setKnowledge(judgingAbility, judgingPotential, judgingStaffAbility, negotiating, tacticalKnowledge);
-}
-
-void App::readCoachingAttributes(Staff staff, fstream &dataFile, long long &position) {
-    short int attacking, defending, fitness, mental, tactical, technical, workingWithYoungsters;
-    dataFile.seekp(position);
-    dataFile.read(reinterpret_cast<char*>(&attacking), sizeof(short int));
-    dataFile.read(reinterpret_cast<char*>(&defending), sizeof(short int));
-    dataFile.read(reinterpret_cast<char*>(&fitness), sizeof(short int));
-    dataFile.read(reinterpret_cast<char*>(&mental), sizeof(short int));
-    dataFile.read(reinterpret_cast<char*>(&tactical), sizeof(short int));
-    dataFile.write(reinterpret_cast<char*>(&technical), sizeof(short int));
-    dataFile.write(reinterpret_cast<char*>(&workingWithYoungsters), sizeof(short int));
-    staff.setCoaching(attacking, defending, fitness, mental, tactical, technical, workingWithYoungsters);
-    position = dataFile.tellg();
 }
