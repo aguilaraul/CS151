@@ -1,4 +1,8 @@
 // TOFIX:
-* Add exeption to age entering non-number
-* Fix Attributes display
+* Add exception to age entering non-number
 * Make entering attributes between 1-20
+
+
+// Complete:
+12.2.2020
+* Fix Attributes display

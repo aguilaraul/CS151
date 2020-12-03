@@ -6,6 +6,8 @@
 #define FM20SCOUT_STAFF_H
 #include "Person.h"
 #include <memory>
+#include <iomanip>
+#include <fstream>
 using namespace std;
 
 class Staff : public Person {
@@ -42,6 +44,8 @@ public:
     string getRole();
     string getClub();
     void printAttributes() const;
+    void saveToFile();
+    void saveToBinary();
     // Attributes
     void setCoaching(short int, short int, short int,
                      short int, short int, short int, short int);

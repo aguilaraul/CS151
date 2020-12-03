@@ -19,10 +19,11 @@ int App::getMenuOption() {
              << "2. Compare two players\n";
         cin >> choice;
     }
+    cin.ignore();
     return choice;
 }
 
-void App::compareStaff() {
+void App::inputStaffMembers() {
     Staff member1, member2;
     cout << "How would you like to load in the staff member?\n";
     cout << "1. Enter manually\n"
@@ -36,20 +37,21 @@ void App::compareStaff() {
              << "2. Load a file\n";
         cin >> choice;
     }
+
+    cin.ignore();
     if(choice == 1) {
         member1 = addStaffManual();
+        // Save first staff member to txt file and binary file
+        cout << "Would you like to save the staff member to a file?";
+        if(validateAnswer()) {
+            saveToFile(member1);
+        }
     } else {
         member1 = addStaffFile();
     }
 
-    // Save first staff member to txt file and binary file
-    cout << "Would you like to save the staff member to a file?";
-    if(validateAnswer()) {
-        saveToFile(member1);
-    }
-
     // Enter second staff member
-    cout << "How would you like to load in the second staff member?";
+    cout << "How would you like to load in the second staff member?\n";
     cout << "1. Enter manually\n"
          << "2. Load a file\n";
     cout << "Select an option:" << endl;
@@ -62,18 +64,18 @@ void App::compareStaff() {
     }
     if(choice == 1) {
         member2 = addStaffManual();
+        // Save second staff member to txt file and binary file
+        cin.ignore();
+        cout << "Would you like to save the staff member to a file?";
+        if(validateAnswer()) {
+            saveToFile(member2);
+        }
     } else {
         member2 = addStaffFile();
     }
-
-    // Save second staff member to txt file and binary file
-    cout << "Would you like to save the staff member to a file?";
-    if(validateAnswer()) {
-        saveToFile(member2);
-    }
 }
 
-void App::comparePlayers() {
+void App::inputPlayers() {
 
 }
 
@@ -109,7 +111,7 @@ Staff App::addStaffManual() {
     //
     cout << "\nNow set the attributes for " << staff.getName();
 
-    inputCoaching(staff);
+    manualCoachingInput(staff);
     inputMedical(staff);
     inputGKCoaching(staff);
     inputMental(staff);
@@ -120,24 +122,49 @@ Staff App::addStaffManual() {
 }
 
 Staff App::addStaffFile() {
+    string fileName;
+    cout << "Please enter the name of the file:" << endl;
+    getline(cin, fileName);
+
+    fstream dataFile(fileName, ios::binary | ios::in);
+    if(!dataFile) {
+        cout << "Failed to open input file. Program exiting.";
+        exit(1);
+    } //@Incomplete make exception
+
+    // Staff initialization
+    string nation, name, role, club;
+    int age;
+    dataFile.read(reinterpret_cast<char*>(&nation), sizeof(string));
+    dataFile.read(reinterpret_cast<char*>(&name), sizeof(string));
+    dataFile.read(reinterpret_cast<char*>(&age), sizeof(int));
+    dataFile.read(reinterpret_cast<char*>(&role), sizeof(string));
+    dataFile.read(reinterpret_cast<char*>(&club), sizeof(string));
+    Staff staff(nation, name, age, role, club);
+
+    // Coaching
+    //long long position = dataFile.tellg();
+    //readCoachingAttributes(staff, dataFile, position);
+    short int attacking, defending, fitness, mental, tactical, technical, workingWithYoungsters;
+    //dataFile.seekp(position);
+    dataFile.read(reinterpret_cast<char*>(&attacking), sizeof(short int));
+    dataFile.read(reinterpret_cast<char*>(&defending), sizeof(short int));
+    dataFile.read(reinterpret_cast<char*>(&fitness), sizeof(short int));
+    dataFile.read(reinterpret_cast<char*>(&mental), sizeof(short int));
+    dataFile.read(reinterpret_cast<char*>(&tactical), sizeof(short int));
+    dataFile.read(reinterpret_cast<char*>(&technical), sizeof(short int));
+    dataFile.read(reinterpret_cast<char*>(&workingWithYoungsters), sizeof(short int));
+    staff.setCoaching(attacking, defending, fitness, mental, tactical, technical, workingWithYoungsters);
+
+    staff.printAttributes();
+    dataFile.close();
     return {};
 }
 
 
 void App::saveToFile(Staff staff) {
-    string fileName = staff.getName() + ".txt";
-    ofstream outfile(fileName, ios::out);
-    outfile << "Nation: " << staff.getNation() << endl;
-    outfile << left << setw(6) << "Name:";
-    outfile << setw(25) << staff.getName();
-    outfile << right << setw(10) << "Role: " << staff.getRole() << endl;
-
-    outfile << left << setw(6) << "Age: ";
-    outfile << setw(25) << staff.getAge();
-    outfile << right << setw(10) << "Club: " << staff.getClub() << endl;
-
-
-    outfile.close();
+    staff.saveToFile();
+    staff.saveToBinary();
 }
 
 bool App::validateAnswer() {
@@ -151,7 +178,7 @@ bool App::validateAnswer() {
     }
 }
 
-void App::inputCoaching(Staff staff) {
+void App::manualCoachingInput(Staff staff) {
     short int attack, defend, fitness, mental, tactical, technical, workingWithYoungsters;
     cout << "\nAttacking:";
     cin >> attack;
@@ -198,7 +225,7 @@ void App::inputMental(Staff staff) {
     cin >> determination;
     cout << "Level of Discipline:";
     cin >> discipline;
-    cout << "Man Management";
+    cout << "Man Management:";
     cin >> manManagement;
     cout << "Motivating:";
     cin >> motivating;
@@ -207,7 +234,7 @@ void App::inputMental(Staff staff) {
 
 void App::inputScouting(Staff staff) {
     short int judgingPlayerData, judgingTeamData, presentingData;
-    cout << "Judging Player Data:";
+    cout << "Judging Player Data:" << endl;
     cin >> judgingPlayerData;
     cout << "Judging Team Data:";
     cin >> judgingTeamData;
@@ -227,8 +254,21 @@ void App::inputKnowledge(Staff staff) {
     cin >> judgingStaffAbility;
     cout << "Negotiating:";
     cin >> negotiating;
-    cout << "Tactical Knowledge:";
+    cout << "Tactical Knowledge:" << endl;
     cin >> tacticalKnowledge;
-    staff.setKnowledge(judgingAbility, judgingPotential, judgingStaffAbility,
-                       negotiating, tacticalKnowledge);
+    staff.setKnowledge(judgingAbility, judgingPotential, judgingStaffAbility, negotiating, tacticalKnowledge);
+}
+
+void App::readCoachingAttributes(Staff staff, fstream &dataFile, long long &position) {
+    short int attacking, defending, fitness, mental, tactical, technical, workingWithYoungsters;
+    dataFile.seekp(position);
+    dataFile.read(reinterpret_cast<char*>(&attacking), sizeof(short int));
+    dataFile.read(reinterpret_cast<char*>(&defending), sizeof(short int));
+    dataFile.read(reinterpret_cast<char*>(&fitness), sizeof(short int));
+    dataFile.read(reinterpret_cast<char*>(&mental), sizeof(short int));
+    dataFile.read(reinterpret_cast<char*>(&tactical), sizeof(short int));
+    dataFile.write(reinterpret_cast<char*>(&technical), sizeof(short int));
+    dataFile.write(reinterpret_cast<char*>(&workingWithYoungsters), sizeof(short int));
+    staff.setCoaching(attacking, defending, fitness, mental, tactical, technical, workingWithYoungsters);
+    position = dataFile.tellg();
 }

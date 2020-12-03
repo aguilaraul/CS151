@@ -18,15 +18,17 @@ int main() {
     cout << "Welcome to FM20 Scouter! Compare two staff members or two players.\n";
 //    switch((app.getMenuOption())) {
 //        case 1:
-//            app.compareStaff();
+//            app.inputStaffMembers();
 //            break;
 //        case 2:
-//            app.comparePlayers();
+//            app.inputPlayers();
 //            break;
 //    }
 
-    Staff member("Spain", "Pep Guardiola", 48, "Manager", "Manchester City");
+    Staff member("Germany", "Jurgen Klopp", 52, "Manager", "Liverpool");
+    member.setCoaching(16, 14, 16, 17, 15, 14, 16);
     app.saveToFile(member);
+    app.addStaffFile();
 
     return 0;
 }

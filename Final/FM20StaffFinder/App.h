@@ -7,11 +7,14 @@
 #include "Staff.h"
 #include <iostream>
 #include <iomanip>
-#include <fstream>
 
 class App {
 public:
     int getMenuOption();
+    void inputStaffMembers();
+    void inputPlayers();
+
+//private:
     void compareStaff();
     void comparePlayers();
 
@@ -22,12 +25,16 @@ public:
 
     bool validateAnswer();
 
-    void inputCoaching(Staff);
+    // Manual input
+    void manualCoachingInput(Staff);
     void inputMedical(Staff);
     void inputGKCoaching(Staff);
     void inputMental(Staff);
     void inputScouting(Staff);
     void inputKnowledge(Staff);
+
+    // Read from file
+    void readCoachingAttributes(Staff, fstream&, long long&);
 };
 
 
