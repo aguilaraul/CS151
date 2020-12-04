@@ -1,6 +1,9 @@
-//
-// Created by raula on 11/7/2020.
-//
+/**
+ * Staff.h
+ * Author   Raul Aguilar
+ * Date     December 3, 2020
+ * CS 151 3228 Final Project
+ */
 
 #ifndef FM20SCOUT_STAFF_H
 #define FM20SCOUT_STAFF_H
@@ -44,7 +47,7 @@ public:
     string getRole();
     string getClub();
     void printAttributes() const;
-    void saveToFile();
+    void saveToFile() const;
     void saveToBinary();
     // Attributes
     void setCoaching(short int, short int, short int,

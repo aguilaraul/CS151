@@ -1,7 +1,7 @@
 /**
  * App.cpp
  * Author   Raul Aguilar
- * Date     November 17, 2020
+ * Date     December 3, 2020
  * CS 151 3228 Final Project
  */
 #include "App.h"
@@ -19,12 +19,45 @@ int App::getMenuOption() {
              << "2. Compare two players\n";
         cin >> choice;
     }
-    cin.ignore();
     return choice;
 }
 
+void App::compareStaff() {
+    inputStaffMembers();
+    member1.printAttributes();
+    cout << "--- --- --- --- --- ---" << endl;
+    member2.printAttributes();
+
+}
+
 void App::inputStaffMembers() {
-    Staff member1, member2;
+    if(askToInputStaffMember()) {
+        member1 = addStaffManual();
+        if(askToSaveToFile()) {
+            saveToFile(member1);
+        }
+    } else {
+        member1 = addStaffFile();
+    }
+
+    if(askToInputStaffMember()) {
+        member2 = addStaffManual();
+        // Save second staff member to txt file and binary file
+        if(askToSaveToFile()) {
+            saveToFile(member2);
+        }
+    } else {
+        member2 = addStaffFile();
+    }
+
+    cout << " ! -- CONGRATULATIONS -- ! " << endl;
+}
+
+void App::inputPlayers() {
+
+}
+
+bool App::askToInputStaffMember() {
     cout << "How would you like to load in the staff member?\n";
     cout << "1. Enter manually\n"
          << "2. Load a file\n";
@@ -34,49 +67,19 @@ void App::inputStaffMembers() {
     while(choice < 1 || choice > 2) {
         cout << "Invalid menu option. Please make a different selection.\n";
         cout << "1. Enter manually\n"
-             << "2. Load a file\n";
+             << "2. Load a file" << endl;
         cin >> choice;
     }
-
     cin.ignore();
-    if(choice == 1) {
-        member1 = addStaffManual();
-        // Save first staff member to txt file and binary file
-        cout << "Would you like to save the staff member to a file?";
-        if(validateAnswer()) {
-            saveToFile(member1);
-        }
-    } else {
-        member1 = addStaffFile();
-    }
-
-    // Enter second staff member
-    cout << "How would you like to load in the second staff member?\n";
-    cout << "1. Enter manually\n"
-         << "2. Load a file\n";
-    cout << "Select an option:" << endl;
-    cin >> choice;
-    while(choice < 1 || choice > 2) {
-        cout << "Invalid menu option. Please make a different selection.\n";
-        cout << "1. Enter manually\n"
-             << "2. Load a file\n";
-        cin >> choice;
-    }
-    if(choice == 1) {
-        member2 = addStaffManual();
-        // Save second staff member to txt file and binary file
-        cin.ignore();
-        cout << "Would you like to save the staff member to a file?";
-        if(validateAnswer()) {
-            saveToFile(member2);
-        }
-    } else {
-        member2 = addStaffFile();
-    }
+    return choice == 1;
 }
 
-void App::inputPlayers() {
-
+bool App::askToSaveToFile() {
+    cout << "Would you like to save the staff member to a file? (Y / N)" << endl;
+    char answer[4]; // @Incomplete: handle out of bounds
+    cin.ignore();
+    cin.getline(answer, 4);
+    return (answer[0] == 'Y' || answer[0] == 'y');
 }
 
 Staff App::addStaffManual() {
@@ -100,6 +103,7 @@ Staff App::addStaffManual() {
         cout << "Club:";
         getline(cin, club);
 
+        cout << "Re-enter? (Y/N)" << endl;
         continue_ = validateAnswer();
 
     }
@@ -195,23 +199,20 @@ Staff App::addStaffFile() {
 }
 
 
-void App::saveToFile(Staff staff) {
+void App::saveToFile(Staff& staff) {
     staff.saveToFile();
     staff.saveToBinary();
+    cout << staff.getName() << " saved to file." << endl;
 }
 
 bool App::validateAnswer() {
     char answer[4]; // @Incomplete: handle out of bounds
-    cout << "Re-enter information? (Y/N)";
+    cin.ignore();
     cin.getline(answer, 4);
-    if(answer[0] == 'Y' || answer[0] == 'y') {
-        return false;
-    } else {
-        return true;
-    }
+    return !(answer[0] == 'Y' || answer[0] == 'y');
 }
 
-void App::manualCoachingInput(Staff staff) {
+void App::manualCoachingInput(Staff& staff) {
     short int attack, defend, fitness, mental, tactical, technical, workingWithYoungsters;
     cout << "\nAttacking:";
     cin >> attack;
@@ -230,7 +231,7 @@ void App::manualCoachingInput(Staff staff) {
     staff.setCoaching(attack, defend, fitness, mental, tactical, technical, workingWithYoungsters);
 }
 
-void App::inputMedical(Staff staff) {
+void App::inputMedical(Staff& staff) {
     short int physio, sportsSci;
     cout << "Physiotherapy:";
     cin >> physio;
@@ -239,9 +240,9 @@ void App::inputMedical(Staff staff) {
     staff.setMedical(physio, sportsSci);
 }
 
-void App::inputGKCoaching(Staff staff) {
+void App::inputGKCoaching(Staff& staff) {
     short int gkDistribution, gkHandling, gkShotStop;
-    cout << "GK Distribution:";
+    cout << "GK Distribution:" << endl;
     cin >> gkDistribution;
     cout << "GK Handling:";
     cin >> gkHandling;
@@ -250,7 +251,7 @@ void App::inputGKCoaching(Staff staff) {
     staff.setGoalKeeping(gkDistribution, gkHandling, gkShotStop);
 }
 
-void App::inputMental(Staff staff) {
+void App::inputMental(Staff& staff) {
     short int adaptability, determination, discipline, manManagement, motivating;
     cout << "Adaptability:";
     cin >> adaptability;
@@ -265,7 +266,7 @@ void App::inputMental(Staff staff) {
     staff.setMental(adaptability, determination, discipline, manManagement, motivating);
 }
 
-void App::inputScouting(Staff staff) {
+void App::inputScouting(Staff& staff) {
     short int judgingPlayerData, judgingTeamData, presentingData;
     cout << "Judging Player Data:" << endl;
     cin >> judgingPlayerData;
@@ -276,7 +277,7 @@ void App::inputScouting(Staff staff) {
     staff.setScouting(judgingPlayerData, judgingTeamData, presentingData);
 }
 
-void App::inputKnowledge(Staff staff) {
+void App::inputKnowledge(Staff& staff) {
     short int judgingAbility, judgingPotential, judgingStaffAbility,
             negotiating, tacticalKnowledge;
     cout << "Judging Ability:";

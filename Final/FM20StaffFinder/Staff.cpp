@@ -1,6 +1,9 @@
-//
-// Created by raula on 11/7/2020.
-//
+/**
+ * Staff.cpp
+ * Author   Raul Aguilar
+ * Date     December 3, 2020
+ * CS 151 3228 Final Project
+ */
 
 #include "Staff.h"
 
@@ -123,7 +126,7 @@ void Staff::printAttributes() const {
     cout << setw(headingWidth) << "Tactical Knowledge:" << setw(attributeWidth) << Attributes.tacticalKnowledge << endl;
 }
 
-void Staff::saveToFile() {
+void Staff::saveToFile() const {
     const string fileName = name + ".txt";
     ofstream outfile(fileName, ios::out);
     outfile << "Nation: " << nation << endl;
