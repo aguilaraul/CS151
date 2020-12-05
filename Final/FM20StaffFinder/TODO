@@ -1,3 +1,8 @@
+// TODO:
+* Copy constructor
+* Destructor
+* Other basic constructors that you need to make when you make a custom constructor
+
 // TOFIX:
 * Add exception to age entering non-number
 * Make entering attributes between 1-20

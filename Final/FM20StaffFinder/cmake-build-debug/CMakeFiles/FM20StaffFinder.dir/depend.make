@@ -4,6 +4,7 @@
 CMakeFiles/FM20StaffFinder.dir/App.cpp.obj: ../App.cpp
 CMakeFiles/FM20StaffFinder.dir/App.cpp.obj: ../App.h
 CMakeFiles/FM20StaffFinder.dir/App.cpp.obj: ../Person.h
+CMakeFiles/FM20StaffFinder.dir/App.cpp.obj: ../Player.h
 CMakeFiles/FM20StaffFinder.dir/App.cpp.obj: ../Staff.h
 
 CMakeFiles/FM20StaffFinder.dir/Person.cpp.obj: ../Person.cpp

@@ -15,7 +15,18 @@ using namespace std;
 
 class Staff : public Person {
 private:
-    struct StaffAttributes {
+    short int StaffAttributes[25] = {};
+    enum attributes
+    {
+        attacking, defending, fitness, mental, tactical, technical, workingWithYoungsters,
+        physiotherapy, sportsScience,
+        gkDistribution, gkHandling, gkShotStop,
+        adaptability, determination, discipline, manManagement, motivating,
+        judgingPlayerData, judgingTeamData, presentingData,
+        judgingAbility, judgingPotential, judgingStaffAbility, negotiating, tacticalKnowledge
+    };
+
+    struct StaffAttributes_ {
         // Coaching
         short int attacking, defending, fitness, mental, tactical,
             technical, workingWithYoungsters;
@@ -47,18 +58,23 @@ public:
     string getRole();
     string getClub();
     void printAttributes() const;
+
+
     void saveToFile() const;
     void saveToBinary();
+
+    void readFromBinary(fstream &);
+
     // Attributes
-    void setCoaching(short int, short int, short int,
-                     short int, short int, short int, short int);
-    void setMedical(short int, short int);
-    void setGoalKeeping(short int, short int, short int);
-    void setMental(short int, short int, short int, short int,
-                   short int);
-    void setScouting(short int, short int, short int);
-    void setKnowledge(short int, short int, short int,
-                      short int, short int);
+    void setCoaching(const short&, const short&, const short&, const short&,
+                     const short&, const short&, const short&);
+    void setMedical(const short&, const short&);
+    void setGoalKeeping(const short&, const short&, const short&);
+    void setMental(const short&, const short&, const short&, const short&,
+                   const short&);
+    void setScouting(const short&, const short&, const short&);
+    void setKnowledge(const short&, const short&, const short&,
+                      const short&, const short&);
     string to_string() override;
 };
 

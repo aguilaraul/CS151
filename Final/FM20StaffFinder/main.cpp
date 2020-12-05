@@ -21,7 +21,7 @@ int main() {
             app.compareStaff();
             break;
         case 2:
-            //app.comparePlayers();
+            app.comparePlayers();
             break;
     }
 

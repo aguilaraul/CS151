@@ -8,6 +8,7 @@
 #ifndef FM20SCOUT_APP_H
 #define FM20SCOUT_APP_H
 #include "Staff.h"
+#include "Player.h"
 #include <iostream>
 #include <iomanip>
 
@@ -18,19 +19,17 @@ public:
     void comparePlayers();
 
 private:
-    Staff member1, member2;
-    void inputStaffMembers();
+    void inputStaffMembers(Staff&, Staff&);
     void inputPlayers();
 
-    bool askToInputStaffMember();
-    bool askToSaveToFile();
-
-    Staff addStaffManual();
-    Staff addStaffFile();
+    void setStaffManual(Staff&);
+    void addStaffFile(Staff&);
 
     void saveToFile(Staff&);
 
     bool validateAnswer();
+    bool askToInputStaffMember();
+    bool askToSaveToFile();
 
     // Manual input
     void manualCoachingInput(Staff&);
@@ -40,8 +39,8 @@ private:
     void inputScouting(Staff&);
     void inputKnowledge(Staff&);
 
-    // Read from file
-    void readCoachingAttributes(Staff, fstream&, long long&);
+    // Compare
+    void staffComparison(Staff&, Staff&);
 };
 
 

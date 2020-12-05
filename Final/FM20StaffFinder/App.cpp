@@ -23,32 +23,37 @@ int App::getMenuOption() {
 }
 
 void App::compareStaff() {
-    inputStaffMembers();
+    Staff member1, member2;
+    inputStaffMembers(member1, member2);
+    //staffComparison(member1, member2);
     member1.printAttributes();
     cout << "--- --- --- --- --- ---" << endl;
     member2.printAttributes();
 
 }
 
-void App::inputStaffMembers() {
+void App::comparePlayers() {
+    Player player1, player2;
+}
+
+void App::inputStaffMembers(Staff& member1, Staff& member2) {
     if(askToInputStaffMember()) {
-        member1 = addStaffManual();
+        setStaffManual(member1);
         if(askToSaveToFile()) {
             saveToFile(member1);
         }
     } else {
-        member1 = addStaffFile();
+        addStaffFile(member1);
     }
 
-    if(askToInputStaffMember()) {
-        member2 = addStaffManual();
-        // Save second staff member to txt file and binary file
-        if(askToSaveToFile()) {
-            saveToFile(member2);
-        }
-    } else {
-        member2 = addStaffFile();
-    }
+//    if(askToInputStaffMember()) {
+//        setStaffManual(member2);
+//        if(askToSaveToFile()) {
+//            saveToFile(member2);
+//        }
+//    } else {
+//        addStaffFile(member2);
+//    }
 
     cout << " ! -- CONGRATULATIONS -- ! " << endl;
 }
@@ -82,13 +87,22 @@ bool App::askToSaveToFile() {
     return (answer[0] == 'Y' || answer[0] == 'y');
 }
 
-Staff App::addStaffManual() {
+bool App::validateAnswer() {
+    char answer[4]; // @Incomplete: handle out of bounds
+    cin.ignore();
+    cin.getline(answer, 4);
+    return !(answer[0] == 'Y' || answer[0] == 'y');
+}
+
+void App::setStaffManual(Staff &member) {
     bool continue_ = false;
 
     string nation, name, role, club;
     int age;
     cout << "Enter the following information about the staff member:\n";
 
+    //
+    // @Incomplete: Make its own function. Add validation to other categories?
     while(!continue_) {
         cout << "Nation:";
         cin.ignore();
@@ -107,25 +121,48 @@ Staff App::addStaffManual() {
         continue_ = validateAnswer();
 
     }
-    Staff staff(nation, name, age, role, club);
+    member.setNation(nation);
+    member.setName(name);
+    member.setAge(age);
+    member.setRole(role);
+    member.setClub(club);
 
-    // Coaching Attributes
     //
     // @Incomplete: Restrict entries to 1-20
     //
-    cout << "\nNow set the attributes for " << staff.getName();
+    cout << "\nNow set the attributes for " << member.getName() << endl;
+    string attribute[25] = {
+            "Attacking: ", "Defending: ", "Fitness: ", "Mental: ", "Tactical: ",
+            "Technical: ", "Working With Youngsters: ",
+            "Physiotherapy", "Sports Science",
+            "GK Distribution", "GK Handling", "GK Shot Stop",
+            "Adaptability", "Determination", "Level of Discipline", "Man Management",
+            "Motivating",
+            "Judging Player Data", "Judging Team Data", "Presenting Data",
+            "Judging Ability", "Judging Potential", "Judging Staff Ability",
+            "Negotiating", "Tactical Knowledge"
+    };
+    short int att[25] = {};
+    for(int i = 0; i < 25; i++) {
+        cout << attribute[i] << endl;
+        cin >> att[i];
+    }
 
-    manualCoachingInput(staff);
-    inputMedical(staff);
-    inputGKCoaching(staff);
-    inputMental(staff);
-    inputScouting(staff);
-    inputKnowledge(staff);
-
-    return staff;
+    member.setCoaching(att[0], att[1], att[2], att[3], att[4], att[5], att[6]);
+    member.setMedical(att[7], att[8]);
+    member.setGoalKeeping(att[9], att[10], att[11]);
+    member.setMental(att[12], att[13], att[14], att[15], att[16]);
+    member.setScouting(att[17],att[18],att[19]);
+    member.setKnowledge(att[20], att[21], att[22], att[23], att[24]);
 }
 
-Staff App::addStaffFile() {
+void App::saveToFile(Staff& staff) {
+    staff.saveToFile();
+    staff.saveToBinary();
+    cout << staff.getName() << " saved to file." << endl;
+}
+
+void App::addStaffFile(Staff& member) {
     string fileName;
     cout << "Please enter the name of the file:" << endl;
     getline(cin, fileName);
@@ -136,99 +173,11 @@ Staff App::addStaffFile() {
         exit(1);
     } //@Incomplete make exception
 
-    // Staff initialization
-    string nation, name, role, club;
-    int age;
-    dataFile.read(reinterpret_cast<char*>(&nation), sizeof(string));
-    dataFile.read(reinterpret_cast<char*>(&name), sizeof(string));
-    dataFile.read(reinterpret_cast<char*>(&age), sizeof(int));
-    dataFile.read(reinterpret_cast<char*>(&role), sizeof(string));
-    dataFile.read(reinterpret_cast<char*>(&club), sizeof(string));
-    Staff staff(nation, name, age, role, club);
-
-    // Coaching
-    short int attacking, defending, fitness, mental, tactical, technical, workingWithYoungsters;
-    dataFile.read(reinterpret_cast<char*>(&attacking), sizeof(short int));
-    dataFile.read(reinterpret_cast<char*>(&defending), sizeof(short int));
-    dataFile.read(reinterpret_cast<char*>(&fitness), sizeof(short int));
-    dataFile.read(reinterpret_cast<char*>(&mental), sizeof(short int));
-    dataFile.read(reinterpret_cast<char*>(&tactical), sizeof(short int));
-    dataFile.read(reinterpret_cast<char*>(&technical), sizeof(short int));
-    dataFile.read(reinterpret_cast<char*>(&workingWithYoungsters), sizeof(short int));
-    staff.setCoaching(attacking, defending, fitness, mental, tactical, technical, workingWithYoungsters);
-
-    // Medical
-    short int physiotherapy, sportsScience;
-    dataFile.read(reinterpret_cast<char*>(&physiotherapy), sizeof(short int));
-    dataFile.read(reinterpret_cast<char*>(&sportsScience), sizeof(short int));
-    staff.setMedical(physiotherapy, sportsScience);
-
-    // GK Coaching
-    short int gkDistribution, gkHandling, gkShotStop;
-    dataFile.read(reinterpret_cast<char*>(&gkDistribution), sizeof(short int));
-    dataFile.read(reinterpret_cast<char*>(&gkHandling), sizeof(short int));
-    dataFile.read(reinterpret_cast<char*>(&gkShotStop), sizeof(short int));
-    staff.setGoalKeeping(gkDistribution, gkHandling, gkShotStop);
-
-    // Mental
-    short int adaptability, determination, discipline, manManagement, motivating;
-    dataFile.read(reinterpret_cast<char*>(&adaptability), sizeof(short int));
-    dataFile.read(reinterpret_cast<char*>(&determination), sizeof(short int));
-    dataFile.read(reinterpret_cast<char*>(&discipline), sizeof(short int));
-    dataFile.read(reinterpret_cast<char*>(&manManagement), sizeof(short int));
-    dataFile.read(reinterpret_cast<char*>(&motivating), sizeof(short int));
-    staff.setMental(adaptability, determination, discipline, manManagement, motivating);
-
-    // Scouting
-    short int judgingPlayerData, judgingTeamData, presentingData;
-    dataFile.read(reinterpret_cast<char*>(&judgingPlayerData), sizeof(short int));
-    dataFile.read(reinterpret_cast<char*>(&judgingTeamData), sizeof(short int));
-    dataFile.read(reinterpret_cast<char*>(&presentingData), sizeof(short int));
-    staff.setScouting(judgingPlayerData, judgingTeamData, presentingData);
-
-    // Knowledge
-    short int judgingAbility, judgingPotential, judgingStaffAbility, negotiating, tacticalKnowledge;
-    dataFile.read(reinterpret_cast<char*>(&judgingAbility), sizeof(short int));
-    dataFile.read(reinterpret_cast<char*>(&judgingPotential), sizeof(short int));
-    dataFile.read(reinterpret_cast<char*>(&judgingStaffAbility), sizeof(short int));
-    dataFile.read(reinterpret_cast<char*>(&negotiating), sizeof(short int));
-    dataFile.read(reinterpret_cast<char*>(&tacticalKnowledge), sizeof(short int));
-
-    dataFile.close();
-    return staff;
+    member.readFromBinary(dataFile);
 }
 
+void App::staffComparison(Staff &member1, Staff &member2) {
 
-void App::saveToFile(Staff& staff) {
-    staff.saveToFile();
-    staff.saveToBinary();
-    cout << staff.getName() << " saved to file." << endl;
-}
-
-bool App::validateAnswer() {
-    char answer[4]; // @Incomplete: handle out of bounds
-    cin.ignore();
-    cin.getline(answer, 4);
-    return !(answer[0] == 'Y' || answer[0] == 'y');
-}
-
-void App::manualCoachingInput(Staff& staff) {
-    short int attack, defend, fitness, mental, tactical, technical, workingWithYoungsters;
-    cout << "\nAttacking:";
-    cin >> attack;
-    cout << "Defending:";
-    cin >> defend;
-    cout << "Fitness:";
-    cin >> fitness;
-    cout << "Mental:";
-    cin >> mental;
-    cout << "Tactical:";
-    cin >> tactical;
-    cout << "Technical:";
-    cin >> technical;
-    cout << "Working With Youngsters:";
-    cin >> workingWithYoungsters;
-    staff.setCoaching(attack, defend, fitness, mental, tactical, technical, workingWithYoungsters);
 }
 
 void App::inputMedical(Staff& staff) {
