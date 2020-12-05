@@ -8,9 +8,6 @@
 #ifndef FM20SCOUT_STAFF_H
 #define FM20SCOUT_STAFF_H
 #include "Person.h"
-#include <memory>
-#include <iomanip>
-#include <fstream>
 using namespace std;
 
 class Staff : public Person {
@@ -18,31 +15,19 @@ private:
     short int StaffAttributes[25] = {};
     enum attributes
     {
-        attacking, defending, fitness, mental, tactical, technical, workingWithYoungsters,
-        physiotherapy, sportsScience,
-        gkDistribution, gkHandling, gkShotStop,
-        adaptability, determination, discipline, manManagement, motivating,
-        judgingPlayerData, judgingTeamData, presentingData,
-        judgingAbility, judgingPotential, judgingStaffAbility, negotiating, tacticalKnowledge
-    };
-
-    struct StaffAttributes_ {
         // Coaching
-        short int attacking, defending, fitness, mental, tactical,
-            technical, workingWithYoungsters;
+        ATTACKING, DEFENDING, FITNESS, MENTAL, TACTICAL, TECHNICAL, WORKINGWITHYOUNGSTERS,
         // Medical
-        short int physiotherapy, sportsScience;
+        PHYSIOTHERAPY, SPORTSSCIENCE,
         // GK Coaching
-        short int gkDistribution, gkHandling, gkShotStop;
+        GKDISTRIBUTION, GKHANDLING, GKSHOTSTOP,
         // Mental
-        short int adaptability, determination, discipline,
-            manManagement, motivating;
+        ADAPTABILITY, DETERMINATION, DISCIPLINE, MANMANAGEMENT, MOTIVATING,
         // Scouting
-        short int judgingPlayerData, judgingTeamData, presentingData;
+        JUDGINGPLAYERDATA, JUDGINGTEAMDATA, PRESENTINGDATA,
         // Knowledge
-        short judgingAbility, judgingPotential, judgingStaffAbility,
-            negotiating, tacticalKnowledge;
-    } Attributes;
+        JUDGINGABILITY, JUDGINGPOTENTIAL, JUDGINGSTAFFABILITY, NEGOTIATING, TACTICALKNOWLEDGE
+    };
 
 protected:
     string role;
@@ -57,8 +42,10 @@ public:
     void setClub(const string&);
     string getRole();
     string getClub();
-    void printAttributes() const;
 
+    string to_string() override;
+
+    void printAttributes() const;
 
     void saveToFile() const;
     void saveToBinary();
@@ -75,7 +62,6 @@ public:
     void setScouting(const short&, const short&, const short&);
     void setKnowledge(const short&, const short&, const short&,
                       const short&, const short&);
-    string to_string() override;
 };
 
 

@@ -42,9 +42,12 @@ string Staff::getClub() {
     return club;
 }
 
-//
-// @Incomplete: Fix attributes display
-//
+string Staff::to_string() {
+    return Person::to_string() +
+           " They are currently a " + role +
+           " at " + club + '.';
+}
+
 void Staff::printAttributes() const {
     cout << "Nation: " << nation << endl;
     cout << left << setw(6) << "Name:";
@@ -60,70 +63,70 @@ void Staff::printAttributes() const {
     cout << setw(spaceBetween) << "";
     cout << left << setw(headingWidth) << "Mental" << endl;
 
-    cout << left << setw(headingWidth) << "Attacking:" << setw(attributeWidth) << StaffAttributes[attacking];
+    cout << left << setw(headingWidth) << "Attacking:" << setw(attributeWidth) << StaffAttributes[ATTACKING];
     cout << setw(spaceBetween) << "";
-    cout << left << setw(headingWidth) << "Adaptability:" << setw(attributeWidth) << StaffAttributes[adaptability] << endl;
+    cout << left << setw(headingWidth) << "Adaptability:" << setw(attributeWidth) << StaffAttributes[ADAPTABILITY] << endl;
 
-    cout << left << setw(headingWidth) << "Defending:" << setw(attributeWidth) << StaffAttributes[defending];
+    cout << left << setw(headingWidth) << "Defending:" << setw(attributeWidth) << StaffAttributes[DEFENDING];
     cout << setw(spaceBetween) << "";
-    cout << left << setw(headingWidth) << "Determination:"<< setw(attributeWidth) << StaffAttributes[determination] << endl;
+    cout << left << setw(headingWidth) << "Determination:" << setw(attributeWidth) << StaffAttributes[DETERMINATION] << endl;
 
-    cout << left << setw(headingWidth) << "Fitness:" << setw(attributeWidth) << StaffAttributes[fitness];
+    cout << left << setw(headingWidth) << "Fitness:" << setw(attributeWidth) << StaffAttributes[FITNESS];
     cout << setw(spaceBetween) << "";
-    cout << setw(headingWidth) << "Level of Discipline:" << setw(attributeWidth) << StaffAttributes[discipline] << endl;
+    cout << setw(headingWidth) << "Level of Discipline:" << setw(attributeWidth) << StaffAttributes[DISCIPLINE] << endl;
 
-    cout << left << setw(headingWidth) << "Mental:" << setw(attributeWidth) << StaffAttributes[mental];
+    cout << left << setw(headingWidth) << "Mental:" << setw(attributeWidth) << StaffAttributes[MENTAL];
     cout << setw(spaceBetween) << "";
-    cout << setw(headingWidth) << "Man Management:" << setw(attributeWidth) << StaffAttributes[manManagement] << endl;
+    cout << setw(headingWidth) << "Man Management:" << setw(attributeWidth) << StaffAttributes[MANMANAGEMENT] << endl;
 
-    cout << left << setw(headingWidth) << "Tactical:" << setw(attributeWidth) << StaffAttributes[tactical];
+    cout << left << setw(headingWidth) << "Tactical:" << setw(attributeWidth) << StaffAttributes[TACTICAL];
     cout << setw(spaceBetween) << "";
-    cout << setw(headingWidth) << "Motivating:" << setw(attributeWidth) << StaffAttributes[motivating] << endl;
+    cout << setw(headingWidth) << "Motivating:" << setw(attributeWidth) << StaffAttributes[MOTIVATING] << endl;
 
-    cout << left << setw(headingWidth) << "Technical:" << setw(attributeWidth) << StaffAttributes[technical] << endl;
-    cout << left << setw(headingWidth) << "Working With Youngsters:" << setw(attributeWidth) << StaffAttributes[workingWithYoungsters] << endl;
+    cout << left << setw(headingWidth) << "Technical:" << setw(attributeWidth) << StaffAttributes[TECHNICAL] << endl;
+    cout << left << setw(headingWidth) << "Working With Youngsters:" << setw(attributeWidth) << StaffAttributes[WORKINGWITHYOUNGSTERS] << endl;
 
     // Medical & Scouting
     cout << left << setw(headingWidth) << "Medical";
     cout << setw(spaceBetween) << "";
     cout << left << setw(headingWidth) << "Scouting" << endl;
 
-    cout << left << setw(headingWidth) << "Physiotherapy:" << setw(attributeWidth) << StaffAttributes[physiotherapy];
+    cout << left << setw(headingWidth) << "Physiotherapy:" << setw(attributeWidth) << StaffAttributes[PHYSIOTHERAPY];
     cout << setw(spaceBetween) << "";
-    cout << setw(headingWidth) << "Judging Player Data:" << setw(attributeWidth) << StaffAttributes[judgingPlayerData] << endl;
+    cout << setw(headingWidth) << "Judging Player Data:" << setw(attributeWidth) << StaffAttributes[JUDGINGPLAYERDATA] << endl;
 
-    cout << left << setw(headingWidth) << "Sports Science:" << setw(attributeWidth) << StaffAttributes[sportsScience];
+    cout << left << setw(headingWidth) << "Sports Science:" << setw(attributeWidth) << StaffAttributes[SPORTSSCIENCE];
     cout << setw(spaceBetween) << "";
-    cout << setw(headingWidth) << "Judging Team Data:" << setw(attributeWidth) << StaffAttributes[judgingTeamData] << endl;
+    cout << setw(headingWidth) << "Judging Team Data:" << setw(attributeWidth) << StaffAttributes[JUDGINGTEAMDATA] << endl;
 
     cout << left << setw(headingWidth) << "" << setw(attributeWidth) << "";
     cout << setw(spaceBetween) << "";
-    cout << setw(headingWidth) << "Presenting Data:" << setw(attributeWidth) << StaffAttributes[presentingData] << endl;
+    cout << setw(headingWidth) << "Presenting Data:" << setw(attributeWidth) << StaffAttributes[PRESENTINGDATA] << endl;
 
     // GK Coaching & Knowledge
     cout << left << setw(headingWidth) << "GK Coaching";
     cout << setw(spaceBetween) << "";
     cout << left << setw(headingWidth) << "Knowledge" << endl;
 
-    cout << setw(headingWidth) << "GK Distribution:" << setw(attributeWidth) << StaffAttributes[gkDistribution];
+    cout << setw(headingWidth) << "GK Distribution:" << setw(attributeWidth) << StaffAttributes[GKDISTRIBUTION];
     cout << setw(spaceBetween) << "";
-    cout << setw(headingWidth) << "Judging Ability:" << setw(attributeWidth) << StaffAttributes[judgingAbility] << endl;
+    cout << setw(headingWidth) << "Judging Ability:" << setw(attributeWidth) << StaffAttributes[JUDGINGABILITY] << endl;
 
-    cout << setw(headingWidth) << "GK Handling:" << setw(attributeWidth) << StaffAttributes[gkHandling];
+    cout << setw(headingWidth) << "GK Handling:" << setw(attributeWidth) << StaffAttributes[GKHANDLING];
     cout << setw(spaceBetween) << "";
-    cout << setw(headingWidth) << "Judging Potential:" << setw(attributeWidth) << StaffAttributes[judgingPotential] << endl;
+    cout << setw(headingWidth) << "Judging Potential:" << setw(attributeWidth) << StaffAttributes[JUDGINGPOTENTIAL] << endl;
 
-    cout << setw(headingWidth) << "GK Shot Stop:" << setw(attributeWidth) << StaffAttributes[gkShotStop];
+    cout << setw(headingWidth) << "GK Shot Stop:" << setw(attributeWidth) << StaffAttributes[GKSHOTSTOP];
     cout << setw(spaceBetween) << "";
-    cout << setw(headingWidth) << "Judging Staff Ability:" << setw(attributeWidth) << StaffAttributes[judgingStaffAbility] << endl;
-
-    cout << left << setw(headingWidth) << "" << setw(attributeWidth) << "";
-    cout << setw(spaceBetween) << "";
-    cout << setw(headingWidth) << "Negotiating:" << setw(attributeWidth) << StaffAttributes[negotiating] << endl;
+    cout << setw(headingWidth) << "Judging Staff Ability:" << setw(attributeWidth) << StaffAttributes[JUDGINGSTAFFABILITY] << endl;
 
     cout << left << setw(headingWidth) << "" << setw(attributeWidth) << "";
     cout << setw(spaceBetween) << "";
-    cout << setw(headingWidth) << "Tactical Knowledge:" << setw(attributeWidth) << StaffAttributes[tacticalKnowledge] << endl;
+    cout << setw(headingWidth) << "Negotiating:" << setw(attributeWidth) << StaffAttributes[NEGOTIATING] << endl;
+
+    cout << left << setw(headingWidth) << "" << setw(attributeWidth) << "";
+    cout << setw(spaceBetween) << "";
+    cout << setw(headingWidth) << "Tactical Knowledge:" << setw(attributeWidth) << StaffAttributes[TACTICALKNOWLEDGE] << endl;
 }
 
 void Staff::saveToFile() const {
@@ -143,70 +146,70 @@ void Staff::saveToFile() const {
     outfile << setw(spaceBetween) << "";
     outfile << left << setw(headingWidth) << "Mental" << endl;
 
-    outfile << left << setw(headingWidth) << "Attacking:" << setw(attributeWidth) << StaffAttributes[attacking];
+    outfile << left << setw(headingWidth) << "Attacking:" << setw(attributeWidth) << StaffAttributes[ATTACKING];
     outfile << setw(spaceBetween) << "";
-    outfile << left << setw(headingWidth) << "Adaptability:" << setw(attributeWidth) << StaffAttributes[adaptability] << endl;
+    outfile << left << setw(headingWidth) << "Adaptability:" << setw(attributeWidth) << StaffAttributes[ADAPTABILITY] << endl;
 
-    outfile << left << setw(headingWidth) << "Defending:" << setw(attributeWidth) << StaffAttributes[defending];
+    outfile << left << setw(headingWidth) << "Defending:" << setw(attributeWidth) << StaffAttributes[DEFENDING];
     outfile << setw(spaceBetween) << "";
-    outfile << left << setw(headingWidth) << "Determination:"<< setw(attributeWidth) << StaffAttributes[determination] << endl;
+    outfile << left << setw(headingWidth) << "Determination:" << setw(attributeWidth) << StaffAttributes[DETERMINATION] << endl;
 
-    outfile << left << setw(headingWidth) << "Fitness:" << setw(attributeWidth) << StaffAttributes[fitness];
+    outfile << left << setw(headingWidth) << "Fitness:" << setw(attributeWidth) << StaffAttributes[FITNESS];
     outfile << setw(spaceBetween) << "";
-    outfile << setw(headingWidth) << "Level of Discipline:" << setw(attributeWidth) << StaffAttributes[discipline] << endl;
+    outfile << setw(headingWidth) << "Level of Discipline:" << setw(attributeWidth) << StaffAttributes[DISCIPLINE] << endl;
 
-    outfile << left << setw(headingWidth) << "Mental:" << setw(attributeWidth) << StaffAttributes[mental];
+    outfile << left << setw(headingWidth) << "Mental:" << setw(attributeWidth) << StaffAttributes[MENTAL];
     outfile << setw(spaceBetween) << "";
-    outfile << setw(headingWidth) << "Man Management:" << setw(attributeWidth) << StaffAttributes[manManagement] << endl;
+    outfile << setw(headingWidth) << "Man Management:" << setw(attributeWidth) << StaffAttributes[MANMANAGEMENT] << endl;
 
-    outfile << left << setw(headingWidth) << "Tactical:" << setw(attributeWidth) << StaffAttributes[tactical];
+    outfile << left << setw(headingWidth) << "Tactical:" << setw(attributeWidth) << StaffAttributes[TACTICAL];
     outfile << setw(spaceBetween) << "";
-    outfile << setw(headingWidth) << "Motivating:" << setw(attributeWidth) << StaffAttributes[motivating] << endl;
+    outfile << setw(headingWidth) << "Motivating:" << setw(attributeWidth) << StaffAttributes[MOTIVATING] << endl;
 
-    outfile << left << setw(headingWidth) << "Technical:" << setw(attributeWidth) << StaffAttributes[technical] << endl;
-    outfile << left << setw(headingWidth) << "Working With Youngsters:" << setw(attributeWidth) << StaffAttributes[workingWithYoungsters] << endl;
+    outfile << left << setw(headingWidth) << "Technical:" << setw(attributeWidth) << StaffAttributes[TECHNICAL] << endl;
+    outfile << left << setw(headingWidth) << "Working With Youngsters:" << setw(attributeWidth) << StaffAttributes[WORKINGWITHYOUNGSTERS] << endl;
 
     // Medical & Scouting
     outfile << left << setw(headingWidth) << "Medical";
     outfile << setw(spaceBetween) << "";
     outfile << left << setw(headingWidth) << "Scouting" << endl;
 
-    outfile << left << setw(headingWidth) << "Physiotherapy:" << setw(attributeWidth) << StaffAttributes[physiotherapy];
+    outfile << left << setw(headingWidth) << "Physiotherapy:" << setw(attributeWidth) << StaffAttributes[PHYSIOTHERAPY];
     outfile << setw(spaceBetween) << "";
-    outfile << setw(headingWidth) << "Judging Player Data:" << setw(attributeWidth) << StaffAttributes[judgingPlayerData] << endl;
+    outfile << setw(headingWidth) << "Judging Player Data:" << setw(attributeWidth) << StaffAttributes[JUDGINGPLAYERDATA] << endl;
 
-    outfile << left << setw(headingWidth) << "Sports Science:" << setw(attributeWidth) << StaffAttributes[sportsScience];
+    outfile << left << setw(headingWidth) << "Sports Science:" << setw(attributeWidth) << StaffAttributes[SPORTSSCIENCE];
     outfile << setw(spaceBetween) << "";
-    outfile << setw(headingWidth) << "Judging Team Data:" << setw(attributeWidth) << StaffAttributes[judgingTeamData] << endl;
+    outfile << setw(headingWidth) << "Judging Team Data:" << setw(attributeWidth) << StaffAttributes[JUDGINGTEAMDATA] << endl;
 
     outfile << left << setw(headingWidth) << "" << setw(attributeWidth) << "";
     outfile << setw(spaceBetween) << "";
-    outfile << setw(headingWidth) << "Presenting Data:" << setw(attributeWidth) << StaffAttributes[presentingData] << endl;
+    outfile << setw(headingWidth) << "Presenting Data:" << setw(attributeWidth) << StaffAttributes[PRESENTINGDATA] << endl;
 
     // GK Coaching & Knowledge
     outfile << left << setw(headingWidth) << "GK Coaching";
     outfile << setw(spaceBetween) << "";
     outfile << left << setw(headingWidth) << "Knowledge" << endl;
 
-    outfile << setw(headingWidth) << "GK Distribution:" << setw(attributeWidth) << StaffAttributes[gkDistribution];
+    outfile << setw(headingWidth) << "GK Distribution:" << setw(attributeWidth) << StaffAttributes[GKDISTRIBUTION];
     outfile << setw(spaceBetween) << "";
-    outfile << setw(headingWidth) << "Judging Ability:" << setw(attributeWidth) << StaffAttributes[judgingAbility] << endl;
+    outfile << setw(headingWidth) << "Judging Ability:" << setw(attributeWidth) << StaffAttributes[JUDGINGABILITY] << endl;
 
-    outfile << setw(headingWidth) << "GK Handling:" << setw(attributeWidth) << StaffAttributes[gkHandling];
+    outfile << setw(headingWidth) << "GK Handling:" << setw(attributeWidth) << StaffAttributes[GKHANDLING];
     outfile << setw(spaceBetween) << "";
-    outfile << setw(headingWidth) << "Judging Potential:" << setw(attributeWidth) << StaffAttributes[judgingPotential] << endl;
+    outfile << setw(headingWidth) << "Judging Potential:" << setw(attributeWidth) << StaffAttributes[JUDGINGPOTENTIAL] << endl;
 
-    outfile << setw(headingWidth) << "GK Shot Stop:" << setw(attributeWidth) << StaffAttributes[gkShotStop];
+    outfile << setw(headingWidth) << "GK Shot Stop:" << setw(attributeWidth) << StaffAttributes[GKSHOTSTOP];
     outfile << setw(spaceBetween) << "";
-    outfile << setw(headingWidth) << "Judging Staff Ability:" << setw(attributeWidth) << StaffAttributes[judgingStaffAbility] << endl;
-
-    outfile << left << setw(headingWidth) << "" << setw(attributeWidth) << "";
-    outfile << setw(spaceBetween) << "";
-    outfile << setw(headingWidth) << "Negotiating:" << setw(attributeWidth) << StaffAttributes[negotiating] << endl;
+    outfile << setw(headingWidth) << "Judging Staff Ability:" << setw(attributeWidth) << StaffAttributes[JUDGINGSTAFFABILITY] << endl;
 
     outfile << left << setw(headingWidth) << "" << setw(attributeWidth) << "";
     outfile << setw(spaceBetween) << "";
-    outfile << setw(headingWidth) << "Tactical Knowledge:" << setw(attributeWidth) << StaffAttributes[tacticalKnowledge] << endl;
+    outfile << setw(headingWidth) << "Negotiating:" << setw(attributeWidth) << StaffAttributes[NEGOTIATING] << endl;
+
+    outfile << left << setw(headingWidth) << "" << setw(attributeWidth) << "";
+    outfile << setw(spaceBetween) << "";
+    outfile << setw(headingWidth) << "Tactical Knowledge:" << setw(attributeWidth) << StaffAttributes[TACTICALKNOWLEDGE] << endl;
     outfile.close();
 }
 
@@ -226,45 +229,6 @@ void Staff::saveToBinary() {
         dataFile.write(reinterpret_cast<char*>(&StaffAttribute), sizeof(short int));
     }
 
-
-    // Coaching
-    /*
-    dataFile.write(reinterpret_cast<char*>(&StaffAttributes[0]), sizeof(short int));
-    dataFile.write(reinterpret_cast<char*>(&StaffAttributes[1]), sizeof(short int));
-    dataFile.write(reinterpret_cast<char*>(&StaffAttributes[2]), sizeof(short int));
-    dataFile.write(reinterpret_cast<char*>(&StaffAttributes[3]), sizeof(short int));
-    dataFile.write(reinterpret_cast<char*>(&StaffAttributes[4]), sizeof(short int));
-    dataFile.write(reinterpret_cast<char*>(&StaffAttributes[5]), sizeof(short int));
-    dataFile.write(reinterpret_cast<char*>(&StaffAttributes[6]), sizeof(short int));
-
-    // Medical
-    dataFile.write(reinterpret_cast<char*>(&StaffAttributes.physiotherapy), sizeof(short int));
-    dataFile.write(reinterpret_cast<char*>(&StaffAttributes.sportsScience), sizeof(short int));
-
-    // GK Coaching
-    dataFile.write(reinterpret_cast<char*>(&StaffAttributes.gkDistribution), sizeof(short int));
-    dataFile.write(reinterpret_cast<char*>(&StaffAttributes.gkHandling), sizeof(short int));
-    dataFile.write(reinterpret_cast<char*>(&StaffAttributes.gkShotStop), sizeof(short int));
-
-    // Mental
-    dataFile.write(reinterpret_cast<char*>(&StaffAttributes.adaptability), sizeof(short int));
-    dataFile.write(reinterpret_cast<char*>(&StaffAttributes.determination), sizeof(short int));
-    dataFile.write(reinterpret_cast<char*>(&StaffAttributes.discipline), sizeof(short int));
-    dataFile.write(reinterpret_cast<char*>(&StaffAttributes.manManagement), sizeof(short int));
-    dataFile.write(reinterpret_cast<char*>(&StaffAttributes.motivating), sizeof(short int));
-
-    // Scouting
-    dataFile.write(reinterpret_cast<char*>(&StaffAttributes.judgingPlayerData), sizeof(short int));
-    dataFile.write(reinterpret_cast<char*>(&StaffAttributes.judgingTeamData), sizeof(short int));
-    dataFile.write(reinterpret_cast<char*>(&StaffAttributes.presentingData), sizeof(short int));
-
-    // Knowledge
-    dataFile.write(reinterpret_cast<char*>(&StaffAttributes.judgingAbility), sizeof(short int));
-    dataFile.write(reinterpret_cast<char*>(&StaffAttributes.judgingPotential), sizeof(short int));
-    dataFile.write(reinterpret_cast<char*>(&StaffAttributes.judgingStaffAbility), sizeof(short int));
-    dataFile.write(reinterpret_cast<char*>(&StaffAttributes.negotiating), sizeof(short int));
-    dataFile.write(reinterpret_cast<char*>(&StaffAttributes.tacticalKnowledge), sizeof(short int));
-     */
     dataFile.close();
 }
 
@@ -276,8 +240,6 @@ void Staff::readFromBinary(fstream& dataFile) {
     dataFileCopy.read(reinterpret_cast<char*>(&role), sizeof(string));
     dataFileCopy.read(reinterpret_cast<char*>(&club), sizeof(string));
 
-    cout << name << "<-- Here ::" << endl;
-
     for(auto & StaffAttribute : StaffAttributes) {
         dataFileCopy.read(reinterpret_cast<char*>(&StaffAttribute), sizeof(short int));
     }
@@ -285,67 +247,59 @@ void Staff::readFromBinary(fstream& dataFile) {
     dataFileCopy.close();
 }
 
-string Staff::to_string() {
-    return Person::to_string() +
-    " They are currently a " + role +
-    " at " + club + '.';
-}
-
-
-
 /* Set Attributes */
 
 void Staff::setCoaching(const short &attack, const short &defend, const short &fit,
                         const short &ment, const short &tact, const short &tech,
                         const short &workingWYoungsters)
 {
-    StaffAttributes[attacking] = attack;
-    StaffAttributes[defending] = defend;
-    StaffAttributes[fitness] = fit;
-    StaffAttributes[mental] = ment;
-    StaffAttributes[tactical] = tact;
-    StaffAttributes[technical] = tech;
-    StaffAttributes[workingWithYoungsters] = workingWYoungsters;
+    StaffAttributes[ATTACKING] = attack;
+    StaffAttributes[DEFENDING] = defend;
+    StaffAttributes[FITNESS] = fit;
+    StaffAttributes[MENTAL] = ment;
+    StaffAttributes[TACTICAL] = tact;
+    StaffAttributes[TECHNICAL] = tech;
+    StaffAttributes[WORKINGWITHYOUNGSTERS] = workingWYoungsters;
 }
 
 void Staff::setMedical(const short &physio, const short &ss)
 {
-    StaffAttributes[physiotherapy] = physio;
-    StaffAttributes[sportsScience] = ss;
+    StaffAttributes[PHYSIOTHERAPY] = physio;
+    StaffAttributes[SPORTSSCIENCE] = ss;
 }
 
 void Staff::setGoalKeeping(const short& dist, const short& hand, const short& ss)
 {
-    StaffAttributes[gkDistribution] = dist;
-    StaffAttributes[gkHandling] = hand;
-    StaffAttributes[gkShotStop] = ss;
+    StaffAttributes[GKDISTRIBUTION] = dist;
+    StaffAttributes[GKHANDLING] = hand;
+    StaffAttributes[GKSHOTSTOP] = ss;
 }
 
 void Staff::setMental(const short& adapt, const short& det, const short& disc,
                       const short& mm, const short& mot)
 {
-    StaffAttributes[adaptability] = adapt;
-    StaffAttributes[determination] = det;
-    StaffAttributes[discipline] = disc;
-    StaffAttributes[manManagement] = mm;
-    StaffAttributes[motivating] = mot;
+    StaffAttributes[ADAPTABILITY] = adapt;
+    StaffAttributes[DETERMINATION] = det;
+    StaffAttributes[DISCIPLINE] = disc;
+    StaffAttributes[MANMANAGEMENT] = mm;
+    StaffAttributes[MOTIVATING] = mot;
 }
 
 void Staff::setScouting(const short& jPD, const short& jTD, const short& pD)
 {
-    StaffAttributes[judgingPlayerData] = jPD;
-    StaffAttributes[judgingTeamData] = jTD;
-    StaffAttributes[presentingData] = pD;
+    StaffAttributes[JUDGINGPLAYERDATA] = jPD;
+    StaffAttributes[JUDGINGTEAMDATA] = jTD;
+    StaffAttributes[PRESENTINGDATA] = pD;
 }
 
 void Staff::setKnowledge(const short& jA, const short& jP, const short& jSA,
                          const short& n, const short& tK)
 {
-    StaffAttributes[judgingAbility] = jA;
-    StaffAttributes[judgingPotential] = jP;
-    StaffAttributes[judgingStaffAbility] = jSA;
-    StaffAttributes[negotiating] = n;
-    StaffAttributes[tacticalKnowledge] = tK;
+    StaffAttributes[JUDGINGABILITY] = jA;
+    StaffAttributes[JUDGINGPOTENTIAL] = jP;
+    StaffAttributes[JUDGINGSTAFFABILITY] = jSA;
+    StaffAttributes[NEGOTIATING] = n;
+    StaffAttributes[TACTICALKNOWLEDGE] = tK;
 }
 
 void Staff::setRandomAttributes() {

@@ -103,6 +103,7 @@ void App::setStaffManual(Staff &member) {
 
     //
     // @Incomplete: Make its own function. Add validation to other categories?
+    //
     while(!continue_) {
         cout << "Nation:";
         cin.ignore();
@@ -132,15 +133,15 @@ void App::setStaffManual(Staff &member) {
     //
     cout << "\nNow set the attributes for " << member.getName() << endl;
     string attribute[25] = {
-            "Attacking: ", "Defending: ", "Fitness: ", "Mental: ", "Tactical: ",
-            "Technical: ", "Working With Youngsters: ",
-            "Physiotherapy", "Sports Science",
-            "GK Distribution", "GK Handling", "GK Shot Stop",
-            "Adaptability", "Determination", "Level of Discipline", "Man Management",
-            "Motivating",
-            "Judging Player Data", "Judging Team Data", "Presenting Data",
-            "Judging Ability", "Judging Potential", "Judging Staff Ability",
-            "Negotiating", "Tactical Knowledge"
+            "Attacking:", "Defending:", "Fitness:", "Mental:", "Tactical:",
+            "Technical:", "Working With Youngsters:",
+            "Physiotherapy:", "Sports Science:",
+            "GK Distribution:", "GK Handling:", "GK Shot Stop:",
+            "Adaptability:", "Determination:", "Level of Discipline:", "Man Management:",
+            "Motivating:",
+            "Judging Player Data:", "Judging Team Data:", "Presenting Data:",
+            "Judging Ability:", "Judging Potential:", "Judging Staff Ability:",
+            "Negotiating:", "Tactical Knowledge:"
     };
     short int att[25] = {};
     for(int i = 0; i < 25; i++) {
@@ -178,66 +179,4 @@ void App::addStaffFile(Staff& member) {
 
 void App::staffComparison(Staff &member1, Staff &member2) {
 
-}
-
-void App::inputMedical(Staff& staff) {
-    short int physio, sportsSci;
-    cout << "Physiotherapy:";
-    cin >> physio;
-    cout << "Sports Science:";
-    cin >> sportsSci;
-    staff.setMedical(physio, sportsSci);
-}
-
-void App::inputGKCoaching(Staff& staff) {
-    short int gkDistribution, gkHandling, gkShotStop;
-    cout << "GK Distribution:" << endl;
-    cin >> gkDistribution;
-    cout << "GK Handling:";
-    cin >> gkHandling;
-    cout << "GK Shot Stopping:";
-    cin >> gkShotStop;
-    staff.setGoalKeeping(gkDistribution, gkHandling, gkShotStop);
-}
-
-void App::inputMental(Staff& staff) {
-    short int adaptability, determination, discipline, manManagement, motivating;
-    cout << "Adaptability:";
-    cin >> adaptability;
-    cout << "Determination:";
-    cin >> determination;
-    cout << "Level of Discipline:";
-    cin >> discipline;
-    cout << "Man Management:";
-    cin >> manManagement;
-    cout << "Motivating:";
-    cin >> motivating;
-    staff.setMental(adaptability, determination, discipline, manManagement, motivating);
-}
-
-void App::inputScouting(Staff& staff) {
-    short int judgingPlayerData, judgingTeamData, presentingData;
-    cout << "Judging Player Data:" << endl;
-    cin >> judgingPlayerData;
-    cout << "Judging Team Data:";
-    cin >> judgingTeamData;
-    cout << "Presenting Data:";
-    cin >> presentingData;
-    staff.setScouting(judgingPlayerData, judgingTeamData, presentingData);
-}
-
-void App::inputKnowledge(Staff& staff) {
-    short int judgingAbility, judgingPotential, judgingStaffAbility,
-            negotiating, tacticalKnowledge;
-    cout << "Judging Ability:";
-    cin >> judgingAbility;
-    cout << "Judging Potential:";
-    cin >> judgingPotential;
-    cout << "Judging Staff Ability:";
-    cin >> judgingStaffAbility;
-    cout << "Negotiating:";
-    cin >> negotiating;
-    cout << "Tactical Knowledge:" << endl;
-    cin >> tacticalKnowledge;
-    staff.setKnowledge(judgingAbility, judgingPotential, judgingStaffAbility, negotiating, tacticalKnowledge);
 }

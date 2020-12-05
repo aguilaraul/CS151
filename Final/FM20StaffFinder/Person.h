@@ -5,6 +5,8 @@
 #ifndef FM20SCOUT_PERSON_H
 #define FM20SCOUT_PERSON_H
 #include <iostream>
+#include <iomanip>
+#include <fstream>
 using namespace std;
 
 class Person {

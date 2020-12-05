@@ -1,4 +1,7 @@
 // TODO:
+* Compare the two staff members and showcase the winner of each category then the overall winner
+* Do the everything the same for player
+
 * Copy constructor
 * Destructor
 * Other basic constructors that you need to make when you make a custom constructor

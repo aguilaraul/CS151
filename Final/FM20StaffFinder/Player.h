@@ -14,22 +14,24 @@ using namespace std;
 
 class Player : public Person {
 private:
-    struct PlayerAttributes {
-//@TODO: Fill Player Attributes
-    } Attributes;
-    void setCoaching(short int, short int, short int,
-                     short int, short int, short int, short int);
-    void setMedical(short int, short int);
-    void setGoalKeeping(short int, short int, short int);
-    void setMental(short int, short int, short int, short int,
-                   short int);
-    void setScouting(short int, short int, short int);
-    void setKnowledge(short int, short int, short int,
-                      short int, short int);
-    void setRandomAttributes();
+    short int PlayerAttributes[36] = {};
+    enum attributes
+    {
+        // Technical
+        CORNERS, CROSSING, DRIBBLING, FINISHING, FIRSTTOUCH, FREEKICK, HEADING, LONGSHOTS,
+        LONGTHROWS, MARKING, PASSING, PENALTYTAKING, TACKLING, TECHNICAL,
+        // Mental
+        AGGRESSION, ANTICIPATION, BRAVERY, COMPOSURE, CONCENTRATION, DECISIONS, DETERMINATION,
+        FLAIR, LEADERSHIP, OFFTHEBALL, POSITIONING, TEAMWORK, VISION, WORKRATE,
+        // Physical
+        ACCELERATION, AGILITY, BALANCE, JUMPINGREACH, NATURALFITNESS, PACE, STAMINA, STRENGTH
+    };
+
+
 protected:
     string role;
     string club;
+    void setRandomAttributes();
 public:
     Player();
     Player(const string&, const string&, int,
@@ -40,6 +42,13 @@ public:
     string getRole();
     string getClub();
     string to_string() override;
+
+    void printAttributes() const;
+
+    void saveToFile() const;
+    void saveToBinary();
+
+    void readFromBinary(fstream &);
 };
 
 

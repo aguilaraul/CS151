@@ -31,14 +31,6 @@ private:
     bool askToInputStaffMember();
     bool askToSaveToFile();
 
-    // Manual input
-    void manualCoachingInput(Staff&);
-    void inputMedical(Staff&);
-    void inputGKCoaching(Staff&);
-    void inputMental(Staff&);
-    void inputScouting(Staff&);
-    void inputKnowledge(Staff&);
-
     // Compare
     void staffComparison(Staff&, Staff&);
 };

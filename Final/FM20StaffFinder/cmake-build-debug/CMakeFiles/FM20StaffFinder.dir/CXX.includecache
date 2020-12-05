@@ -6,9 +6,35 @@
 
 #IncludeRegexTransform: 
 
+C:/Users/raula/GitHub/CS151/Final/FM20StaffFinder/App.cpp
+App.h
+C:/Users/raula/GitHub/CS151/Final/FM20StaffFinder/App.h
+
+C:/Users/raula/GitHub/CS151/Final/FM20StaffFinder/App.h
+Staff.h
+C:/Users/raula/GitHub/CS151/Final/FM20StaffFinder/Staff.h
+Player.h
+C:/Users/raula/GitHub/CS151/Final/FM20StaffFinder/Player.h
+iostream
+-
+iomanip
+-
+
 C:/Users/raula/GitHub/CS151/Final/FM20StaffFinder/Person.h
 iostream
 -
+iomanip
+-
+fstream
+-
+
+C:/Users/raula/GitHub/CS151/Final/FM20StaffFinder/Player.cpp
+Player.h
+C:/Users/raula/GitHub/CS151/Final/FM20StaffFinder/Player.h
+
+C:/Users/raula/GitHub/CS151/Final/FM20StaffFinder/Player.h
+Person.h
+C:/Users/raula/GitHub/CS151/Final/FM20StaffFinder/Person.h
 
 C:/Users/raula/GitHub/CS151/Final/FM20StaffFinder/Staff.cpp
 Staff.h
@@ -17,10 +43,10 @@ C:/Users/raula/GitHub/CS151/Final/FM20StaffFinder/Staff.h
 C:/Users/raula/GitHub/CS151/Final/FM20StaffFinder/Staff.h
 Person.h
 C:/Users/raula/GitHub/CS151/Final/FM20StaffFinder/Person.h
-memory
+
+C:/Users/raula/GitHub/CS151/Final/FM20StaffFinder/main.cpp
+iostream
 -
-iomanip
--
-fstream
--
+App.h
+C:/Users/raula/GitHub/CS151/Final/FM20StaffFinder/App.h
 
