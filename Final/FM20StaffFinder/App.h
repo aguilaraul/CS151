@@ -19,7 +19,7 @@ public:
     void comparePlayers();
 
 private:
-    void inputStaffMembers(Staff&, Staff&);
+    void inputStaffMember(Staff&);
     void inputPlayers(Player&, Player&);
 
     void setStaffManual(Staff&);

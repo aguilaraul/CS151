@@ -24,45 +24,37 @@ int App::getMenuOption() {
 
 void App::compareStaff() {
     Staff member1, member2;
-    inputStaffMembers(member1, member2);
-    //staffComparison(member1, member2);
+    inputStaffMember(member1);
+    inputStaffMember(member2);
+    cout << " ! -- STAFF COMPARISON -- ! " << endl;
     member1.printAttributes();
     cout << "--- --- --- --- --- ---" << endl;
     member2.printAttributes();
-
+    staffComparison(member1, member2);
 }
 
 void App::comparePlayers() {
     Player player1, player2;
     inputPlayers(player1, player2);
+    cout << " ! -- PLAYER COMPARISON -- ! " << endl;
     player1.printAttributes();
     cout << "--- --- --- --- --- ---" << endl;
     player2.printAttributes();
 }
 
-void App::inputStaffMembers(Staff& member1, Staff& member2) {
+void App::inputStaffMember(Staff& member) {
     if(askToInputStaffMember()) {
-        setStaffManual(member1);
+        setStaffManual(member);
         if(askToSaveToFile()) {
-            saveToFile(member1);
+            saveToFile(member);
         }
     } else {
-        addStaffFromFile(member1);
+        addStaffFromFile(member);
     }
-
-//    if(askToInputStaffMember()) {
-//        setStaffManual(member2);
-//        if(askToSaveToFile()) {
-//            saveToFile(member2);
-//        }
-//    } else {
-//        addStaffFromFile(member2);
-//    }
-
-    cout << " ! -- CONGRATULATIONS -- ! " << endl;
 }
 
 void App::inputPlayers(Player& player1, Player& player2) {
+    // Input Player1
     if(askToInputStaffMember()) {
         setPlayerManual(player1);
         if(askToSaveToFile()) {
@@ -70,6 +62,16 @@ void App::inputPlayers(Player& player1, Player& player2) {
         }
     } else {
         addPlayerFromFile(player1);
+    }
+
+    // Input Player2
+    if(askToInputStaffMember()) {
+        setPlayerManual(player2);
+        if(askToSaveToFile()) {
+            saveToFile(player2);
+        }
+    } else {
+        addPlayerFromFile(player2);
     }
 }
 
@@ -144,7 +146,7 @@ void App::setStaffManual(Staff &member)
     // @Incomplete: Restrict entries to 1-20
     //
     cout << "\nNow set the attributes for " << member.getName() << endl;
-    string attribute[25] = {
+    string attribute[] = {
             "Attacking:", "Defending:", "Fitness:", "Mental:", "Tactical:",
             "Technical:", "Working With Youngsters:",
             "Physiotherapy:", "Sports Science:",
@@ -182,7 +184,6 @@ void App::setPlayerManual(Player &player)
     //
     while(!continue_) {
         cout << "Nation:";
-        cin.ignore();
         getline(cin, nation);
         cout << "Name:";
         getline(cin, name);
@@ -272,8 +273,9 @@ void App::addPlayerFromFile(Player& player) {
     } //@Incomplete make exception
 
     player.readFromBinary(dataFile);
+    dataFile.close();
 }
 
 void App::staffComparison(Staff &member1, Staff &member2) {
-
+    member1.compare(member2);
 }

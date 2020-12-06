@@ -12,6 +12,7 @@ using namespace std;
 
 class Staff : public Person {
 private:
+    int numOfAttributes= 25;
     short int StaffAttributes[25] = {};
     enum attributes
     {
@@ -44,6 +45,7 @@ public:
     string getClub();
 
     string to_string() override;
+    void compare(Staff&);
 
     void printAttributes() const;
 

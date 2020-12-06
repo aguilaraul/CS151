@@ -48,6 +48,50 @@ string Staff::to_string() {
            " at " + club + '.';
 }
 
+void Staff::compare(Staff &other) {
+    string attribute[] = {
+            "Attacking:", "Defending:", "Fitness:", "Mental:", "Tactical:",
+            "Technical:", "Working With Youngsters:",
+            "Physiotherapy:", "Sports Science:",
+            "GK Distribution:", "GK Handling:", "GK Shot Stop:",
+            "Adaptability:", "Determination:", "Level of Discipline:", "Man Management:",
+            "Motivating:",
+            "Judging Player Data:", "Judging Team Data:", "Presenting Data:",
+            "Judging Ability:", "Judging Potential:", "Judging Staff Ability:",
+            "Negotiating:", "Tactical Knowledge:"
+    };
+    int staff1Won = 0, staff2Won = 0;
+    short higher;
+    string winner;
+    for(int i = 0; i < numOfAttributes; i++) {
+        if(this->StaffAttributes[i] > other.StaffAttributes[i]) {
+            higher = this->StaffAttributes[i];
+            winner = this->getName();
+            staff1Won++;
+        } else if(this->StaffAttributes[i] < other.StaffAttributes[i]) {
+            higher = other.StaffAttributes[i];
+            winner = other.getName();
+            staff2Won++;
+        } else {
+            higher = this->StaffAttributes[i];
+            winner = "Tie";
+        }
+        cout << setw(25) << attribute[i];
+        cout << setw(2) << higher;
+        cout << setw(5) << "";
+        cout << setw(25) << winner << endl;
+    }
+    cout << endl;
+    if(staff1Won > staff2Won) {
+        cout << this->getName() << " won the most categories with " << staff1Won;
+    } else if(staff1Won < staff2Won) {
+        cout << other.getName() << " won the most categories with " << staff2Won;
+    } else {
+        cout << "There was a tie with both " << this->getName() << " and " << other.getName()
+             << " both getting " << staff2Won << " categories won." << endl;
+    }
+}
+
 void Staff::printAttributes() const {
     cout << "Nation: " << nation << endl;
     cout << left << setw(6) << "Name:";
