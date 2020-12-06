@@ -34,6 +34,10 @@ void App::compareStaff() {
 
 void App::comparePlayers() {
     Player player1, player2;
+    inputPlayers(player1, player2);
+    player1.printAttributes();
+    cout << "--- --- --- --- --- ---" << endl;
+    player2.printAttributes();
 }
 
 void App::inputStaffMembers(Staff& member1, Staff& member2) {
@@ -43,7 +47,7 @@ void App::inputStaffMembers(Staff& member1, Staff& member2) {
             saveToFile(member1);
         }
     } else {
-        addStaffFile(member1);
+        addStaffFromFile(member1);
     }
 
 //    if(askToInputStaffMember()) {
@@ -52,14 +56,21 @@ void App::inputStaffMembers(Staff& member1, Staff& member2) {
 //            saveToFile(member2);
 //        }
 //    } else {
-//        addStaffFile(member2);
+//        addStaffFromFile(member2);
 //    }
 
     cout << " ! -- CONGRATULATIONS -- ! " << endl;
 }
 
-void App::inputPlayers() {
-
+void App::inputPlayers(Player& player1, Player& player2) {
+    if(askToInputStaffMember()) {
+        setPlayerManual(player1);
+        if(askToSaveToFile()) {
+            saveToFile(player1);
+        }
+    } else {
+        addPlayerFromFile(player1);
+    }
 }
 
 bool App::askToInputStaffMember() {
@@ -94,7 +105,8 @@ bool App::validateAnswer() {
     return !(answer[0] == 'Y' || answer[0] == 'y');
 }
 
-void App::setStaffManual(Staff &member) {
+void App::setStaffManual(Staff &member)
+{
     bool continue_ = false;
 
     string nation, name, role, club;
@@ -157,13 +169,84 @@ void App::setStaffManual(Staff &member) {
     member.setKnowledge(att[20], att[21], att[22], att[23], att[24]);
 }
 
-void App::saveToFile(Staff& staff) {
+void App::setPlayerManual(Player &player)
+{
+    bool continue_ = false;
+
+    string nation, name, role, club;
+    int age;
+    cout << "Enter the following information about the staff member:\n";
+
+    //
+    // @Incomplete: Make its own function. Add validation to other categories?
+    //
+    while(!continue_) {
+        cout << "Nation:";
+        cin.ignore();
+        getline(cin, nation);
+        cout << "Name:";
+        getline(cin, name);
+        cout << "Age:"; // @Incomplete: Add exception to handle non-numbers
+        cin >> age;
+        cout << "Role:";
+        cin.ignore();
+        getline(cin, role);
+        cout << "Club:";
+        getline(cin, club);
+
+        cout << "Re-enter? (Y/N)" << endl;
+        continue_ = validateAnswer();
+
+    }
+    player.setNation(nation);
+    player.setName(name);
+    player.setAge(age);
+    player.setRole(role);
+    player.setClub(club);
+
+    //
+    // @Incomplete: Restrict entries to 1-20
+    //
+    cout << "\nNow set the attributes for " << player.getName() << endl;
+    string attribute[] = {
+            // Technical
+            "Corners:", "Crossing:", "Dribbling:", "Finishing:", "First Touch:", "Free Kick:",
+            "Heading", "Long Shots:", "Long Throws:", "Marking:", "Passing:", "Penalty Taking:",
+            "Tackling", "Technical:",
+            // Mental
+            "Aggression:", "Anticipation:", "Bravery:", "Composure:", "Concentration:", "Decisions",
+            "Determination:", "Flair:", "Leadership:", "Off the Ball:", "Positioning:", "Teamwork:",
+            "Vision", "Work Rate:",
+            // Physical
+            "Acceleration:", "Agility:", "Balance:", "Jumping Reach:", "Natural Fitness:", "Pace:",
+            "Stamina:", "Strength:"
+    };
+    short int att[36] = {};
+    for(int i = 0; i < 36; i++) {
+        cout << attribute[i] << endl;
+        cin >> att[i];
+    }
+
+    player.setTechnical(att[0], att[1], att[2], att[3], att[4], att[5], att[6], att[7], att[8],
+                        att[9], att[10], att[11], att[12], att[13]);
+    player.setMental(att[14], att[15], att[16], att[17], att[18], att[19], att[20], att[21], att[22],
+                     att[23], att[24], att[25], att[26], att[27]);
+    player.setPhysical(att[28], att[29], att[30], att[31], att[32], att[33], att[34], att[35]);
+}
+
+void App::saveToFile(Staff &staff) {
     staff.saveToFile();
     staff.saveToBinary();
     cout << staff.getName() << " saved to file." << endl;
 }
 
-void App::addStaffFile(Staff& member) {
+void App::saveToFile(Player &player) {
+    player.saveToFile();
+    player.saveToBinary();
+    cout << player.getName() << " saved to file." << endl;
+}
+
+void App::addStaffFromFile(Staff& member) {
     string fileName;
     cout << "Please enter the name of the file:" << endl;
     getline(cin, fileName);
@@ -175,6 +258,20 @@ void App::addStaffFile(Staff& member) {
     } //@Incomplete make exception
 
     member.readFromBinary(dataFile);
+}
+
+void App::addPlayerFromFile(Player& player) {
+    string fileName;
+    cout << "Please enter the name of the file:" << endl;
+    getline(cin, fileName);
+
+    fstream dataFile(fileName, ios::binary | ios::in);
+    if(!dataFile) {
+        cout << "Failed to open input file. Program exiting.";
+        exit(1);
+    } //@Incomplete make exception
+
+    player.readFromBinary(dataFile);
 }
 
 void App::staffComparison(Staff &member1, Staff &member2) {

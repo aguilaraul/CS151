@@ -13,20 +13,20 @@ using namespace std;
 int main() {
     App app{};
     cout << "Welcome to FM20 Scouter! Compare two staff members or two players.\n";
-//    switch((app.getMenuOption())) {
-//        case 1:
-//            app.compareStaff();
-//            break;
-//        case 2:
-//            app.comparePlayers();
-//            break;
-//    }
+    switch((app.getMenuOption())) {
+        case 1:
+            app.compareStaff();
+            break;
+        case 2:
+            app.comparePlayers();
+            break;
+    }
 
 
-    Player messi("Argentina", "Lionel Messi", 33, "AMC/AMR/STC", "FC Barcelona");
-    messi.printAttributes();
-    messi.saveToFile();
-    messi.saveToBinary();
+//    Player messi("Argentina", "Lionel Messi", 33, "AMC/AMR/STC", "FC Barcelona");
+//    messi.printAttributes();
+//    messi.saveToFile();
+//    messi.saveToBinary();
 
     return 0;
 }

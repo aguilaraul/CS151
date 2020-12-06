@@ -20,12 +20,16 @@ public:
 
 private:
     void inputStaffMembers(Staff&, Staff&);
-    void inputPlayers();
+    void inputPlayers(Player&, Player&);
 
     void setStaffManual(Staff&);
-    void addStaffFile(Staff&);
+    void setPlayerManual(Player&);
+
+    void addStaffFromFile(Staff&);
+    void addPlayerFromFile(Player&);
 
     void saveToFile(Staff&);
+    void saveToFile(Player&);
 
     bool validateAnswer();
     bool askToInputStaffMember();

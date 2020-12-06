@@ -49,6 +49,15 @@ public:
     void saveToBinary();
 
     void readFromBinary(fstream &);
+
+    void setTechnical(const short&, const short&, const short&, const short&, const short&,
+                      const short&, const short&, const short&, const short&, const short&,
+                      const short&, const short&, const short&, const short&);
+    void setMental(const short&, const short&, const short&, const short&, const short&,
+                      const short&, const short&, const short&, const short&, const short&,
+                      const short&, const short&, const short&, const short&);
+    void setPhysical(const short&, const short&, const short&, const short&, const short&,
+                      const short&, const short&, const short&);
 };
 
 

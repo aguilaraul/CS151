@@ -47,12 +47,6 @@ string Player::to_string() {
            " at " + club + '.';
 }
 
-void Player::setRandomAttributes() {
-    for(short &PlayerAttribute : PlayerAttributes) {
-        PlayerAttribute = rand() % 20 + 1;
-    }
-}
-
 void Player::printAttributes() const {
     cout << "Nation: " << nation << endl;
     cout << left << setw(6) << "Name:";
@@ -267,8 +261,69 @@ void Player::readFromBinary(fstream &dataFile) {
     dataFileCopy.read(reinterpret_cast<char*>(&club), sizeof(string));
 
     for(auto &PlayerAttribute:PlayerAttributes) {
-        dataFileCopy.read(reinterpret_cast<char*>(&PlayerAttribute), sizeof(short int));
+        dataFileCopy.read(reinterpret_cast<char*>(&PlayerAttribute), sizeof(short));
     }
 
     dataFileCopy.close();
+}
+
+void Player::setTechnical(const short &corner, const short &cross, const short &dribble, const short &finish,
+                          const short &ftouch, const short &fkick, const short &head, const short &lshot,
+                          const short &lthrow, const short &mark, const short &pass, const short &penalty,
+                          const short &tackle, const short &tech)
+{
+    PlayerAttributes[CORNERS] = corner;
+    PlayerAttributes[CROSSING] = cross;
+    PlayerAttributes[DRIBBLING] = dribble;
+    PlayerAttributes[FINISHING] = finish;
+    PlayerAttributes[FIRSTTOUCH] = ftouch;
+    PlayerAttributes[FREEKICK] = fkick;
+    PlayerAttributes[HEADING] = head;
+    PlayerAttributes[LONGSHOTS] = lshot;
+    PlayerAttributes[LONGTHROWS] = lthrow;
+    PlayerAttributes[MARKING] = mark;
+    PlayerAttributes[PASSING] = pass;
+    PlayerAttributes[PENALTYTAKING] = penalty;
+    PlayerAttributes[TACKLING] = tackle;
+    PlayerAttributes[TECHNICAL] = tech;
+}
+
+void Player::setMental(const short &aggr, const short &anti, const short &brave, const short &compose,
+                       const short &concen, const short &deci, const short &deter, const short &flair,
+                       const short &leader, const short &offball, const short &pos, const short &team,
+                       const short &vis, const short &work)
+{
+    PlayerAttributes[AGGRESSION] = aggr;
+    PlayerAttributes[ANTICIPATION] = anti;
+    PlayerAttributes[BRAVERY] = brave;
+    PlayerAttributes[COMPOSURE] = compose;
+    PlayerAttributes[CONCENTRATION] = concen;
+    PlayerAttributes[DECISIONS] = deci;
+    PlayerAttributes[DETERMINATION] = deter;
+    PlayerAttributes[FLAIR] = flair;
+    PlayerAttributes[LEADERSHIP] = leader;
+    PlayerAttributes[OFFTHEBALL] = offball;
+    PlayerAttributes[POSITIONING] = pos;
+    PlayerAttributes[TEAMWORK] = team;
+    PlayerAttributes[VISION] = vis;
+    PlayerAttributes[WORKRATE] = work;
+}
+
+void Player::setPhysical(const short &accel, const short &agil, const short &bal, const short &jreach,
+                         const short &nfitness, const short &pace, const short &sta, const short &str)
+{
+    PlayerAttributes[ACCELERATION] = accel;
+    PlayerAttributes[AGILITY] = agil;
+    PlayerAttributes[BALANCE] = bal;
+    PlayerAttributes[JUMPINGREACH] = jreach;
+    PlayerAttributes[NATURALFITNESS] = nfitness;
+    PlayerAttributes[PACE] = pace;
+    PlayerAttributes[STAMINA] = sta;
+    PlayerAttributes[STRENGTH] = str;
+}
+
+void Player::setRandomAttributes() {
+    for(short &PlayerAttribute : PlayerAttributes) {
+        PlayerAttribute = rand() % 20 + 1;
+    }
 }
