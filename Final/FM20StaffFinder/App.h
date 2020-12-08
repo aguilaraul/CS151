@@ -20,7 +20,7 @@ public:
 
 private:
     void inputStaffMember(Staff&);
-    void inputPlayers(Player&, Player&);
+    void inputPlayer(Player&);
 
     void setStaffManual(Staff&);
     void setPlayerManual(Player&);

@@ -21,11 +21,11 @@ Person::Person(const string& nation, const string& name, int age) {
 Person::~Person() = default;
 
 void Person::setNation(const string& n) {
-    this->nation = n;
+    nation = n;
 }
 
 void Person::setName(const string& n) {
-    this->name = n;
+    name = n;
 }
 
 void Person::setAge(int a) {

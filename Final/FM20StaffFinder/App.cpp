@@ -35,7 +35,8 @@ void App::compareStaff() {
 
 void App::comparePlayers() {
     Player player1, player2;
-    inputPlayers(player1, player2);
+    inputPlayer(player1);
+    inputPlayer(player2);
     cout << " ! -- PLAYER COMPARISON -- ! " << endl;
     player1.printAttributes();
     cout << "--- --- --- --- --- ---" << endl;
@@ -53,25 +54,15 @@ void App::inputStaffMember(Staff& member) {
     }
 }
 
-void App::inputPlayers(Player& player1, Player& player2) {
+void App::inputPlayer(Player& player) {
     // Input Player1
     if(askToInputStaffMember()) {
-        setPlayerManual(player1);
+        setPlayerManual(player);
         if(askToSaveToFile()) {
-            saveToFile(player1);
+            saveToFile(player);
         }
     } else {
-        addPlayerFromFile(player1);
-    }
-
-    // Input Player2
-    if(askToInputStaffMember()) {
-        setPlayerManual(player2);
-        if(askToSaveToFile()) {
-            saveToFile(player2);
-        }
-    } else {
-        addPlayerFromFile(player2);
+        addPlayerFromFile(player);
     }
 }
 

@@ -238,33 +238,37 @@ void Player::saveToBinary() {
     ofstream dataFile(fileName, ios::binary | ios::out);
 
     // Person data
-    dataFile.write(reinterpret_cast<char*>(&nation), sizeof(string));
-    dataFile.write(reinterpret_cast<char*>(&name), sizeof(string));
-    dataFile.write(reinterpret_cast<char*>(&age), sizeof(int));
-    dataFile.write(reinterpret_cast<char*>(&role), sizeof(string));
-    dataFile.write(reinterpret_cast<char*>(&club), sizeof(string));
+    dataFile.write(nation.c_str(), nation.size() );
+    dataFile.write("\0", sizeof(char));
+    dataFile.write(name.c_str(), name.size());
+    dataFile.write("\0", sizeof(char));
+    dataFile.write(reinterpret_cast<char*>(&age), sizeof(age));
+    dataFile.write(role.c_str(), role.size() );
+    dataFile.write("\0", sizeof(char));
+    dataFile.write(club.c_str(), club.size() );
+    dataFile.write("\0", sizeof(char));
 
     // Attributes
     for(auto &PlayerAttribute : PlayerAttributes) {
-        dataFile.write(reinterpret_cast<char*>(&PlayerAttribute), sizeof(short int));
+        dataFile.write(reinterpret_cast<char*>(&PlayerAttribute), sizeof(PlayerAttribute));
     }
 
     dataFile.close();
 }
 
 void Player::readFromBinary(fstream &dataFile) {
-    fstream &dataFileCopy = dataFile;
-    dataFileCopy.read(reinterpret_cast<char*>(&nation), sizeof(string));
-    dataFileCopy.read(reinterpret_cast<char*>(&name), sizeof(string));
-    dataFileCopy.read(reinterpret_cast<char*>(&age), sizeof(int));
-    dataFileCopy.read(reinterpret_cast<char*>(&role), sizeof(string));
-    dataFileCopy.read(reinterpret_cast<char*>(&club), sizeof(string));
+    //fstream &dataFileCopy = dataFile;
+    getline(dataFile, nation, '\0');
+    getline(dataFile, name, '\0');
+    dataFile.read(reinterpret_cast<char*>(&age), sizeof(age));
+    getline(dataFile, role, '\0');
+    getline(dataFile, club, '\0');
 
     for(auto &PlayerAttribute:PlayerAttributes) {
-        dataFileCopy.read(reinterpret_cast<char*>(&PlayerAttribute), sizeof(short));
+        dataFile.read(reinterpret_cast<char*>(&PlayerAttribute), sizeof(PlayerAttribute));
     }
 
-    dataFileCopy.close();
+    //dataFileCopy.close();
 }
 
 void Player::setTechnical(const short &corner, const short &cross, const short &dribble, const short &finish,
