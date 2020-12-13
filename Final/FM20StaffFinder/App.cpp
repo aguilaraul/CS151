@@ -7,6 +7,19 @@
 #include "App.h"
 using namespace std;
 
+void App::run() {
+    switch(getMenuOption()) {
+        case 1:
+            compareStaff();
+            break;
+        case 2:
+            comparePlayers();
+            break;
+        default:
+            exit(0);
+    }
+}
+
 int App::getMenuOption() {
     cout << "1. Compare two staff members\n"
          << "2. Compare two players\n";

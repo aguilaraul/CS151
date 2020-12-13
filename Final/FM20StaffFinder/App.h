@@ -14,11 +14,13 @@
 
 class App {
 public:
+    void run();
+
+private:
     int getMenuOption();
     void compareStaff();
     void comparePlayers();
 
-private:
     void inputStaffMember(Staff&);
     void inputPlayer(Player&);
 
