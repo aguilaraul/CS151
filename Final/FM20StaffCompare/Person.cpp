@@ -32,11 +32,11 @@ void Person::setAge(int a) {
     this->age = a;
 }
 
-string Person::getNation() {
+string Person::getNation() const {
     return this->nation;
 }
 
-string Person::getName() {
+string Person::getName() const {
     return this->name;
 }
 

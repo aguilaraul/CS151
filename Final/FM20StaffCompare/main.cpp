@@ -2,8 +2,8 @@
  * main.cpp
  *
  * Author:  Raul Aguilar
- * Date:    November 6, 2020
- * CS 151 3228 Final Project: Football Manager 20 Scouter
+ * Date:    November 12, 2020
+ * CS 151 3228 Final Project: Football Manager 20 Staff Compare
  */
 #include <iostream>
 #include "App.h"

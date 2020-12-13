@@ -17,12 +17,12 @@ protected:
 public:
     Person();
     Person(const string&, const string&, int);
-    ~Person();
+    virtual ~Person();
     void setNation(const string&);
     void setName(const string&);
     void setAge(int);
-    string getNation();
-    string getName();
+    string getNation() const;
+    string getName() const;
     int getAge() const;
     virtual string to_string();
 };

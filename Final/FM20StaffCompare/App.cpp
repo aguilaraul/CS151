@@ -1,7 +1,7 @@
 /**
  * App.cpp
  * Author   Raul Aguilar
- * Date     December 3, 2020
+ * Date     December 12, 2020
  * CS 151 3228 Final Project
  */
 #include "App.h"
@@ -19,6 +19,8 @@ void App::run() {
             exit(0);
     }
 }
+
+App::~App() = default;
 
 int App::getMenuOption() {
     cout << "1. Compare two staff members\n"
@@ -280,6 +282,10 @@ void App::addPlayerFromFile(Player& player) {
     dataFile.close();
 }
 
-void App::staffComparison(Staff &member1, Staff &member2) {
+void App::comparison(const Staff &member1, const Staff &member2) {
     member1.compare(member2);
+}
+
+void App::comparison(const Player &player1, const Player &player2) {
+    player1.compare(player2);
 }

@@ -1,7 +1,7 @@
 /**
  * Staff.cpp
  * Author   Raul Aguilar
- * Date     December 3, 2020
+ * Date     December 12, 2020
  * CS 151 3228 Final Project
  */
 
@@ -48,7 +48,7 @@ string Staff::to_string() {
            " at " + club + '.';
 }
 
-void Staff::compare(Staff &other) {
+void Staff::compare(const Staff &other) const {
     string attribute[] = {
             "Attacking:", "Defending:", "Fitness:", "Mental:", "Tactical:",
             "Technical:", "Working With Youngsters:",

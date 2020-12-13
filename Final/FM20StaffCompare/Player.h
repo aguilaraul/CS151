@@ -14,6 +14,7 @@ using namespace std;
 
 class Player : public Person {
 private:
+    int numOfAttributes = 36;
     short int PlayerAttributes[36] = {};
     enum attributes
     {
@@ -36,12 +37,14 @@ public:
     Player();
     Player(const string&, const string&, int,
           const string&, const string&);
-    ~Player();
+    ~Player() override;
     void setRole(const string&);
     void setClub(const string&);
     string getRole();
     string getClub();
+
     string to_string() override;
+    void compare(const Player&) const;
 
     void printAttributes() const;
 

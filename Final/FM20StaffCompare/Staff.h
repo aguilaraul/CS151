@@ -1,7 +1,7 @@
 /**
  * Staff.h
  * Author   Raul Aguilar
- * Date     December 3, 2020
+ * Date     December 12, 2020
  * CS 151 3228 Final Project
  */
 
@@ -38,14 +38,14 @@ public:
     Staff();
     Staff(const string&, const string&, int,
           const string&, const string&);
-    ~Staff();
+    ~Staff() override;
     void setRole(const string&);
     void setClub(const string&);
     string getRole();
     string getClub();
 
     string to_string() override;
-    void compare(Staff&);
+    void compare(const Staff&) const;
 
     void printAttributes() const;
 

@@ -1,7 +1,7 @@
 /**
  * App.h
  * Author   Raul Aguilar
- * Date     December 3, 2020
+ * Date     December 12, 2020
  * CS 151 3228 Final Project
  */
 
@@ -15,9 +15,10 @@
 class App {
 public:
     void run();
+    ~App();
 
 private:
-    int getMenuOption();
+    static int getMenuOption();
     void compareStaff();
     void comparePlayers();
 
@@ -27,18 +28,19 @@ private:
     void setStaffManual(Staff&);
     void setPlayerManual(Player&);
 
-    void addStaffFromFile(Staff&);
-    void addPlayerFromFile(Player&);
+    static void addStaffFromFile(Staff&);
+    static void addPlayerFromFile(Player&);
 
-    void saveToFile(Staff&);
-    void saveToFile(Player&);
+    static void saveToFile(Staff&);
+    static void saveToFile(Player&);
 
-    bool validateAnswer();
-    bool askToInputStaffMember();
-    bool askToSaveToFile();
+    static bool validateAnswer();
+    static bool askToInputStaffMember();
+    static bool askToSaveToFile();
 
     // Compare
-    void staffComparison(Staff&, Staff&);
+    static void comparison(const Staff&, const Staff&);
+    static void comparison(const Player&, const Player&);
 };
 
 

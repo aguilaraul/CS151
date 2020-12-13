@@ -47,6 +47,52 @@ string Player::to_string() {
            " at " + club + '.';
 }
 
+void Player::compare(const Player &other) const {
+    string attribute[] = {
+            // Technical
+            "Corners:", "Crossing:", "Dribbling:", "Finishing:", "First Touch:", "Free Kick:",
+            "Heading", "Long Shots:", "Long Throws:", "Marking:", "Passing:", "Penalty Taking:",
+            "Tackling", "Technical:",
+            // Mental
+            "Aggression:", "Anticipation:", "Bravery:", "Composure:", "Concentration:", "Decisions",
+            "Determination:", "Flair:", "Leadership:", "Off the Ball:", "Positioning:", "Teamwork:",
+            "Vision", "Work Rate:",
+            // Physical
+            "Acceleration:", "Agility:", "Balance:", "Jumping Reach:", "Natural Fitness:", "Pace:",
+            "Stamina:", "Strength:"
+    };
+    int player1Won = 0, player2Won = 0;
+    short higher;
+    string winner;
+    for(int i = 0; i < numOfAttributes; i++) {
+        if(PlayerAttributes[i] > other.PlayerAttributes[i]) {
+            higher = PlayerAttributes[i];
+            winner = getName();
+            player1Won++;
+        } else if(PlayerAttributes[i] < other.PlayerAttributes[i]) {
+            higher = other.PlayerAttributes[i];
+            winner = other.getName();
+            player2Won++;
+        } else {
+            higher = PlayerAttributes[i];
+            winner = "Tie";
+        }
+        cout << setw(25) << attribute[i];
+        cout << setw(2) << higher;
+        cout << setw(5) << "";
+        cout << setw(25) << winner << endl;
+    }
+    cout << endl;
+    if(player1Won > player2Won) {
+        cout << getName() << " won the most categories with " << player1Won << "." << endl;
+    } else if(player1Won < player2Won) {
+        cout << other.getName() << " won the most categories with " << player2Won << "." << endl;
+    } else {
+        cout << "There was a tie with both " << getName() << " and " << other.getName()
+             << " both getting " << player2Won << " categories won." << endl;
+    }
+}
+
 void Player::printAttributes() const {
     cout << "Nation: " << nation << endl;
     cout << left << setw(6) << "Name:";
