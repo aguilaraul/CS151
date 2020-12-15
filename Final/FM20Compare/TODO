@@ -1,5 +1,11 @@
 // TODO:
-* When reading from file (staff or player) check if the value read is in range
-    using exception class
+* Add documentation
 
-* Before opening file, do a check if '.dat' file by finding index of last '.'
+* Copy constructor
+* Copy assignment operator
+* Move constructor
+* Destructor
+
+* Test out Staff and Player for files to turn in
+
+* Submit final

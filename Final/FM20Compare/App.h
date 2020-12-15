@@ -1,7 +1,7 @@
 /**
  * App.h
  * Author   Raul Aguilar
- * Date     December 12, 2020
+ * Date     December 14, 2020
  * CS 151 3228 Final Project
  */
 
@@ -18,7 +18,7 @@ public:
     void run();
 
 private:
-    static int getMenuOption();
+    static int getMainMenuChoice();
     static bool askToLoadPerson(const string &type);
     static bool askToSaveToFile();
     static bool validateAnswer();

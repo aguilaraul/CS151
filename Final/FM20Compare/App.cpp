@@ -1,14 +1,17 @@
 /**
  * App.cpp
  * Author   Raul Aguilar
- * Date     December 12, 2020
+ * Date     December 14, 2020
  * CS 151 3228 Final Project
  */
 #include "App.h"
 using namespace std;
 
+/**
+ * Starting point of application
+ */
 void App::run() {
-    switch(getMenuOption()) {
+    switch(getMainMenuChoice()) {
         case 1:
             compareStaff();
             break;
@@ -16,11 +19,16 @@ void App::run() {
             comparePlayers();
             break;
         default:
-            exit(0);
+            exit(0); // Shouldn't be able to get here but just in case
     }
 }
 
-int App::getMenuOption() {
+/**
+ * Presents the main menu. Validates that user selects one of two
+ * options available.
+ * @return Number choice that the user made
+ */
+int App::getMainMenuChoice() {
     cout << "1. Compare two staff members\n"
          << "2. Compare two players\n";
     cout << "Select an option:" << endl;
@@ -35,6 +43,13 @@ int App::getMenuOption() {
     return choice;
 }
 
+/**
+ * After the user decides to compare either Staff or Players, a menu to
+ * ask how they would like to load in the Staff or Player.
+ * @param type "staff" or "player"
+ * @return True if user made choice 1. Otherwise false, user chose
+ * option 2
+ */
 bool App::askToLoadPerson(const string &type) {
     cout << "How would you like to load in the " + type + "?\n";
     cout << "1. Enter manually\n"
@@ -52,6 +67,11 @@ bool App::askToLoadPerson(const string &type) {
     return choice == 1;
 }
 
+/**
+ * After entering a Staff or Player manually, the user is asked if they
+ * would like to save the file for later use
+ * @return True if answer begins with 'y' or 'Y'. Otherwise false.
+ */
 bool App::askToSaveToFile() {
     string answer;
     cout << "Would you like to save the person to a file? (Y / N)" << endl;
@@ -59,6 +79,11 @@ bool App::askToSaveToFile() {
     return (answer[0] == 'Y' || answer[0] == 'y');
 }
 
+/**
+ * Used in areas to ask user if they want to re-enter personal
+ * information or attributes about a Staff or Player
+ * @return True if answer begins with 'y' or 'Y'. Otherwise false.
+ */
 bool App::validateAnswer() {
     string answer;
     cout << "Re-enter? (Y / N)" << endl;
@@ -88,11 +113,22 @@ void App::comparePlayers() {
     comparison(player1, player2);
 }
 
+/**
+ * Helper method to call the compare function of a Staff or Player object
+ * @tparam T Staff or Player class
+ * @param person1 Staff or Player object that calls compare()
+ * @param person2 Staff or Player object to compare against person1
+ */
 template<class T>
 void App::comparison(const T &person1, const T &person2) {
     person1.compare(person2);
 }
 
+/**
+ * Menu option to add Staff via file or manual input. After manual
+ * input, there is an option to save to file for later use.
+ * @param staff Staff object to load to
+ */
 void App::addStaffMember(Staff& staff) {
     if(askToLoadPerson("staff member")) {
         setStaffManual(staff);
@@ -104,6 +140,11 @@ void App::addStaffMember(Staff& staff) {
     }
 }
 
+/**
+ * Menu option to add Player via file or manual input. After manual
+ * input, there is an option to save to file for later use.
+ * @param player Player object to load to
+ */
 void App::addPlayer(Player& player) {
     if(askToLoadPerson("player")) {
         setPlayerManual(player);
@@ -115,6 +156,11 @@ void App::addPlayer(Player& player) {
     }
 }
 
+/**
+ * A menu option to manually set the information for a Staff member
+ * including their personal info and their attributes.
+ * @param staff Staff object to set information
+ */
 void App::setStaffManual(Staff &staff)
 {
     inputPersonalInfo(staff);
@@ -129,6 +175,12 @@ void App::setStaffManual(Staff &staff)
 
 }
 
+/**
+ * Helper method to input the personal information of a Staff or Player
+ * object.
+ * @tparam T Staff class or Player class
+ * @param person Staff or Player object to set personal information
+ */
 template<class T>
 void App::inputPersonalInfo(T &person) {
     bool reenter = true;
@@ -160,6 +212,11 @@ void App::inputPersonalInfo(T &person) {
     person.setClub(club);
 }
 
+/**
+ * Helper method to validate and set the input of Staff coaching
+ * attributes.
+ * @param staff Staff object to set coaching attributes
+ */
 void App::inputCoaching(Staff &staff) {
     AttributeRange attributeRange;
     bool reenter = true;
@@ -189,6 +246,11 @@ void App::inputCoaching(Staff &staff) {
     staff.setCoaching(values[0], values[1], values[2], values[3], values[4], values[5], values[6]);
 }
 
+/**
+ * Helper method to validate and set the input of Staff medical
+ * attributes.
+ * @param staff Staff object to set medical attributes
+ */
 void App::inputMedical(Staff &staff) {
     AttributeRange attributeRange;
     bool reenter = true;
@@ -217,6 +279,11 @@ void App::inputMedical(Staff &staff) {
     staff.setMedical(values[0], values[1]);
 }
 
+/**
+ * Helper method to validate and set the input of Staff goalkeeping
+ * coaching attributes.
+ * @param staff Staff object to set GK coaching attributes
+ */
 void App::inputGKCoaching(Staff &staff) {
     AttributeRange attributeRange;
     bool reenter = true;
@@ -245,6 +312,11 @@ void App::inputGKCoaching(Staff &staff) {
     staff.setGoalKeeping(values[0], values[1], values[2]);
 }
 
+/**
+ * Helper method to validate and set the input of Staff mental
+ * attributes.
+ * @param staff Staff object to set mental attributes
+ */
 void App::inputMental(Staff &staff) {
     AttributeRange attributeRange;
     bool reenter = true;
@@ -274,6 +346,11 @@ void App::inputMental(Staff &staff) {
     staff.setMental(values[0], values[1], values[2], values[3], values[4]);
 }
 
+/**
+ * Helper method to validate and set the input of Staff scouting
+ * attributes.
+ * @param staff Staff object to set scouting attributes
+ */
 void App::inputScouting(Staff &staff) {
     AttributeRange attributeRange;
     bool reenter = true;
@@ -302,6 +379,11 @@ void App::inputScouting(Staff &staff) {
     staff.setScouting(values[0], values[1], values[2]);
 }
 
+/**
+ * Helper method to validate and set the input of Staff knowledge
+ * attributes.
+ * @param staff Staff object to set knowledge attributes
+ */
 void App::inputKnowledge(Staff &staff) {
     AttributeRange attributeRange;
     bool reenter = true;
@@ -331,6 +413,11 @@ void App::inputKnowledge(Staff &staff) {
     staff.setKnowledge(values[0], values[1], values[2], values[3], values[4]);
 }
 
+/**
+ * A menu option to manually enter the Player information from personal
+ * info to their attributes.
+ * @param player Player object to set information and attributes
+ */
 void App::setPlayerManual(Player &player)
 {
     inputPersonalInfo(player);
@@ -341,6 +428,11 @@ void App::setPlayerManual(Player &player)
     inputPhysical(player);
 }
 
+/**
+ * Helper method to validate and set the input of Player technical
+ * attributes.
+ * @param player Player object to set technical attributes
+ */
 void App::inputTechnical(Player &player) {
     AttributeRange attributeRange;
     bool reenter = true;
@@ -372,6 +464,11 @@ void App::inputTechnical(Player &player) {
                         values[8], values[9], values[10], values[11], values[12], values[13]);
 }
 
+/**
+ * Helper method to validate and set the input of Player mental
+ * attributes.
+ * @param player Player object to set mental attributes
+ */
 void App::inputMental(Player &player) {
     AttributeRange attributeRange;
     bool reenter = true;
@@ -403,6 +500,11 @@ void App::inputMental(Player &player) {
                      values[8], values[9], values[10], values[11], values[12], values[13]);
 }
 
+/**
+ * Helper method to validate and set the input of Player physical
+ * attributes.
+ * @param player Player object to set physical attributes
+ */
 void App::inputPhysical(Player &player) {
     AttributeRange attributeRange;
     bool reenter = true;
@@ -435,6 +537,7 @@ void App::inputPhysical(Player &player) {
 //
 // File Operations
 //
+
 /**
  * Saves the Staff or Player to a formatted text file and a binary file
  * to load in later.

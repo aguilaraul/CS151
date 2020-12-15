@@ -1,6 +1,9 @@
-//
-// Created by raula on 12/14/2020.
-//
+/**
+ * AttributeRange.h
+ * Author   Raul Aguilar
+ * Date     December 14, 2020
+ * CS 151 3228 Final Project
+ */
 
 #ifndef FM20COMPARE_ATTRIBUTERANGE_H
 #define FM20COMPARE_ATTRIBUTERANGE_H

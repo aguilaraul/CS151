@@ -48,6 +48,13 @@ string Staff::to_string() {
            " at " + club + '.';
 }
 
+/**
+ * Compares the calling Staff object against another Staff object
+ * passed by reference. Loops through all the attributes of a Staff,
+ * determines which of the two Staff has the greater attribute
+ * value, and prints the winner or tie of all the attributes.
+ * @param other Staff object to compare calling object against
+ */
 void Staff::compare(const Staff &other) const {
     string attribute[] = {
             "Attacking:", "Defending:", "Fitness:", "Mental:", "Tactical:",
@@ -92,6 +99,10 @@ void Staff::compare(const Staff &other) const {
     }
 }
 
+/**
+ * Prints the Staff's personal information and attributes to the
+ * terminal
+ */
 void Staff::printAttributes() const {
     cout << "Nation: " << nation << endl;
     cout << left << setw(6) << "Name:";
@@ -173,6 +184,15 @@ void Staff::printAttributes() const {
     cout << setw(headingWidth) << "Tactical Knowledge:" << setw(attributeWidth) << StaffAttributes[TACTICALKNOWLEDGE] << endl;
 }
 
+//
+// File I/O
+//
+
+/**
+ * After the user elects to save a manually inputted Staff, the
+ * personal information and attributes are converted and saved to a
+ * formatted text file
+ */
 void Staff::saveToFile() const {
     const string fileName = name + ".txt";
     ofstream outfile(fileName, ios::out);
@@ -257,6 +277,11 @@ void Staff::saveToFile() const {
     outfile.close();
 }
 
+/**
+ * After the user elects to save a manually inputted Player, the
+ * personal information and attributes are converted and saved to a
+ * binary file
+ */
 void Staff::saveToBinary() {
     const string fileName = name + ".dat";
     ofstream dataFile(fileName, ios::binary | ios::out);
@@ -280,6 +305,12 @@ void Staff::saveToBinary() {
     dataFile.close();
 }
 
+/**
+ * After a user selects to load in a Player via file, the fstream
+ * opened in App is passed here. The fstream is used to read and set
+ * the personal information and attributes of the Player.
+ * @param dataFile
+ */
 void Staff::loadBinary(fstream& dataFile) {
     getline(dataFile, nation, '\0');
     getline(dataFile, name, '\0');
@@ -292,8 +323,27 @@ void Staff::loadBinary(fstream& dataFile) {
     }
 }
 
-/* Set Attributes */
+//
+// Set Staff Attributes
+//
 
+/**
+ * After the attributes have been validated from App, this setter
+ * function sets the Coaching attributes for a Staff member
+ * @param attack The staff member's competency at coaching attacking
+ * soccer
+ * @param defend The ability of the staff member to coach the defensive
+ * side of the game
+ * @param fit This reflects a staff member's ability to ensure the
+ * standards of player and squad fitness are developed and maintained
+ * @param ment The staff member's approach to dealing with players on a
+ * mental level
+ * @param tact How tactically astute the staff member is
+ * @param tech The ability of the staff member to teach the technical
+ * side of the game
+ * @param workingWYoungsters How successful a staff member is at
+ * working with younger players
+ */
 void Staff::setCoaching(const short &attack, const short &defend, const short &fit,
                         const short &ment, const short &tact, const short &tech,
                         const short &workingWYoungsters)
@@ -307,12 +357,33 @@ void Staff::setCoaching(const short &attack, const short &defend, const short &f
     StaffAttributes[WORKINGWITHYOUNGSTERS] = workingWYoungsters;
 }
 
+/**
+ * After the attributes have been validated from App, this setter
+ * function sets the Medical attributes for a Staff member
+ * @param physio Reflects the physiotherapist's competency in
+ * issuing high-quality treatment to both prevent and rehabilitate
+ * injuries
+ * @param ss The competency of a staff member to accurately manage
+ * every player's fitness level and injury risk in such a way that they
+ * are abe to keep them in condition to play regular soccer
+ */
 void Staff::setMedical(const short &physio, const short &ss)
 {
     StaffAttributes[PHYSIOTHERAPY] = physio;
     StaffAttributes[SPORTSSCIENCE] = ss;
 }
 
+/**
+ * After the attributes have been validated from App, this setter
+ * function sets the Goalkeeper Coaching attributes for a Staff member
+ * @param dist The staff member's competency at coaching a goalkeeper
+ * in the quality and effectiveness of his distribution
+ * @param hand The staff member's competency at coaching a goalkeeper's
+ * Handling attribute as well as impacting upon their Aerial Reach,
+ * Command of Area, and Communication
+ * @param ss The staff member's competency at coaching a goalkeeper's
+ * ability to stop all type of shots
+ */
 void Staff::setGoalKeeping(const short& dist, const short& hand, const short& ss)
 {
     StaffAttributes[GKDISTRIBUTION] = dist;
@@ -320,6 +391,21 @@ void Staff::setGoalKeeping(const short& dist, const short& hand, const short& ss
     StaffAttributes[GKSHOTSTOP] = ss;
 }
 
+/**
+ * After the attributes have been validated from App, this setter
+ * function sets the Mental attributes for a Staff member
+ * @param adapt A high Adaptability attribute will enable a staff
+ * member to settle quickly in a new country but will also help a
+ * little in settling in at new clubs and new roles
+ * @param det The mental desire of the staff member to succeed; the
+ * staff member's own innate drive to better themselves
+ * @param disc This reflects the level of discipline the staff member
+ * is likely to take into their approach
+ * @param mm How well the member of staff is able to deal with those
+ * around them and particularly below them
+ * @param mot The mental ability of a staff member to motivate their
+ * players
+ */
 void Staff::setMental(const short& adapt, const short& det, const short& disc,
                       const short& mm, const short& mot)
 {
@@ -330,6 +416,19 @@ void Staff::setMental(const short& adapt, const short& det, const short& disc,
     StaffAttributes[MOTIVATING] = mot;
 }
 
+/**
+ * After the attributes have been validated from App, this setter
+ * function sets the Scouting attributes for a Staff member
+ * @param jPD The ability of a Data Analyst to understand data
+ * concerning an individual player and interpret it in a manner useful
+ * to the head coach
+ * @param jTD The ability of a Data Analyst to understand data
+ * concerning a team and interpret it in a manner useful to the head
+ * coach
+ * @param pD The ability of a Data Analyst to present their data in an
+ * efficient and easily digestible manner to the head coach and to the
+ * players
+ */
 void Staff::setScouting(const short& jPD, const short& jTD, const short& pD)
 {
     StaffAttributes[JUDGINGPLAYERDATA] = jPD;
@@ -337,6 +436,20 @@ void Staff::setScouting(const short& jPD, const short& jTD, const short& pD)
     StaffAttributes[PRESENTINGDATA] = pD;
 }
 
+/**
+ * After the attributes have been validated from App, this setter
+ * function sets the Knowledge attributes for a Staff member
+ * @param jA The ability of the staff member to appraise the current
+ * standard of a given player of team
+ * @param jP The ability of the staff member to appraise the potential
+ * future levels of performance of a given player or team while taking
+ * into account several factors that could influence the outcome
+ * @param jSA The ability of a Technical Director to judge which
+ * abilities of staff members need improvement and act on that
+ * information
+ * @param n How good the staff member is at negotiating transfer deals
+ * @param tK The tactical knowledge possessed by a staff member
+ */
 void Staff::setKnowledge(const short& jA, const short& jP, const short& jSA,
                          const short& n, const short& tK)
 {
@@ -347,6 +460,9 @@ void Staff::setKnowledge(const short& jA, const short& jP, const short& jSA,
     StaffAttributes[TACTICALKNOWLEDGE] = tK;
 }
 
+/**
+ * Sets random attribute values during default initialization
+ */
 void Staff::setRandomAttributes() {
     for(short & StaffAttribute : StaffAttributes) {
         StaffAttribute = rand() % 20 + 1;
