@@ -335,40 +335,112 @@ void App::setPlayerManual(Player &player)
 {
     inputPersonalInfo(player);
 
-    //
-    // @Incomplete: Restrict entries to 1-20
-    //
     cout << "\nNow set the attributes for " << player.getName() << endl;
+    inputTechnical(player);
+    inputMental(player);
+    inputPhysical(player);
+}
+
+void App::inputTechnical(Player &player) {
+    AttributeRange attributeRange;
+    bool reenter = true;
+    bool redo;
+    int numAttr = 14;
     string attribute[] = {
-            // Technical
             "Corners:", "Crossing:", "Dribbling:", "Finishing:", "First Touch:", "Free Kick:",
             "Heading", "Long Shots:", "Long Throws:", "Marking:", "Passing:", "Penalty Taking:",
             "Tackling", "Technical:",
-            // Mental
+    };
+    short values[numAttr];
+    while(reenter){
+        for(int i = 0; i < numAttr; i++) {
+            redo = true;
+            while(redo) {
+                cout << attribute[i] << endl;
+                try {
+                    values[i] = attributeRange.getAttributeValue();
+                    redo = false;
+                } catch (AttributeRange::OutOfRange &valueOutOfRange) {
+                    cout << "Please enter a value between 1 and 20.\n";
+                }
+            }
+
+        }
+        reenter = validateAnswer();
+    }
+    player.setTechnical(values[0], values[1], values[2], values[3], values[4], values[5], values[6], values[7],
+                        values[8], values[9], values[10], values[11], values[12], values[13]);
+}
+
+void App::inputMental(Player &player) {
+    AttributeRange attributeRange;
+    bool reenter = true;
+    bool redo;
+    int numAttr = 14;
+    string attribute[] = {
             "Aggression:", "Anticipation:", "Bravery:", "Composure:", "Concentration:", "Decisions",
             "Determination:", "Flair:", "Leadership:", "Off the Ball:", "Positioning:", "Teamwork:",
             "Vision", "Work Rate:",
-            // Physical
+    };
+    short values[numAttr];
+    while(reenter){
+        for(int i = 0; i < numAttr; i++) {
+            redo = true;
+            while(redo) {
+                cout << attribute[i] << endl;
+                try {
+                    values[i] = attributeRange.getAttributeValue();
+                    redo = false;
+                } catch (AttributeRange::OutOfRange &valueOutOfRange) {
+                    cout << "Please enter a value between 1 and 20.\n";
+                }
+            }
+
+        }
+        reenter = validateAnswer();
+    }
+    player.setMental(values[0], values[1], values[2], values[3], values[4], values[5], values[6], values[7],
+                     values[8], values[9], values[10], values[11], values[12], values[13]);
+}
+
+void App::inputPhysical(Player &player) {
+    AttributeRange attributeRange;
+    bool reenter = true;
+    bool redo;
+    int numAttr = 14;
+    string attribute[] = {
             "Acceleration:", "Agility:", "Balance:", "Jumping Reach:", "Natural Fitness:", "Pace:",
             "Stamina:", "Strength:"
     };
-    short int att[36] = {};
-    for(int i = 0; i < 36; i++) {
-        cout << attribute[i] << endl;
-        cin >> att[i];
-    }
+    short values[numAttr];
+    while(reenter){
+        for(int i = 0; i < numAttr; i++) {
+            redo = true;
+            while(redo) {
+                cout << attribute[i] << endl;
+                try {
+                    values[i] = attributeRange.getAttributeValue();
+                    redo = false;
+                } catch (AttributeRange::OutOfRange &valueOutOfRange) {
+                    cout << "Please enter a value between 1 and 20.\n";
+                }
+            }
 
-    player.setTechnical(att[0], att[1], att[2], att[3], att[4], att[5], att[6], att[7], att[8],
-                        att[9], att[10], att[11], att[12], att[13]);
-    player.setMental(att[14], att[15], att[16], att[17], att[18], att[19], att[20], att[21], att[22],
-                     att[23], att[24], att[25], att[26], att[27]);
-    player.setPhysical(att[28], att[29], att[30], att[31], att[32], att[33], att[34], att[35]);
+        }
+        reenter = validateAnswer();
+    }
+    player.setPhysical(values[0], values[1], values[2], values[3], values[4], values[5], values[6], values[7]);
 }
 
 //
 // File Operations
 //
-
+/**
+ * Saves the Staff or Player to a formatted text file and a binary file
+ * to load in later.
+ * @tparam T Staff class or Player class
+ * @param person Staff or Player object saving to a text and binary file
+ */
 template<class T>
 void App::saveToFile(T &person) {
     person.saveToFile();
@@ -376,16 +448,41 @@ void App::saveToFile(T &person) {
     cout << person.getName() << " saved to file." << endl;
 }
 
+/**
+ * Loads a staff member or player from a binary file. If the user does
+ * not include a '.' as part of the file name, then a out of range
+ * exception is caught because determining a substring with a
+ * string::npos throws an out of range exception. In which case, ask
+ * user to reenter the filename. If the filename does include a '.',
+ * but the file extension that follows is not 'dat' then ask the user
+ * to reenter the filename. Otherwise, a '.dat' file was entered. If
+ * the filename does not exist, then the program exits.
+ * @tparam T Staff or Player
+ * @param person address of staff member or player object loading
+ */
 template<class T>
 void App::loadFromFile(T &person) {
+    bool redo = true;
     string fileName;
-    cout << "Please enter the name of the .dat file:" << endl;
-    getline(cin, fileName);
+    int found;
+    while(redo) {
+        cout << "Please enter the name of the .dat file:" << endl;
+        getline(cin, fileName);
+        try {
+            found = fileName.find_last_of('.');
+            if(fileName.substr(found) != ".dat") {
+                cout << "The file entered is not a '.dat' file." << endl;
+            }
+            redo = false;
+        } catch (std::out_of_range &) {
+            cout << "Don't forget to include '.dat'." << endl;
+        }
+    }
     fstream dataFile(fileName, ios::binary | ios::in);
     if(!dataFile) {
-        cout << "Failed to open input file. Program exiting.";
+        cout << "File could not be opened. Check file name spelling, make sure to enable read/write permissions, etc.";
         exit(1);
-    } //@Incomplete make exception
+    }
 
     person.loadBinary(dataFile);
     dataFile.close();

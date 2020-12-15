@@ -40,9 +40,9 @@ private:
     static void inputKnowledge(Staff&);
 
     void setPlayerManual(Player&);
-    void inputTechnical(Player&);
-    void inputMental(Player&);
-    void inputPhysical(Player&);
+    static void inputTechnical(Player&);
+    static void inputMental(Player&);
+    static void inputPhysical(Player&);
 
     // File operations
     template<class T> void loadFromFile(T&);

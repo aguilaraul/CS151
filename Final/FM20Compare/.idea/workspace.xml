@@ -12,12 +12,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fb09c724-26e8-491e-9f7d-6555708e8739" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/TODO" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/App.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/App.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/App.h" beforeDir="false" afterPath="$PROJECT_DIR$/App.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AttributeRange.h" beforeDir="false" afterPath="$PROJECT_DIR$/AttributeRange.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Staff.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Staff.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TODO" beforeDir="false" afterPath="$PROJECT_DIR$/TODO" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,7 +66,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1608003740801</updated>
-      <workItem from="1608003742007" duration="8158000" />
+      <workItem from="1608003742007" duration="11260000" />
     </task>
     <task id="LOCAL-00001" summary="Final&#10;Added Template functions">
       <created>1608004528903</created>
@@ -84,7 +82,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608010364446</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Final&#10;Add Staff attribute range">
+      <created>1608013345608</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1608013345608</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -104,6 +109,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Final&#10;Added Template functions" />
     <MESSAGE value="Final&#10;Added staff input function and an Attribute out of range exception" />
-    <option name="LAST_COMMIT_MESSAGE" value="Final&#10;Added staff input function and an Attribute out of range exception" />
+    <MESSAGE value="Final&#10;Add Staff attribute range" />
+    <option name="LAST_COMMIT_MESSAGE" value="Final&#10;Add Staff attribute range" />
   </component>
 </project>
