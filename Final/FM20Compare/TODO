@@ -1,0 +1,7 @@
+// TODO:
+* Move Player input into their own functions
+
+* When reading from file (staff or player) check if the value read is in range
+    using exception class
+
+* Before opening file, do a check if '.dat' file by finding index of last '.'

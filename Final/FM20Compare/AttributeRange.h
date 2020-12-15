@@ -17,11 +17,8 @@ public:
     // Exception class
     class OutOfRange : public exception {};
     // Functions
-    AttributeRange(short low, short high) {
-        lower = low;
-        upper = high;
-    }
-    int getAttributeValue() {
+    AttributeRange(){};
+    short getAttributeValue() {
         cin >> input;
         if(input < lower || input > upper) {
             throw OutOfRange();

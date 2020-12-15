@@ -53,17 +53,16 @@ bool App::askToLoadPerson(const string &type) {
 }
 
 bool App::askToSaveToFile() {
+    string answer;
     cout << "Would you like to save the person to a file? (Y / N)" << endl;
-    char answer[4]; // @Incomplete: handle out of bounds
-    cin.ignore();
-    cin.getline(answer, 4);
+    cin >> answer;
     return (answer[0] == 'Y' || answer[0] == 'y');
 }
 
 bool App::validateAnswer() {
-    char answer[4]; // @Incomplete: handle out of bounds
-    cin.ignore();
-    cin.getline(answer, 4);
+    string answer;
+    cout << "Re-enter? (Y / N)" << endl;
+    cin >> answer;
     return (answer[0] == 'Y' || answer[0] == 'y');
 }
 
@@ -120,9 +119,6 @@ void App::setStaffManual(Staff &staff)
 {
     inputPersonalInfo(staff);
 
-    //
-    // @Incomplete: Restrict entries to 1-20
-    //
     cout << "\nNow set the attributes for " << staff.getName() << endl;
     inputCoaching(staff);
     inputMedical(staff);
@@ -154,7 +150,6 @@ void App::inputPersonalInfo(T &person) {
         cout << "Club:";
         getline(cin, club);
 
-        cout << "Re-enter? (Y/N)" << endl;
         reenter = validateAnswer();
     }
 
@@ -166,7 +161,9 @@ void App::inputPersonalInfo(T &person) {
 }
 
 void App::inputCoaching(Staff &staff) {
+    AttributeRange attributeRange;
     bool reenter = true;
+    bool redo;
     int numAttr = 7;
     string attribute[] = {
             "Attacking:", "Defending:", "Fitness:", "Mental:", "Tactical:",
@@ -175,8 +172,17 @@ void App::inputCoaching(Staff &staff) {
     short values[numAttr];
     while(reenter){
         for(int i = 0; i < numAttr; i++) {
-            cout << attribute[i] << endl;
-            cin >> values[i];
+            redo = true;
+            while(redo) {
+                cout << attribute[i] << endl;
+                try {
+                    values[i] = attributeRange.getAttributeValue();
+                    redo = false;
+                } catch (AttributeRange::OutOfRange &valueOutOfRange) {
+                    cout << "Please enter a value between 1 and 20.\n";
+                }
+            }
+
         }
         reenter = validateAnswer();
     }
@@ -184,7 +190,9 @@ void App::inputCoaching(Staff &staff) {
 }
 
 void App::inputMedical(Staff &staff) {
+    AttributeRange attributeRange;
     bool reenter = true;
+    bool redo;
     int numAttr = 2;
     string attribute[] = {
             "Physiotherapy:", "Sports Science:"
@@ -192,8 +200,17 @@ void App::inputMedical(Staff &staff) {
     short values[numAttr];
     while(reenter){
         for(int i = 0; i < numAttr; i++) {
-            cout << attribute[i] << endl;
-            cin >> values[i];
+            redo = true;
+            while(redo) {
+                cout << attribute[i] << endl;
+                try {
+                    values[i] = attributeRange.getAttributeValue();
+                    redo = false;
+                } catch (AttributeRange::OutOfRange &valueOutOfRange) {
+                    cout << "Please enter a value between 1 and 20.\n";
+                }
+            }
+
         }
         reenter = validateAnswer();
     }
@@ -201,7 +218,9 @@ void App::inputMedical(Staff &staff) {
 }
 
 void App::inputGKCoaching(Staff &staff) {
+    AttributeRange attributeRange;
     bool reenter = true;
+    bool redo;
     int numAttr = 3;
     string attribute[] = {
             "GK Distribution:", "GK Handling:", "GK Shot Stop:"
@@ -209,8 +228,17 @@ void App::inputGKCoaching(Staff &staff) {
     short values[numAttr];
     while(reenter){
         for(int i = 0; i < numAttr; i++) {
-            cout << attribute[i] << endl;
-            cin >> values[i];
+            redo = true;
+            while(redo) {
+                cout << attribute[i] << endl;
+                try {
+                    values[i] = attributeRange.getAttributeValue();
+                    redo = false;
+                } catch (AttributeRange::OutOfRange &valueOutOfRange) {
+                    cout << "Please enter a value between 1 and 20.\n";
+                }
+            }
+
         }
         reenter = validateAnswer();
     }
@@ -218,7 +246,9 @@ void App::inputGKCoaching(Staff &staff) {
 }
 
 void App::inputMental(Staff &staff) {
+    AttributeRange attributeRange;
     bool reenter = true;
+    bool redo;
     int numAttr = 5;
     string attribute[] = {
             "Adaptability:", "Determination:", "Level of Discipline:", "Man Management:",
@@ -227,8 +257,17 @@ void App::inputMental(Staff &staff) {
     short values[numAttr];
     while(reenter){
         for(int i = 0; i < numAttr; i++) {
-            cout << attribute[i] << endl;
-            cin >> values[i];
+            redo = true;
+            while(redo) {
+                cout << attribute[i] << endl;
+                try {
+                    values[i] = attributeRange.getAttributeValue();
+                    redo = false;
+                } catch (AttributeRange::OutOfRange &valueOutOfRange) {
+                    cout << "Please enter a value between 1 and 20.\n";
+                }
+            }
+
         }
         reenter = validateAnswer();
     }
@@ -236,7 +275,9 @@ void App::inputMental(Staff &staff) {
 }
 
 void App::inputScouting(Staff &staff) {
+    AttributeRange attributeRange;
     bool reenter = true;
+    bool redo;
     int numAttr = 3;
     string attribute[] = {
             "Judging Player Data:", "Judging Team Data:", "Presenting Data:"
@@ -244,8 +285,17 @@ void App::inputScouting(Staff &staff) {
     short values[numAttr];
     while(reenter){
         for(int i = 0; i < numAttr; i++) {
-            cout << attribute[i] << endl;
-            cin >> values[i];
+            redo = true;
+            while(redo) {
+                cout << attribute[i] << endl;
+                try {
+                    values[i] = attributeRange.getAttributeValue();
+                    redo = false;
+                } catch (AttributeRange::OutOfRange &valueOutOfRange) {
+                    cout << "Please enter a value between 1 and 20.\n";
+                }
+            }
+
         }
         reenter = validateAnswer();
     }
@@ -253,7 +303,9 @@ void App::inputScouting(Staff &staff) {
 }
 
 void App::inputKnowledge(Staff &staff) {
+    AttributeRange attributeRange;
     bool reenter = true;
+    bool redo;
     int numAttr = 5;
     string attribute[] = {
             "Judging Ability:", "Judging Potential:", "Judging Staff Ability:",
@@ -262,8 +314,17 @@ void App::inputKnowledge(Staff &staff) {
     short values[numAttr];
     while(reenter){
         for(int i = 0; i < numAttr; i++) {
-            cout << attribute[i] << endl;
-            cin >> values[i];
+            redo = true;
+            while(redo) {
+                cout << attribute[i] << endl;
+                try {
+                    values[i] = attributeRange.getAttributeValue();
+                    redo = false;
+                } catch (AttributeRange::OutOfRange &valueOutOfRange) {
+                    cout << "Please enter a value between 1 and 20.\n";
+                }
+            }
+
         }
         reenter = validateAnswer();
     }
@@ -307,6 +368,7 @@ void App::setPlayerManual(Player &player)
 //
 // File Operations
 //
+
 template<class T>
 void App::saveToFile(T &person) {
     person.saveToFile();

@@ -49,5 +49,4 @@ private:
     template<class T> void saveToFile(T&);
 };
 
-
 #endif //FM20COMPARE_APP_H

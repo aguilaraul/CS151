@@ -281,7 +281,6 @@ void Staff::saveToBinary() {
 }
 
 void Staff::loadBinary(fstream& dataFile) {
-    //fstream &dataFileCopy = dataFile;
     getline(dataFile, nation, '\0');
     getline(dataFile, name, '\0');
     dataFile.read(reinterpret_cast<char*>(&age), sizeof(age));
@@ -291,8 +290,6 @@ void Staff::loadBinary(fstream& dataFile) {
     for(auto &StaffAttribute : this->StaffAttributes) {
         dataFile.read(reinterpret_cast<char*>(&StaffAttribute), sizeof(StaffAttribute));
     }
-
-    //dataFileCopy.close();
 }
 
 /* Set Attributes */
