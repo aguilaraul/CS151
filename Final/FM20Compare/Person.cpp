@@ -46,5 +46,5 @@ int Person::getAge() const {
 
 string Person::to_string() {
     return name + " is " + std::to_string(age) + " years old" +
-        " and is from " + nation + '.';
+           " and is from " + nation + '.';
 }

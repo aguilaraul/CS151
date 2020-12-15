@@ -7,7 +7,7 @@
 #include "Player.h"
 
 Player::Player()
-    : Person()
+        : Person()
 {
     setRole("None");
     setClub("None");
@@ -16,7 +16,7 @@ Player::Player()
 
 Player::Player(const string &nation, const string &name, int age,
                const string &role, const string &club)
-    : Person(nation, name, age)
+        : Person(nation, name, age)
 {
     setRole(role);
     setClub(club);

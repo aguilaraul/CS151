@@ -36,7 +36,7 @@ protected:
 public:
     Player();
     Player(const string&, const string&, int,
-          const string&, const string&);
+           const string&, const string&);
     ~Player() override;
     void setRole(const string&);
     void setClub(const string&);
@@ -57,10 +57,10 @@ public:
                       const short&, const short&, const short&, const short&, const short&,
                       const short&, const short&, const short&, const short&);
     void setMental(const short&, const short&, const short&, const short&, const short&,
-                      const short&, const short&, const short&, const short&, const short&,
-                      const short&, const short&, const short&, const short&);
+                   const short&, const short&, const short&, const short&, const short&,
+                   const short&, const short&, const short&, const short&);
     void setPhysical(const short&, const short&, const short&, const short&, const short&,
-                      const short&, const short&, const short&);
+                     const short&, const short&, const short&);
 };
 
 

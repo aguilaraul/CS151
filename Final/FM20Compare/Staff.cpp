@@ -8,7 +8,7 @@
 #include "Staff.h"
 
 Staff::Staff()
-    : Person()
+        : Person()
 {
     setRole("");
     setClub("");
@@ -17,7 +17,7 @@ Staff::Staff()
 
 Staff::Staff(const string &nation, const string &name, int age,
              const string &role, const string &club) :
-    Person(nation, name, age)
+        Person(nation, name, age)
 {
     setRole(role);
     setClub(club);

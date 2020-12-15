@@ -28,19 +28,15 @@ private:
     void setStaffManual(Staff&);
     void setPlayerManual(Player&);
 
-    static void addStaffFromFile(Staff&);
-    static void addPlayerFromFile(Player&);
-
-    static void saveToFile(Staff&);
-    static void saveToFile(Player&);
+    template<class T> void loadFromFile(T&);
+    template<class T> void saveToFile(T&);
 
     static bool validateAnswer();
     static bool askToInputStaffMember();
     static bool askToSaveToFile();
 
     // Compare
-    static void comparison(const Staff&, const Staff&);
-    static void comparison(const Player&, const Player&);
+    template<class T> void comparison(const T&, const T&);
 };
 
 

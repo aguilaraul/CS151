@@ -45,7 +45,7 @@ void App::compareStaff() {
     member1.printAttributes();
     cout << "--- --- --- --- --- ---" << endl;
     member2.printAttributes();
-    staffComparison(member1, member2);
+    comparison(member1, member2);
 }
 
 void App::comparePlayers() {
@@ -56,6 +56,7 @@ void App::comparePlayers() {
     player1.printAttributes();
     cout << "--- --- --- --- --- ---" << endl;
     player2.printAttributes();
+    comparison(player1, player2);
 }
 
 void App::inputStaffMember(Staff& member) {
@@ -65,7 +66,7 @@ void App::inputStaffMember(Staff& member) {
             saveToFile(member);
         }
     } else {
-        addStaffFromFile(member);
+        loadFromFile(member);
     }
 }
 
@@ -77,7 +78,7 @@ void App::inputPlayer(Player& player) {
             saveToFile(player);
         }
     } else {
-        addPlayerFromFile(player);
+        loadFromFile(player);
     }
 }
 
@@ -99,7 +100,7 @@ bool App::askToInputStaffMember() {
 }
 
 bool App::askToSaveToFile() {
-    cout << "Would you like to save the staff member to a file? (Y / N)" << endl;
+    cout << "Would you like to save the person to a file? (Y / N)" << endl;
     char answer[4]; // @Incomplete: handle out of bounds
     cin.ignore();
     cin.getline(answer, 4);
@@ -241,51 +242,29 @@ void App::setPlayerManual(Player &player)
     player.setPhysical(att[28], att[29], att[30], att[31], att[32], att[33], att[34], att[35]);
 }
 
-void App::saveToFile(Staff &staff) {
-    staff.saveToFile();
-    staff.saveToBinary();
-    cout << staff.getName() << " saved to file." << endl;
+template<class T>
+void App::saveToFile(T &person) {
+    person.saveToFile();
+    person.saveToBinary();
+    cout << person.getName() << " saved to file." << endl;
 }
 
-void App::saveToFile(Player &player) {
-    player.saveToFile();
-    player.saveToBinary();
-    cout << player.getName() << " saved to file." << endl;
-}
-
-void App::addStaffFromFile(Staff& member) {
+template<class T>
+void App::loadFromFile(T &person) {
     string fileName;
-    cout << "Please enter the name of the file:" << endl;
+    cout << "Please enter the name of the .dat file:" << endl;
     getline(cin, fileName);
-
     fstream dataFile(fileName, ios::binary | ios::in);
     if(!dataFile) {
         cout << "Failed to open input file. Program exiting.";
         exit(1);
     } //@Incomplete make exception
 
-    member.readFromBinary(dataFile);
-}
-
-void App::addPlayerFromFile(Player& player) {
-    string fileName;
-    cout << "Please enter the name of the file:" << endl;
-    getline(cin, fileName);
-
-    fstream dataFile(fileName, ios::binary | ios::in);
-    if(!dataFile) {
-        cout << "Failed to open input file. Program exiting.";
-        exit(1);
-    } //@Incomplete make exception
-
-    player.readFromBinary(dataFile);
+    person.readFromBinary(dataFile);
     dataFile.close();
 }
 
-void App::comparison(const Staff &member1, const Staff &member2) {
-    member1.compare(member2);
-}
-
-void App::comparison(const Player &player1, const Player &player2) {
-    player1.compare(player2);
+template<class T>
+void App::comparison(const T &person1, const T &person2) {
+    person1.compare(person2);
 }
