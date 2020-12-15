@@ -179,7 +179,7 @@ void App::inputCoaching(Staff &staff) {
                     values[i] = attributeRange.getAttributeValue();
                     redo = false;
                 } catch (AttributeRange::OutOfRange &valueOutOfRange) {
-                    cout << "Please enter a value between 1 and 20.\n";
+                    cout << valueOutOfRange.what();
                 }
             }
 
@@ -207,7 +207,7 @@ void App::inputMedical(Staff &staff) {
                     values[i] = attributeRange.getAttributeValue();
                     redo = false;
                 } catch (AttributeRange::OutOfRange &valueOutOfRange) {
-                    cout << "Please enter a value between 1 and 20.\n";
+                    cout << valueOutOfRange.what();
                 }
             }
 
@@ -235,7 +235,7 @@ void App::inputGKCoaching(Staff &staff) {
                     values[i] = attributeRange.getAttributeValue();
                     redo = false;
                 } catch (AttributeRange::OutOfRange &valueOutOfRange) {
-                    cout << "Please enter a value between 1 and 20.\n";
+                    cout << valueOutOfRange.what();
                 }
             }
 
@@ -264,7 +264,7 @@ void App::inputMental(Staff &staff) {
                     values[i] = attributeRange.getAttributeValue();
                     redo = false;
                 } catch (AttributeRange::OutOfRange &valueOutOfRange) {
-                    cout << "Please enter a value between 1 and 20.\n";
+                    cout << valueOutOfRange.what();
                 }
             }
 
@@ -292,7 +292,7 @@ void App::inputScouting(Staff &staff) {
                     values[i] = attributeRange.getAttributeValue();
                     redo = false;
                 } catch (AttributeRange::OutOfRange &valueOutOfRange) {
-                    cout << "Please enter a value between 1 and 20.\n";
+                    cout << valueOutOfRange.what();
                 }
             }
 
@@ -321,7 +321,7 @@ void App::inputKnowledge(Staff &staff) {
                     values[i] = attributeRange.getAttributeValue();
                     redo = false;
                 } catch (AttributeRange::OutOfRange &valueOutOfRange) {
-                    cout << "Please enter a value between 1 and 20.\n";
+                    cout << valueOutOfRange.what();
                 }
             }
 
@@ -361,7 +361,7 @@ void App::inputTechnical(Player &player) {
                     values[i] = attributeRange.getAttributeValue();
                     redo = false;
                 } catch (AttributeRange::OutOfRange &valueOutOfRange) {
-                    cout << "Please enter a value between 1 and 20.\n";
+                    cout << valueOutOfRange.what();
                 }
             }
 
@@ -392,7 +392,7 @@ void App::inputMental(Player &player) {
                     values[i] = attributeRange.getAttributeValue();
                     redo = false;
                 } catch (AttributeRange::OutOfRange &valueOutOfRange) {
-                    cout << "Please enter a value between 1 and 20.\n";
+                    cout << valueOutOfRange.what();
                 }
             }
 
@@ -422,7 +422,7 @@ void App::inputPhysical(Player &player) {
                     values[i] = attributeRange.getAttributeValue();
                     redo = false;
                 } catch (AttributeRange::OutOfRange &valueOutOfRange) {
-                    cout << "Please enter a value between 1 and 20.\n";
+                    cout << valueOutOfRange.what();
                 }
             }
 

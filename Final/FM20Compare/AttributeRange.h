@@ -15,7 +15,12 @@ private:
     short upper = 20;
 public:
     // Exception class
-    class OutOfRange : public exception {};
+    class OutOfRange : public exception {
+    public:
+        const char* what() const noexcept override {
+            return "Please enter a value between 1 and 20.\n";
+        }
+    };
     // Functions
     AttributeRange(){};
     short getAttributeValue() {
