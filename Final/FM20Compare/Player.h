@@ -7,8 +7,8 @@
  * Player header file
  */
 
-#ifndef FM20STAFFFINDER_PLAYER_H
-#define FM20STAFFFINDER_PLAYER_H
+#ifndef FM20COMPARE_PLAYER_H
+#define FM20COMPARE_PLAYER_H
 #include "Person.h"
 using namespace std;
 
@@ -51,7 +51,7 @@ public:
     void saveToFile() const;
     void saveToBinary();
 
-    void readFromBinary(fstream &);
+    void loadBinary(fstream &);
 
     void setTechnical(const short&, const short&, const short&, const short&, const short&,
                       const short&, const short&, const short&, const short&, const short&,
@@ -64,4 +64,4 @@ public:
 };
 
 
-#endif //FM20STAFFFINDER_PLAYER_H
+#endif //FM20COMPARE_PLAYER_H

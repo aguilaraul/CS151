@@ -5,8 +5,8 @@
  * CS 151 3228 Final Project
  */
 
-#ifndef FM20SCOUT_STAFF_H
-#define FM20SCOUT_STAFF_H
+#ifndef FM20COMPARE_STAFF_H
+#define FM20COMPARE_STAFF_H
 #include "Person.h"
 using namespace std;
 
@@ -29,7 +29,6 @@ private:
         // Knowledge
         JUDGINGABILITY, JUDGINGPOTENTIAL, JUDGINGSTAFFABILITY, NEGOTIATING, TACTICALKNOWLEDGE
     };
-
 protected:
     string role;
     string club;
@@ -52,7 +51,7 @@ public:
     void saveToFile() const;
     void saveToBinary();
 
-    void readFromBinary(fstream &);
+    void loadBinary(fstream &);
 
     // Attributes
     void setCoaching(const short&, const short&, const short&, const short&,
@@ -67,4 +66,4 @@ public:
 };
 
 
-#endif //FM20SCOUT_STAFF_H
+#endif //FM20COMPARE_STAFF_H

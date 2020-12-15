@@ -280,7 +280,7 @@ void Staff::saveToBinary() {
     dataFile.close();
 }
 
-void Staff::readFromBinary(fstream& dataFile) {
+void Staff::loadBinary(fstream& dataFile) {
     //fstream &dataFileCopy = dataFile;
     getline(dataFile, nation, '\0');
     getline(dataFile, name, '\0');

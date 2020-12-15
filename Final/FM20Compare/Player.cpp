@@ -302,7 +302,7 @@ void Player::saveToBinary() {
     dataFile.close();
 }
 
-void Player::readFromBinary(fstream &dataFile) {
+void Player::loadBinary(fstream &dataFile) {
     //fstream &dataFileCopy = dataFile;
     getline(dataFile, nation, '\0');
     getline(dataFile, name, '\0');
