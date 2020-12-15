@@ -95,7 +95,7 @@ void App::compareStaff() {
     Staff member1, member2;
     addStaffMember(member1);
     addStaffMember(member2);
-    cout << " ! -- STAFF COMPARISON -- ! " << endl;
+    cout << " ! -- STAFF INFORMATION -- ! " << endl;
     member1.printAttributes();
     cout << "--- --- --- --- --- ---" << endl;
     member2.printAttributes();
@@ -106,7 +106,7 @@ void App::comparePlayers() {
     Player player1, player2;
     addPlayer(player1);
     addPlayer(player2);
-    cout << " ! -- PLAYER COMPARISON -- ! " << endl;
+    cout << " ! -- PLAYER INFORMATION -- ! " << endl;
     player1.printAttributes();
     cout << "--- --- --- --- --- ---" << endl;
     player2.printAttributes();
@@ -440,8 +440,8 @@ void App::inputTechnical(Player &player) {
     int numAttr = 14;
     string attribute[] = {
             "Corners:", "Crossing:", "Dribbling:", "Finishing:", "First Touch:", "Free Kick:",
-            "Heading", "Long Shots:", "Long Throws:", "Marking:", "Passing:", "Penalty Taking:",
-            "Tackling", "Technical:",
+            "Heading:", "Long Shots:", "Long Throws:", "Marking:", "Passing:", "Penalty Taking:",
+            "Tackling:", "Technical:",
     };
     short values[numAttr];
     while(reenter){
@@ -475,9 +475,9 @@ void App::inputMental(Player &player) {
     bool redo;
     int numAttr = 14;
     string attribute[] = {
-            "Aggression:", "Anticipation:", "Bravery:", "Composure:", "Concentration:", "Decisions",
+            "Aggression:", "Anticipation:", "Bravery:", "Composure:", "Concentration:", "Decisions:",
             "Determination:", "Flair:", "Leadership:", "Off the Ball:", "Positioning:", "Teamwork:",
-            "Vision", "Work Rate:",
+            "Vision:", "Work Rate:",
     };
     short values[numAttr];
     while(reenter){
@@ -509,7 +509,7 @@ void App::inputPhysical(Player &player) {
     AttributeRange attributeRange;
     bool reenter = true;
     bool redo;
-    int numAttr = 14;
+    int numAttr = 8;
     string attribute[] = {
             "Acceleration:", "Agility:", "Balance:", "Jumping Reach:", "Natural Fitness:", "Pace:",
             "Stamina:", "Strength:"

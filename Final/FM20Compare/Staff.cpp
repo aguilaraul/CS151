@@ -70,6 +70,7 @@ void Staff::compare(const Staff &other) const {
     int staff1Won = 0, staff2Won = 0;
     short higher;
     string winner;
+    cout << " ! -- STAFF COMPARISON -- ! " << endl;
     for(int i = 0; i < numOfAttributes; i++) {
         if(StaffAttributes[i] > other.StaffAttributes[i]) {
             higher = StaffAttributes[i];

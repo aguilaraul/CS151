@@ -71,6 +71,7 @@ void Player::compare(const Player &other) const {
     int player1Won = 0, player2Won = 0;
     short higher;
     string winner;
+    cout << " ! -- PLAYER COMPARISON -- ! " << endl;
     for(int i = 0; i < numOfAttributes; i++) {
         if(PlayerAttributes[i] > other.PlayerAttributes[i]) {
             higher = PlayerAttributes[i];
