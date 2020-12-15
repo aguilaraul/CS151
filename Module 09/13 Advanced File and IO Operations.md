@@ -8,12 +8,12 @@
 
 
 - An input stream is a sequence from which data can be read
+  * Keyboard is the standard example of an input stream
 - An output stream is a sequence to which data can be written
+  - Monitor screen is standard example of an output stream
 - An input-output stream is a sequence of data that allows both reading and writing
 
 
-    - Keyboard is the standard example of an input stream
-    - Monitor screen is standard example of an output stream
 
 C++ provides various classes for working with streams:
 
@@ -31,9 +31,11 @@ The `ifstream`, `ofstream`, and `fstream` classes are very similar
 
 Each has a default constructor:
 
-    ifstream();
-    ofstream();
-    fstream();
+```c++
+ifstream();
+ofstream();
+fstream();
+```
 
 By default:
 
@@ -53,32 +55,46 @@ Each has initialization constructors that take two parameters:
 2. An open mode
     - A setting that determines how the file will be used
     - Setting is optional, otherwise defaults
-    ifstream(const char* filename, ios::openmode mode = ios::in);
-    ofstream(const char* filename, ios::openmode mode = ios::out);
-    fstream(const char* filename, ios::openmode mode = ios::in | ios::out);
     
-    // C++11, can used a string object
-    ifstream(const string& filename, ios::openmode mode = ios::in);
-    ofstream(const string& filename, ios::openmode mode = ios::out);
-    fstream(const string& filename, ios::openmode mode = ios::in | ios::out);
+
+```cpp
+ifstream(const char* filename, ios::openmode mode = ios::in);
+ofstream(const char* filename, ios::openmode mode = ios::out);
+fstream(const char* filename, ios::openmode mode = ios::in | ios::out);
+
+// C++11, can used a string object
+ifstream(const string& filename, ios::openmode mode = ios::in);
+ofstream(const string& filename, ios::openmode mode = ios::out);
+fstream(const string& filename, ios::openmode mode = ios::in | ios::out);
+```
+
+
 
 All three file stream classes have member functions that can be used to open files:
 
-    void open(const char* filename, ios::openmode mode = ios::in | ios::out);
-    void open(const string& filename, ios::openmode mode = ios::in | ios::out);
+```c++
+void open(const char* filename, ios::openmode mode = ios::in | ios::out);
+void open(const string& filename, ios::openmode mode = ios::in | ios::out);
+```
 
 Create stream object and open file:
 
-    fstream outFile("inout.txt", ios::in | ios::out);
+```c++
+fstream outFile("inout.txt", ios::in | ios::out);
+```
 
 
 ## File Open Modes
 
-A file open mode is a setting that determines how the file can be used. The type `openmode` is defined in a stream-related class called `ios`. Values of this type are static constant members of the ios class
+A file open mode is a setting that determines how the file can be used. The type `openmode` is defined in a stream-related class called `ios`. Values of this type are static constant members of the `ios` class
 
 The binary or operator `|` can be used to combine the effect of two or more flags:
 
-    ios::in | ios::out | ios::ate
+```c++
+ios::in | ios::out | ios::ate
+```
+
+
 | **File Mode Flag** | **Meaning**                                                                                                           |
 | ------------------ | --------------------------------------------------------------------------------------------------------------------- |
 | `ios::app`         | Append: Output will always take place at the end of the file                                                          |
@@ -88,44 +104,52 @@ The binary or operator `|` can be used to combine the effect of two or more flag
 | `ios::out`         | Output: The file will allow output operations. If the file does not exist, an empty file of the given name is created |
 | `ios::trunc`       | Truncate: If the file being opened exists, its contents are discarded and its size is truncated to zero               |
 
-| When used by itself, the `ios::out` flag causes the contents of an existing file to be deleted, the assumption being that the programmer wants to overwrite the file.<br>If `ios::out` is combined with `ios::app`, the contents of the existing file are preserved, and all the data is appended to the end of the file |
+
+
+**NOTE**
+
+> When used by itself, the `ios::out` flag causes the contents of an existing file to be deleted, the assumption being that the programmer wants to overwrite the file.
+>
+> If `ios::out` is combined with `ios::app`, the contents of the existing file are preserved, and all the data is appended to the end of the file 
 
 ----------
 
 **Program 13-1**
 Opens the file, reads and prints its contents, and then writes the word “Hello” at the end of the file
 
-    // Demonstrates reading and writing a file through an fstream object
-    #include <iostream>
-    #include <fstream>
-    #include <string>
-    using namespace std;
-    
-    int main() {
-      fstream inOutFile;
-      string word;
-      
-      // Open the file
-      inOutFile.open("inout.txt");
-      if(inOutFile.fail()) {
-        cout << "The file was not found." << endl;
-        return 1;
-      }
-    
-      // Read and print every word already in the file
-      while(inOutFile >> word) {
-        cout << word << endl;
-      }
-    
-      // Clear end of file flag to allow additional file operations
-      inOutFile.clear();
-    
-      // Write a word to the file and close the file
-      inOutFile << "Hello" << endl;
-      
-      inOutFile.close();
-      return 0;
-    }
+```c++
+// Demonstrates reading and writing a file through an fstream object
+#include <iostream>
+#include <fstream>
+#include <string>
+using namespace std;
+
+int main() {
+  fstream inOutFile;
+  string word;
+  
+  // Open the file
+  inOutFile.open("inout.txt");
+  if(inOutFile.fail()) {
+    cout << "The file was not found." << endl;
+    return 1;
+  }
+
+  // Read and print every word already in the file
+  while(inOutFile >> word) {
+    cout << word << endl;
+  }
+
+  // Clear end of file flag to allow additional file operations
+  inOutFile.clear();
+
+  // Write a word to the file and close the file
+  inOutFile << "Hello" << endl;
+  
+  inOutFile.close();
+  return 0;
+}
+```
 ----------
 ## Error Flags
 
@@ -133,8 +157,10 @@ File stream objects set a number of error flags whenever an input or output oper
 
 Once an error flag is set, the stream will not allow further operations to be performed on it until the error flags have been cleared:
 
-    // Clears error flags
-    inOutFile.clear();
+```c++
+// Clears error flags
+inOutFile.clear();
+```
 
 
 ## Output Formatting and I/O Manipulators
@@ -144,17 +170,19 @@ I/O manipulators can be used on output stream objects, such as `fstream`, `ofstr
 **Example: Formatting**
 Function takes in a `double` and formats it to two decimal places with dollar sign in front:
 
-    string dollarFormat(double amount) {
-      // Create ostringstream object
-      ostringstream outStr;
-    
-      // Set up format information and write to outStr
-      outStr << showpoint << fixed << setprecision(2);
-      outStr << '$' << amount;
-    
-      // Extract and return the string inside outStr
-      return outStr.str();
-    }
+```c++
+string dollarFormat(double amount) {
+  // Create ostringstream object
+  ostringstream outStr;
+
+  // Set up format information and write to outStr
+  outStr << showpoint << fixed << setprecision(2);
+  outStr << '$' << amount;
+
+  // Extract and return the string inside outStr
+  return outStr.str();
+}
+```
 
 
 ----------
@@ -189,20 +217,24 @@ Open files use resources in the operating system, so it is important to close fi
 
 Each class has a `close` member function:
 
-    void close();
+```c++
+void close();
+```
 
 
 ## Flushing the Buffer
 
 Data written to file stream objects are buffered within the operating system and is not immediately written to disk:
 
-    - When the file is closed, the operating system writes this data to the disk in a process known as flushing the buffer.
-        - Closing the file will ensure that buffered data is not lost in the case that the program terminates abnormally.
-    - When the buffer is full, the operating system also flushes the buffer
+- When the file is closed, the operating system writes this data to the disk in a process known as flushing the buffer.
+    - Closing the file will ensure that buffered data is not lost in the case that the program terminates abnormally.
+- When the buffer is full, the operating system also flushes the buffer
 
 The `endl` and `flush` manipulators allow the programmer to flush the buffer at any time
 
-    outFile << flush;
+```c++
+outFile << flush;
+```
 
 
 # 13.2 More Detailed Error Testing
@@ -240,22 +272,26 @@ The bit flags can be tested by the stream member functions
 **Example: File Status**
 Function accepts a file stream reference and shows the state of the file:
 
-    void showState(fstream &file) {
-      cout << "File Status:\n";
-      cout << " eofbit: " << file.eof() << endl;
-      cout << " fail bit: " << file.fail() << endl;
-      cout << " bad bit: " << file.bad() << endl;
-      cout << " good bit: " << file.good() << endl;
-      file.clear();
-    }
+```c++
+void showState(fstream &file) {
+  cout << "File Status:\n";
+  cout << " eofbit: " << file.eof() << endl;
+  cout << " fail bit: " << file.fail() << endl;
+  cout << " bad bit: " << file.bad() << endl;
+  cout << " good bit: " << file.good() << endl;
+  file.clear();
+}
+```
 
 For purpose of error testing, a stream object behaves as a Boolean expression that is `true` when no error flags are set and is `false` otherwise.
 
-    if(!dataFile) {
-      cout << "Failure!";
-    } else {
-      cout << "Success!";
-    }
+```c++
+if(!dataFile) {
+  cout << "Failure!";
+} else {
+  cout << "Success!";
+}
+```
 
 
 
@@ -272,10 +308,13 @@ If whitespace characters are part of the information in a file, a problem arises
 
 One way to get around the problem is to use a function that reads an entire line of text
 
-    istream& getline(istream& is, string& str, char delim = '\n');
-    - The first parameter must be an object of `istream`, `istringstream`, `ifstream`, or `fstream` that is open for input
-    - The delimiter is optional; defaults to `\n`
-        - The delimiting character is removed from the stream and discarded
+```c++
+istream& getline(istream& is, string& str, char delim = '\n');
+```
+
+- The first parameter must be an object of `istream`, `istringstream`, `ifstream`, or `fstream` that is open for input
+- The delimiter is optional; defaults to `\n`
+    - The delimiting character is removed from the stream and discarded
 
 The value returned is a reference to the input stream that was read, which allows the return value to be tested
 
@@ -288,8 +327,10 @@ When the `get` function is called, it returns the next character available from 
 
 Each of the input classes has a family of `get` member functions that can be used to read single characters:
 
-    int get();
-    istream& get(char& c);
+```c++
+int get();
+istream& get(char& c);
+```
 
 
 1. The first version reads a single characters
@@ -297,21 +338,27 @@ Each of the input classes has a family of `get` member functions that can be use
     2. If unsuccessful, it sets the error codes on the stream and returns the special value `EOF`
 
 
-    // Read file one character at a time and echo to screen
-    ch = file.get();
-    while(ch != EOF) {
-      cout << ch;
-      ch = file.get();
-    }
+```c++
+// Read file one character at a time and echo to screen
+ch = file.get();
+while(ch != EOF) {
+  cout << ch;
+  ch = file.get();
+}
+```
 
 
 2. The second version `get` takes a reference to a character variable to read into and returns the stream that was read from
 - Using this function requires testing the stream to determine whether the operation was successful
-    file.get(ch)
-    while(!file.fail()) {
-      cout << ch;
-      file.get(ch);
-    }
+
+```cpp
+file.get(ch)
+while(!file.fail()) {
+  cout << ch;
+  file.get(ch);
+}
+```
+
 
 
 ## The `peek` Member Function
@@ -322,25 +369,29 @@ The `peek` function is called, it returns a copy of the next character available
 
 The `peek` function is useful when determining what kind of data is about to be read to decide the best input method to use.
 
-    - If the data is numeric, the stream extraction operator `>>` is best
-    - If the data is non-numeric, then it should be read using `get` or `getline`
+- If the data is numeric, the stream extraction operator `>>` is best
+- If the data is non-numeric, then it should be read using `get` or `getline`
 
 
 ## The `put` Member Function
 
 Each output stream class has a `put` member function that takes the integer code of a character and writes the corresponding character to the stream.
 
-    ostream& put(int c);
+```c++
+ostream& put(int c);
+```
 
 Prints `AB` on the screen:
 
-    #include <iostream>
-    using namespace std;
-    int main() {
-      char ch = 'A';
-      cout.put(ch);
-      cout.put(ch + 1);
-    }
+```c++
+#include <iostream>
+using namespace std;
+int main() {
+  char ch = 'A';
+  cout.put(ch);
+  cout.put(ch + 1);
+}
+```
 
 
 ## Rewinding a File
@@ -351,27 +402,35 @@ File stream classes offer a number of different member functions to move around 
 
 The `seekg` member function sets the position of the next character to be extracted from the input stream:
 
-    seekg(offset, place);
+```c++
+seekg(offset, place);
+```
 
 The new location is at an offset of `offset` bytes from the starting point given by `place`
 
-    - The offset parameter is a `long` integer
-    - `place` can be one of three values defined in the `ios` class
-        1. `ios::beg` beginning of the file
-        2. `ios::cur` current place in the file
-        3. `ios::end` end of the file
+- The offset parameter is a `long` integer
+- `place` can be one of three values defined in the `ios` class
+    1. `ios::beg` beginning of the file
+    2. `ios::cur` current place in the file
+    3. `ios::end` end of the file
 
 To move to the beginning of the file; move 0 bytes from the beginning of the file:
 
-    seekg(0L, ios::beg);
+```c++
+seekg(0L, ios::beg);
+```
 
 
 - If already at the end of the file, must clear the end of file flag before calling this function:
-    dataIn.clear();
-    dataIn.seekg(0L, ios::beg);
+
+```c++
+dataIn.clear();
+dataIn.seekg(0L, ios::beg);
+```
 
 
-[More about](https://paper.dropbox.com/doc/13.-Advanced-File-and-IO-Operations-ZQdREXuubKncKdZxBl6DT#:uid=164844279908029330571463&h2=The-seekp-and-seekg-Member-Fun) `[seek](https://paper.dropbox.com/doc/13.-Advanced-File-and-IO-Operations-ZQdREXuubKncKdZxBl6DT#:uid=164844279908029330571463&h2=The-seekp-and-seekg-Member-Fun)` [member functions](https://paper.dropbox.com/doc/13.-Advanced-File-and-IO-Operations-ZQdREXuubKncKdZxBl6DT#:uid=164844279908029330571463&h2=The-seekp-and-seekg-Member-Fun)
+
+[More about `seek` member functions](https://github.com/aguilaraul/CS151/blob/master/Module%2009/13%20Advanced%20File%20and%20IO%20Operations.md#the-seekp-and-seekg-member-functions) 
 
 # 13.4 Binary Files
 
@@ -391,17 +450,25 @@ When data is written in unformatted form, it is said to be written in binary, an
 The stream insertion operator `<<` provides automatic formatting of numbers during output. Likewise, the stream extraction operator `>>` provides parsing of numeric input
 
 
-    ofstream file("num.dat");
-    short x = 1297;
-    file << x;
+```c++
+ofstream file("num.dat");
+short x = 1297;
+file << x;
+```
 - When the number is written, it is stored as the characters `1`, `2`, `9`, and `7`.
 - When the number is stored in memory, it is formatted as a binary number
     - Data can be stored in a file in binary format.
 
 Open a file in binary mode:
 
-    file.open("stuff.dat", ios::out | ios::binary);
-| By default, files are opened in text mode. |
+```c++
+file.open("stuff.dat", ios::out | ios::binary);
+```
+**NOTE**
+
+> By default, files are opened in text mode.
+
+
 
 `**write**` **Member Function**
 The `write` member function of the `ostream` and `ofstream` classes can be used to write binary data to a file or other output stream. 
@@ -415,33 +482,42 @@ The `write` member function does not distinguish between data types in the buffe
 Because C++ does not support a pointer to a byte, the prototype of `write` specifies that the address of a buffer be a pointer to a `char`.
 Using a special form of type casting called `reinterpret_cast` forces the compiler to interpret the bits of one type as if they defined a value of a different type.
 
-    double d = 45.9;
-    double *pd = &d;
-    char *pChar;
-    // Convert pointer to double to pointer to char
-    pChar = reinterpret_cast<char*>(pd);
+```c++
+double d = 45.9;
+double *pd = &d;
+char *pChar;
+// Convert pointer to double to pointer to char
+pChar = reinterpret_cast<char*>(pd);
+```
 
 Using `write` to write a `double` and an array of `double` to file:
 
-    double d1 = 45.9;
-    double dArray[3] = {12.3, 45.8, 19.0};
-    ofstream outFile("stuff.dat", ios::binary);
-    outFile.write(reinterpret_cast<char*>(&d1), sizeof(d1));
-    outFile.write(reinterpret_cast<char*>(dArray). sizeof(dArray));
+```c++
+double d1 = 45.9;
+double dArray[3] = {12.3, 45.8, 19.0};
+ofstream outFile("stuff.dat", ios::binary);
+outFile.write(reinterpret_cast<char*>(&d1), sizeof(d1));
+outFile.write(reinterpret_cast<char*>(dArray). sizeof(dArray));
+```
 
 If the data being written is `char` data, there is no need to use type casting:
 
-    char ch = 'X';
-    char charArray[5] = "Hello";
-    outFile.write(&ch, sizeof(ch));
-    outFile.write(charArray, sizeof(charArray));
+```c++
+char ch = 'X';
+char charArray[5] = "Hello";
+outFile.write(&ch, sizeof(ch));
+outFile.write(charArray, sizeof(charArray));
+```
 
 `**read**` **Member Function**
 The `read` member function in the `istream` and `ifstream` classes can be used to read binary data.
 
-    read(char* addressOfBuffer, int numberOfBytes);
-    - `addressOfBuffer` the address of a buffer in which the bytes read are stored
-    - `numberOfBytes` the number of bytes to read
+```c++
+read(char* addressOfBuffer, int numberOfBytes);
+```
+
+- `addressOfBuffer` the address of a buffer in which the bytes read are stored
+- `numberOfBytes` the number of bytes to read
 
 The address of the buffer must be interpreted as a pointer to `char` using `reinterpret_cast`.
 
@@ -449,10 +525,13 @@ The address of the buffer must be interpreted as a pointer to `char` using `rein
 The `sizeof` operator can be used on variables to determine the number of bytes occupied by the variable.
 
 
-    int buffer[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-    int size = sizeof(buffer)/sizeof(buffer[0]);
-    - `sizeof(buffer)` returns the number of bytes allocated to the array
-    - `sizeof(buffer[0])` returns the number of bytes occupied by a single array entry
+```c++
+int buffer[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+int size = sizeof(buffer)/sizeof(buffer[0]);
+```
+- `sizeof(buffer)` returns the number of bytes allocated to the array
+- `sizeof(buffer[0])` returns the number of bytes occupied by a single array entry
+
 - With division, we obtain the number of array entries
 
 
@@ -464,25 +543,35 @@ Structures may be used to store fixed-length records to a file
 
 The following structure declaration could be used to create a record containing information about a person:
 
-    const int NAME_SIZE = 51, ADDR_SIZE = 51, PHONE_SIZE = 14;
-    struct Info {
-      char name[NAME_SIZE];
-      int age;
-      char address1[ADDR_SIZE];
-      char address2[ADDR_SIZE];
-      char phone[PHONE_SIZE];
-    };
+```c++
+const int NAME_SIZE = 51, ADDR_SIZE = 51, PHONE_SIZE = 14;
+struct Info {
+  char name[NAME_SIZE];
+  int age;
+  char address1[ADDR_SIZE];
+  char address2[ADDR_SIZE];
+  char phone[PHONE_SIZE];
+};
+```
 
 Besides providing an organized structure for information, structures also package information into a single unit.
 
-    Info person;
+```c++
+Info person;
+```
 
 Once the members of `person` are filled, the entire variable may be written to a file using the `write` function:
 
-    file.write(reinterpret_cast<char*>(&person), sizeof(person));
-| Since structures can contain a mixture of data types, best to always use the `ios::binary` mode when opening a file to store them. |
+```c++
+file.write(reinterpret_cast<char*>(&person), sizeof(person));
+```
+**NOTE**
 
-| Structures containing pointers cannot be correctly stored to disk using these techniques. This is because of the structure is read into memory, it cannot be guaranteed that all program variables will be at the same memory locations. Because `string` class objects contain implicit pointers, they cannot be stored |
+> Since structures can contain a mixture of data types, best to always use the `ios::binary` mode when opening a file to store them.
+>
+> Structures containing pointers cannot be correctly stored to disk using these techniques. This is because of the structure is read into memory, it cannot be guaranteed that all program variables will be at the same memory locations. Because `string` class objects contain implicit pointers, they cannot be stored
+
+
 
 # 13.6 Random-Access Files
 
@@ -550,7 +639,9 @@ When data stored in a file needs to be updated:
 
 A file can be opened for both input and output by combining the `ios::in` and `ios::out` flags:
 
-    fstream file("data.dat", ios::in | ios::out);
+```c++
+fstream file("data.dat", ios::in | ios::out);
+```
 
 When an `fstream` is opened for both the `ios::in` and `ios::out` flags, the file’s current contents are preserved, and the read/write position is initially placed at the beginning of the file. If the file does not exist, it is created.
 

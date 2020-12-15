@@ -244,7 +244,7 @@ It is possible for try blocks to be nested:
 
 With nested try blocks, it is sometimes necessary for the inner exception handler to pass an exception to an outer exception handler. Or both an inner and an outer catch block must perform operations when a particular exception is thrown.
 
-    These situations require that the inner catch block rethrow the exception so the outer block can catch it
+​	These situations require that the inner catch block rethrow the exception so the outer block can catch it
 
 A catch block can rethrow an exception with the `throw;` statement with no parameter
 
@@ -270,30 +270,40 @@ A function template is a “generic” function that can work with different dat
 
 With overloaded function, each of the functions must still be written individually
 
-    int square(int number) { return number*number; }
-    double square(double number) { return number * number; }
+```c++
+int square(int number) { return number*number; }
+double square(double number) { return number * number; }
+```
 
 In situations like this, it is more convenient to write a function template than an overloaded function
 
-    Function templates allow a single function definition that works with many different data types
+​	Function templates allow a single function definition that works with many different data types
+
+​	A function template is not an actual function, but a “mold” the compiler used to generate one or more functions
+
+​	When writing a function template, do not have to specify actual types instead use a type parameter to specify a generic data type that the compiler uses to generate code of the appropriate type based on context
 
 
-    A function template is not an actual function, but a “mold” the compiler used to generate one or more functions
-
-
-    When writing a function template, do not have to specify actual types instead use a type parameter to specify a generic data type that the compiler uses to generate code of the appropriate type based on context
-    
     template <class T> T square(number) {
       return number * number;
     }
 1. `template` The beginning of a function template is marked by a template prefix, which begins with the keyword `template`
+
 2. `<class T>` A set of angled brackets that contain one or more generic data types. A generic data type starts with the `class` keyword followed by the name of the data type. There are more, they would be separated by commas
+
 3. `T square(T number)` The header defines `square` as a function that returns a type `T` and uses a parameter, `number`, that is also type `T`
-| All type parameters defined in a function template must appear at least once in the function parameter list. |
+
+  
+
+**NOTE**
+
+> All type parameters defined in a function template must appear at least once in the function parameter list.
 
 The compiler must already know the template’s content before it encounters a call to the function template. Templates, therefore, should be placed near the top of the program or in a header file
 
-| A function template is only the specification of a function an by itself does not consume memory. An actual instance of the function is created in memory when the compiler encounters a call to the template function |
+**NOTE**
+
+> A function template is only the specification of a function an by itself does not consume memory. An actual instance of the function is created in memory when the compiler encounters a call to the template function |
 
 ## The `swap` Function Template
 ```c++
@@ -310,9 +320,11 @@ The function is declared in the `algorithm` header file
 
 Templates will only work with types that support the operations used in the template.
 
-    template<class T> T square(T number) {
-      return number * number;
-    }
+```c++
+template<class T> T square(T number) {
+  return number * number;
+}
+```
 
 The `square` template will work correctly as long as the type parameter supports the `*` operator
 
@@ -324,14 +336,18 @@ Errors will result if the template is used with types not supported
 
 More than one generic type may be used in a function template
 
-| Each type parameter declared in the template prefix must be used somewhere in the template definition. |
+**NOTE**
+
+> Each type parameter declared in the template prefix must be used somewhere in the template definition.
 
 ## Overloading with Function Templates
 
 Function templates may be overloaded. As with regular functions, function templates are overloaded by having different parameter lists
 
 ## Defining Template Functions
-| Beginning with C++11, you may use the keyword `typename` in place of `class` in the `template` prefix. So the `template` prefix can be written as `template <typename T>` |
+Beginning with C++11, you may use the keyword `typename` in place of `class` in the `template` prefix.
+
+So the `template` prefix can be written as `template <typename T>`
 
 # 16.3 Class Templates
 
@@ -359,8 +375,11 @@ public:
 
 Defining a `SimpleVector` object by using the convert constructor:
 
-    SimpleVector<double> dTable(10);
-    This statement uses the convert constructor to create an array of 10 elements of type `double`
+```c++
+SimpleVector<double> dTable(10);
+```
+
+* This statement uses the convert constructor to create an array of 10 elements of type `double`
 
 To define a member function outside the class:
 

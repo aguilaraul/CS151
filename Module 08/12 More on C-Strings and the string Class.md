@@ -8,7 +8,7 @@ The C++ library provides several functions for testing characters. To use these 
 
 These functions test a single `char` argument and return either `true` or `false`
 
-    - The return value is nonzero to indicate `true` or zero to indicate `false`
+- The return value is nonzero to indicate `true` or zero to indicate `false`
 
 **Character-Testing Functions**
 
@@ -33,10 +33,14 @@ Two functions `toupper` and `tolower` for converting the case of a character
 
 
 - They return the equivalent without changing original argument
+
+  
 | **Function** | **Description**                       |
 | ------------ | ------------------------------------- |
 | `toupper`    | Convert string to uppercase lettering |
 | `tolower`    | Convert string to lowercase lettering |
+
+
 
 # 12.3 C-Strings
 
@@ -54,15 +58,21 @@ The `string` class is built on top of C-strings
 
 A C-string is a sequence of character stored in consecutive memory locations and terminated by a null character:
 
-    - A null character is the character whose ASCII code is 0
-    char ch1, ch2, ch3;
-    ch1 = '\0';
-    ch2 = 0;
-    ch3 = NULL;
+- A null character is the character whose ASCII code is 0
+
+
+```c++
+char ch1, ch2, ch3;
+ch1 = '\0';
+ch2 = 0;
+ch3 = NULL;
+```
 
 A C-string is really a null-terminated array of characters and is represented in the program by a pointer to the first character in the array:
 
-    char *
+```c++
+char *
+```
 
 The type of a C-string is *pointer to char*
 
@@ -77,7 +87,9 @@ C-strings can appear in a program as:
 
 String literal, or string constants, are written directly into the program as a sequence of characters enclosed in double quotes:
 
-    "I'm still in love with you"
+```c++
+"I'm still in love with you"
+```
 
 String literals can only hold C-strings that are hard-coded into the program
 
@@ -87,42 +99,49 @@ String literals can only hold C-strings that are hard-coded into the program
 
 The compiler treats the address of the first character of the array as the value of the string literal
 
-    // This program demonstrates that string literal are pointers to char
-    #include <iostream>
-    using namespace std;
-    
-    int main() {
-      const char * p = nullptr, *q = nullptr;
-      p = "Hello ";
-      q = "Bailey";
-    
-      // Print the pointers as C-strings
-      cout << p << q << endl;
-    
-      // Print C-string addresses
-      cout << int(p) << endl;
-      cout << int(q) << endl;
-    
-      // A string literal can be treated as a pointer
-      cout << int("literal") << endl;
-      
-      return 0;
-    }
+```c++
+// This program demonstrates that string literal are pointers to char
+#include <iostream>
+using namespace std;
+
+int main() {
+  const char * p = nullptr, *q = nullptr;
+  p = "Hello ";
+  q = "Bailey";
+
+  // Print the pointers as C-strings
+  cout << p << q << endl;
+
+  // Print C-string addresses
+  cout << int(p) << endl;
+  cout << int(q) << endl;
+
+  // A string literal can be treated as a pointer
+  cout << int("literal") << endl;
+  
+  return 0;
+}
+```
 
 
 ## Programmer-Defined Arrays of Character
 
 To have a C-string read from a file or keyboard, must first explicitly define a char array
 
-    - The size should hold the characters of the string + 1 for the terminating null character
-    const int SIZE == 20;
-    char company[SIZE];
+- The size should hold the characters of the string + 1 for the terminating null character
+
+```c++
+const int SIZE == 20;
+char company[SIZE];
+```
 
 A C-string defined as an array can be given its value by initializing it with a string literal, by reading characters into it from the keyboard or file, or by copying characters into it:
 
-    const int SIZE = 20;
-    char company[SIZE] = "Robotic Systems, inc.";
-    char corporation[] = "C. K. Graphics";
+```c++
+const int SIZE = 20;
+char company[SIZE] = "Robotic Systems, inc.";
+char corporation[] = "C. K. Graphics";
+```
 
 A C-string stored as a programmer-defined array can be processed using subscript notation
 
@@ -131,30 +150,34 @@ A C-string stored as a programmer-defined array can be processed using subscript
 
 Use a pointer to `char` to point to a C-string whose storage has already been allocated by one of the other two methods:
 
-    char name[] = "John Q. Public";
-    char *p;
-    p = name;
-    cout << p << endl;
-    p = "Jane Doe";
-    cout << p << endl;
+```c++
+char name[] = "John Q. Public";
+char *p;
+p = name;
+cout << p << endl;
+p = "Jane Doe";
+cout << p << endl;
+```
 - A major advantage in using a pointer variable to represent a C-string is the ability to make the pointer point to different C-strings
 
 Another way, define the pointer and then set it to point to dynamically allocated storage returned by the `new` operator
 
-    const int NAME_LENGTH = 50;
-    char *pName = nullptr;
-    // Allocate the array
-    pName = new char[NAME_LENGTH];
-    
-    // Read a string
-    cout << "Enter your name: ";
-    cin.getline(pName, NAME_LENGTH);
-    
-    // Display the string
-    cout << "Hello " << pName;
-    
-    // Release the memory
-    delete[] pName;
+```c++
+const int NAME_LENGTH = 50;
+char *pName = nullptr;
+// Allocate the array
+pName = new char[NAME_LENGTH];
+
+// Read a string
+cout << "Enter your name: ";
+cin.getline(pName, NAME_LENGTH);
+
+// Display the string
+cout << "Hello " << pName;
+
+// Release the memory
+delete[] pName;
+```
 
 
 # 12.4 Library Functions for Working with C-Strings
@@ -170,9 +193,12 @@ Must include `<cstring>`
 
 The `strlen` function is passed a C-string as its argument and returns the length of the string
 
-    - The number of characters up to but not including the null terminator
-    char str[] = "Hello";
-    int length = strlen(str);
+- The number of characters up to but not including the null terminator
+
+```c++
+char str[] = "Hello";
+int length = strlen(str);
+```
 
 The length of string should not be confused with the size of the array holding it
 
@@ -180,33 +206,43 @@ The length of string should not be confused with the size of the array holding i
 
 The C-string can be passed to the a function in the form of:
 
-    - A string literal
-    - The name of an array that stores the C-string
-    - A pointer variable hold the address of the C-string
+- A string literal
+- The name of an array that stores the C-string
+- A pointer variable hold the address of the C-string
 
 
 ## The `strcat` Function
 
 The `strcat` function takes two strings as parameters and concatenates them, returning a single string:
 
-    const int SIZE = 13;
-    char string1[SIZE] = "Hello ";
-    char string2[] = "World!";
-    strcat(string1, string2);
-    cout << string1 << endl;
+```c++
+const int SIZE = 13;
+char string1[SIZE] = "Hello ";
+char string2[] = "World!";
+strcat(string1, string2);
+cout << string1 << endl;
+```
 
 The function copies the contents of `string2` to the end of `string1`
 
-    - The programmer’s responsibility to make sure the array holding `string1` is large enough to hold `string1` and `string2` plus a null terminator
+- The programmer’s responsibility to make sure the array holding `string1` is large enough to hold `string1` and `string2` plus a null terminator
 
 Program to test an array’s size before `strcat` is called:
 
-    if(sizeof(string1) >= (strlen(string1) + strlen(string2) + 1)) {
-      strcat(string1, string2);
-    } else {
-      cout << "String1 is not large enough to concatenate." << endl;
-    }
-| If the array holding the first string is not large enough to hold both strings, `strcat` will overflow the boundries of the array |
+```c++
+if(sizeof(string1) >= (strlen(string1) + strlen(string2) + 1)) {
+  strcat(string1, string2);
+} else {
+  cout << "String1 is not large enough to concatenate." << endl;
+}
+```
+**Note**
+
+ ```
+If the array holding the first string is not large enough to hold both strings, `strcat` will overflow the boundries of the array
+ ```
+
+
 
 ![](https://paper-attachments.dropbox.com/s_59ED17D11EE8E15CE1B5414E7588EF753B1D33CF3220AE4BF88DC6B4122B0B29_1605039253705_image.png)
 
@@ -214,17 +250,21 @@ Program to test an array’s size before `strcat` is called:
 
 The `strcpy` function can be used to copy one C-string to another
 
-    const int SIZE = 20;
-    char name[SIZE];
-    strcpy(name, "Albert Einstein");
+```c++
+const int SIZE = 20;
+char name[SIZE];
+strcpy(name, "Albert Einstein");
+```
 
 The second C-string is copied to the address specified by the first C-string argument
 If anything is already stored in the location, then it is overwritten
 
-    char string1[] = "Hello";
-    cout << string1 << endl;
-    strcpy(string1, "World");
-    cout << string1 << endl;
+```c++
+char string1[] = "Hello";
+cout << string1 << endl;
+strcpy(string1, "World");
+cout << string1 << endl;
+```
 
 Output:
 
@@ -236,7 +276,9 @@ Output:
 
 Just as the assignment operator **cannot** be used to assign to C-strings, the relational operators **cannot** be used to compare C-strings
 
-    <=, <, >, >=, !=, ==
+```c++
+<=, <, >, >=, !=, ==
+```
 
 When used, these operator compare the addresses at which the C-strings are stored instead of the actual contents
 
@@ -246,7 +288,9 @@ To properly compare C-strings, use the `strcmp` function
 
 Takes two C-strings as parameters and returns an integer:
 
-    int strcmp(char* string1, char* string2);
+```c++
+int strcmp(char* string1, char* string2);
+```
 
 The value of the result is set to:
 
@@ -255,11 +299,13 @@ The value of the result is set to:
 - `strcmp() > 0` means `string1` comes after `string2` in alphabetical order
 
 
-    if(strcmp(string1, string2) == 0) {
-      cout << "The strings are equal";
-    } else {
-      cout << "The strings are not equal";
-    }
+```c++
+if(strcmp(string1, string2) == 0) {
+  cout << "The strings are equal";
+} else {
+  cout << "The strings are not equal";
+}
+```
 
 The function `strcmp` is case sensitive when it compares strings
 
@@ -269,9 +315,11 @@ Since `0` is considered logically `false`, the `!` operator converts the value t
 
 The expression `!strcmp(string1, string2)` will return `true` when both strings are the same
 
-    if(!strcmp(string1, string2)) {
-      cout << "equal;
-    }
+```c++
+if(!strcmp(string1, string2)) {
+  cout << "equal;
+}
+```
 
 
 # 12.5 Conversions Between Numbers and Strings
@@ -292,6 +340,8 @@ C++ has two classes, `ostringstream` and `istringstream`, that can be used to pe
 
 Must include `<sstream>` to use these classes
 
+
+
 | **Member Function**       | **Description**                                                                            |
 | ------------------------- | ------------------------------------------------------------------------------------------ |
 | `istringstream(string s)` | Constructor for `istringstream` sets the initial value of the input stream for the object  |
@@ -300,13 +350,14 @@ Must include `<sstream>` to use these classes
 | `void str(string &str)`   | Sets the string that serves as the input or output stream for the object                   |
 
 
+
 The class `ostringstream` is a subclass of `ostream` and uses the stream insertion operator `<<` to convert numeric values to string
 
-    `ostringstream` writes its data to a string object contained inside it. Each time `<<` is used on the object, it performs any numeric-to-string conversions and appends the result to the end of its string
+* `ostringstream` writes its data to a string object contained inside it. Each time `<<` is used on the object, it performs any numeric-to-string conversions and appends the result to the end of its string
 
 The class `istringstream` class derives from `istream` and uses the stream extraction operator `>>` to read from the enclosed string and converts from string to numeric value
 
-    `istringstream` reads data from its string object contained inside. The input stream can be set by the constructor or by calling the `str(string s)` function after the object has been created
+* `istringstream` reads data from its string object contained inside. The input stream can be set by the constructor or by calling the `str(string s)` function after the object has been created
 
 They do have a disadvantage in that they force you to create `sstream` objects to use their conversion operators
 
@@ -314,29 +365,34 @@ They do have a disadvantage in that they force you to create `sstream` objects t
 
 C++11 provides several `to_string(T value)` functions to convert a numeric value of type `T` to string form
 
-    int a = 5;
-    string str = to_string(a*a);
-    cout << "The square of 5 is " << str << endl;
+```c++
+int a = 5;
+string str = to_string(a*a);
+cout << "The square of 5 is " << str << endl;
+```
 
 The `to_string()` functions cannot handle conversion of integers to bases other than 10
 
-    - An `ostringstream` object should do the conversion
+- An `ostringstream` object should do the conversion
 
 The string-to-numeric conversions are performed by the family of `stoX()` functions
 
 These family members perform string conversions to `int`, `long`, `float`, and `double`
 
-    int stoi(const string&, size_t* pos = 0, int base = 10)
-    long stol(const string& str, size_t* pos = 0, int base = 10)
-    float stof(...)
-    double stod(...)
-    - The `pos` and `base` are optional
-        - If `pos` is omitted, the index of the stopping character is not stored
-        - If `base` is omitted, it is assumed to be 10
+```c++
+int stoi(const string&, size_t* pos = 0, int base = 10)
+long stol(const string& str, size_t* pos = 0, int base = 10)
+float stof(...)
+double stod(...)
+```
+
+- The `pos` and `base` are optional
+    - If `pos` is omitted, the index of the stopping character is not stored
+    - If `base` is omitted, it is assumed to be 10
 
 For example, an attempt to convert the string `-34is even` will succeed and return the integer `-34` and set the position of the first character that could not be converted to 3
 
-If the string `str` has an invlaid value, such as `"``is -34 even?``"`, then no conversion can be performed and the function throws an `invalid_argument` exception
+If the string `str` has an invalid value, such as `"``is -34 even?``"`, then no conversion can be performed and the function throws an `invalid_argument` exception
 
 # 12.6 Writing Your Own C-String Handling Functions
 
@@ -351,6 +407,8 @@ By being able to pass arrays as arguments, functions processing C-strings can be
 
 Pointers are useful for writing functions that process C-string:
 
+**Note**
+
     If the starting address of the string is passed, then it can be assumed that all the characters, from the start address to the null terminator, are part of the string (not necessary to know length of the string)
 # 12.7 More about the C++ `string` Class
 
@@ -358,7 +416,9 @@ The `string` class has several built-in member functions and overloaded operator
 
 Must include `<string>`
 
-String Constructors
+**String Constructors**
+
+
 
 | **Function**              | **Description**                                                  |
 | ------------------------- | ---------------------------------------------------------------- |
@@ -366,7 +426,9 @@ String Constructors
 | `string(const char* s)`   | Convert constructor: creates a string object from a C-string s   |
 | `string(const string &s)` | Copy constructor: creates a new string from an existing string s |
 
-String class overloads
+**String class overloads**
+
+
 
 | **Overload Operator**                           | **Description**                                                                                                                                   |
 | ----------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
