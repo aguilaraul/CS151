@@ -11,13 +11,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fb09c724-26e8-491e-9f7d-6555708e8739" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/App.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Player.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Player.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Staff.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Staff.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TODO" beforeDir="false" afterPath="$PROJECT_DIR$/TODO" afterDir="false" />
-    </list>
+    <list default="true" id="fb09c724-26e8-491e-9f7d-6555708e8739" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -64,7 +58,7 @@
       <updated>1608003740801</updated>
       <workItem from="1608003742007" duration="13293000" />
       <workItem from="1608052855676" duration="4909000" />
-      <workItem from="1608062625229" duration="2723000" />
+      <workItem from="1608062625229" duration="3295000" />
     </task>
     <task id="LOCAL-00001" summary="Final&#10;Added Template functions">
       <created>1608004528903</created>
@@ -108,7 +102,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608064069977</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Final&#10;Done">
+      <created>1608065356584</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1608065356584</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -133,6 +134,7 @@
     <MESSAGE value="Final&#10;Add Player attribute input to App" />
     <MESSAGE value="Final&#10;Edit exception message" />
     <MESSAGE value="Final&#10;Added function documentation" />
-    <option name="LAST_COMMIT_MESSAGE" value="Final&#10;Added function documentation" />
+    <MESSAGE value="Final&#10;Done" />
+    <option name="LAST_COMMIT_MESSAGE" value="Final&#10;Done" />
   </component>
 </project>
