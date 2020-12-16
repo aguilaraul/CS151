@@ -114,17 +114,6 @@ void App::comparePlayers() {
 }
 
 /**
- * Helper method to call the compare function of a Staff or Player object
- * @tparam T Staff or Player class
- * @param person1 Staff or Player object that calls compare()
- * @param person2 Staff or Player object to compare against person1
- */
-template<class T>
-void App::comparison(const T &person1, const T &person2) {
-    person1.compare(person2);
-}
-
-/**
  * Menu option to add Staff via file or manual input. After manual
  * input, there is an option to save to file for later use.
  * @param staff Staff object to load to
@@ -176,43 +165,6 @@ void App::setStaffManual(Staff &staff)
 }
 
 /**
- * Helper method to input the personal information of a Staff or Player
- * object.
- * @tparam T Staff class or Player class
- * @param person Staff or Player object to set personal information
- */
-template<class T>
-void App::inputPersonalInfo(T &person) {
-    bool reenter = true;
-
-    string nation, name, role, club;
-    int age;
-    cout << "Enter the following information:\n";
-    while(reenter) {
-        cout << "Nation:";
-        cin.ignore();
-        getline(cin, nation);
-        cout << "Name:";
-        getline(cin, name);
-        cout << "Age:"; // @Incomplete: Add exception to handle non-numbers
-        cin >> age;
-        cout << "Role:";
-        cin.ignore();
-        getline(cin, role);
-        cout << "Club:";
-        getline(cin, club);
-
-        reenter = validateAnswer();
-    }
-
-    person.setNation(nation);
-    person.setName(name);
-    person.setAge(age);
-    person.setRole(role);
-    person.setClub(club);
-}
-
-/**
  * Helper method to validate and set the input of Staff coaching
  * attributes.
  * @param staff Staff object to set coaching attributes
@@ -221,7 +173,7 @@ void App::inputCoaching(Staff &staff) {
     AttributeRange attributeRange;
     bool reenter = true;
     bool redo;
-    int numAttr = 7;
+    const int numAttr = 7;
     string attribute[] = {
             "Attacking:", "Defending:", "Fitness:", "Mental:", "Tactical:",
             "Technical:", "Working With Youngsters:",
@@ -255,7 +207,7 @@ void App::inputMedical(Staff &staff) {
     AttributeRange attributeRange;
     bool reenter = true;
     bool redo;
-    int numAttr = 2;
+    const int numAttr = 2;
     string attribute[] = {
             "Physiotherapy:", "Sports Science:"
     };
@@ -288,7 +240,7 @@ void App::inputGKCoaching(Staff &staff) {
     AttributeRange attributeRange;
     bool reenter = true;
     bool redo;
-    int numAttr = 3;
+    const int numAttr = 3;
     string attribute[] = {
             "GK Distribution:", "GK Handling:", "GK Shot Stop:"
     };
@@ -321,7 +273,7 @@ void App::inputMental(Staff &staff) {
     AttributeRange attributeRange;
     bool reenter = true;
     bool redo;
-    int numAttr = 5;
+    const int numAttr = 5;
     string attribute[] = {
             "Adaptability:", "Determination:", "Level of Discipline:", "Man Management:",
             "Motivating:"
@@ -355,7 +307,7 @@ void App::inputScouting(Staff &staff) {
     AttributeRange attributeRange;
     bool reenter = true;
     bool redo;
-    int numAttr = 3;
+    const int numAttr = 3;
     string attribute[] = {
             "Judging Player Data:", "Judging Team Data:", "Presenting Data:"
     };
@@ -388,7 +340,7 @@ void App::inputKnowledge(Staff &staff) {
     AttributeRange attributeRange;
     bool reenter = true;
     bool redo;
-    int numAttr = 5;
+    const int numAttr = 5;
     string attribute[] = {
             "Judging Ability:", "Judging Potential:", "Judging Staff Ability:",
             "Negotiating:", "Tactical Knowledge:"
@@ -437,7 +389,7 @@ void App::inputTechnical(Player &player) {
     AttributeRange attributeRange;
     bool reenter = true;
     bool redo;
-    int numAttr = 14;
+    const int numAttr = 14;
     string attribute[] = {
             "Corners:", "Crossing:", "Dribbling:", "Finishing:", "First Touch:", "Free Kick:",
             "Heading:", "Long Shots:", "Long Throws:", "Marking:", "Passing:", "Penalty Taking:",
@@ -473,7 +425,7 @@ void App::inputMental(Player &player) {
     AttributeRange attributeRange;
     bool reenter = true;
     bool redo;
-    int numAttr = 14;
+    const int numAttr = 14;
     string attribute[] = {
             "Aggression:", "Anticipation:", "Bravery:", "Composure:", "Concentration:", "Decisions:",
             "Determination:", "Flair:", "Leadership:", "Off the Ball:", "Positioning:", "Teamwork:",
@@ -509,7 +461,7 @@ void App::inputPhysical(Player &player) {
     AttributeRange attributeRange;
     bool reenter = true;
     bool redo;
-    int numAttr = 8;
+    const int numAttr = 8;
     string attribute[] = {
             "Acceleration:", "Agility:", "Balance:", "Jumping Reach:", "Natural Fitness:", "Pace:",
             "Stamina:", "Strength:"
@@ -532,61 +484,4 @@ void App::inputPhysical(Player &player) {
         reenter = validateAnswer();
     }
     player.setPhysical(values[0], values[1], values[2], values[3], values[4], values[5], values[6], values[7]);
-}
-
-//
-// File Operations
-//
-
-/**
- * Saves the Staff or Player to a formatted text file and a binary file
- * to load in later.
- * @tparam T Staff class or Player class
- * @param person Staff or Player object saving to a text and binary file
- */
-template<class T>
-void App::saveToFile(T &person) {
-    person.saveToFile();
-    person.saveToBinary();
-    cout << person.getName() << " saved to file." << endl;
-}
-
-/**
- * Loads a staff member or player from a binary file. If the user does
- * not include a '.' as part of the file name, then a out of range
- * exception is caught because determining a substring with a
- * string::npos throws an out of range exception. In which case, ask
- * user to reenter the filename. If the filename does include a '.',
- * but the file extension that follows is not 'dat' then ask the user
- * to reenter the filename. Otherwise, a '.dat' file was entered. If
- * the filename does not exist, then the program exits.
- * @tparam T Staff or Player
- * @param person address of staff member or player object loading
- */
-template<class T>
-void App::loadFromFile(T &person) {
-    bool redo = true;
-    string fileName;
-    int found;
-    while(redo) {
-        cout << "Please enter the name of the .dat file:" << endl;
-        getline(cin, fileName);
-        try {
-            found = fileName.find_last_of('.');
-            if(fileName.substr(found) != ".dat") {
-                cout << "The file entered is not a '.dat' file." << endl;
-            }
-            redo = false;
-        } catch (std::out_of_range &) {
-            cout << "Don't forget to include '.dat'." << endl;
-        }
-    }
-    fstream dataFile(fileName, ios::binary | ios::in);
-    if(!dataFile) {
-        cout << "File could not be opened. Check file name spelling, make sure to enable read/write permissions, etc.";
-        exit(1);
-    }
-
-    person.loadBinary(dataFile);
-    dataFile.close();
 }
