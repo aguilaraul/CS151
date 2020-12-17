@@ -11,7 +11,19 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fb09c724-26e8-491e-9f7d-6555708e8739" name="Default Changelist" comment="" />
+    <list default="true" id="fb09c724-26e8-491e-9f7d-6555708e8739" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Person.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Person.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Person.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/Person.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Player.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Player.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Player.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/Player.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Staff.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Staff.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Staff.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/Staff.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.cpp" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -35,9 +47,20 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="cf.first.check.clang-format" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/CMakeLists.txt" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\raula\GitHub\CS151\Final\FM20Compare\src" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="FM20Compare" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="FM20Compare" TARGET_NAME="FM20Compare" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="FM20Compare" RUN_TARGET_NAME="FM20Compare">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -59,6 +82,8 @@
       <workItem from="1608003742007" duration="13293000" />
       <workItem from="1608052855676" duration="4909000" />
       <workItem from="1608062625229" duration="3295000" />
+      <workItem from="1608163964892" duration="549000" />
+      <workItem from="1608164541426" duration="439000" />
     </task>
     <task id="LOCAL-00001" summary="Final&#10;Added Template functions">
       <created>1608004528903</created>

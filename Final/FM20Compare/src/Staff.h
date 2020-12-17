@@ -1,8 +1,10 @@
 /**
  * Staff.h
- * Author   Raul Aguilar
- * Date     December 12, 2020
+ *
+ * Author:  Raul Aguilar
+ * Date:    December 16, 2020
  * CS 151 3228 Final Project
+ * Staff header file
  */
 
 #ifndef FM20COMPARE_STAFF_H

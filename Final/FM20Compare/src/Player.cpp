@@ -1,8 +1,10 @@
 /**
  * Player.cpp
+ *
  * Author:  Raul Aguilar
- * Date:    December 15, 2020
- * CS 151 3228 Final
+ * Date:    December 16, 2020
+ * CS 151 3228 Final Project
+ * Player class definition
  */
 #include "Player.h"
 

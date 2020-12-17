@@ -1,8 +1,10 @@
 /**
  * Staff.cpp
- * Author   Raul Aguilar
- * Date     December 12, 2020
+ *
+ * Author:  Raul Aguilar
+ * Date:    December 16, 2020
  * CS 151 3228 Final Project
+ * Staff class function definition
  */
 
 #include "Staff.h"

@@ -1,6 +1,10 @@
-//
-// Created by raula on 11/7/2020.
-//
+/**
+ * Person.cpp
+ *
+ * Author:  Raul Aguilar
+ * Date:    December 16, 2020
+ * Person class function definitions
+ */
 
 #include "Person.h"
 #include <iostream>

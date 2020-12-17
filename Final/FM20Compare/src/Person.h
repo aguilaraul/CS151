@@ -1,6 +1,10 @@
-//
-// Created by raula on 11/7/2020.
-//
+/**
+ * Person.h
+ *
+ * Author:  Raul Aguilar
+ * Date:    December 16, 2020
+ * Header file for Person class
+ */
 
 #ifndef FM20SCOUT_PERSON_H
 #define FM20SCOUT_PERSON_H

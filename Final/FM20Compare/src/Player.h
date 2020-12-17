@@ -2,7 +2,7 @@
  * Player.h
  *
  * Author:  Raul Aguilar
- * Date:    November
+ * Date:    December 16, 2020
  * CS 151 3228 Final Project
  * Player header file
  */
